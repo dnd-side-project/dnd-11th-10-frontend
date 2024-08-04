@@ -1,3 +1,3 @@
 export default function DictionaryTab() {
-  return <>DictionaryTab</>
+  return <p className="text-white">DictionaryTab</p>
 }

@@ -1,3 +1,3 @@
 export default function LearningTab() {
-  return <div>LearningTab</div>
+  return <p className="text-white">LearningTab</p>
 }

@@ -1,5 +1,13 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import localFont from 'next/font/local'
+
+const pretendard = localFont({
+  src: '../../public/fonts/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard',
+});
 
 export const metadata: Metadata = {
   title: 'SPACE D',
@@ -13,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
-    </html>
+      <body className={`flex justify-center min-h-dvh ${pretendard.variable} font-pretendard`}>
+        <div className="w-full max-w-[430px] bg-black">
+          {children}
+        </div>
+      </body>
+    </html >
   )
 }

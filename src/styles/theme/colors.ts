@@ -24,6 +24,7 @@ export const colors = {
     800: '#212830',
   },
   designPurple: {
+    0: 'rgb(210,131,240,0.2)',
     50: '#F4D6FF',
     100: '#E9C0F9',
     200: '#D283F0',
@@ -31,6 +32,7 @@ export const colors = {
     400: '#B230E3',
   },
   devBlue: {
+    0: 'rgb(136,181,237,0.2)',
     50: '#DDECFF',
     100: '#B8D3F4',
     200: '#88B5ED',

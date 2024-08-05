@@ -1,6 +1,6 @@
+import Header from '@/components/domain/home/Header'
+import Tabs from '@/components/domain/home/Tabs'
 import React from 'react'
-import Header from '../components/domain/home/Header'
-import Tabs from '../components/domain/home/Tabs'
 
 type LayoutProps = {
   children: React.ReactNode

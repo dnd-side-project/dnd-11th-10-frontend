@@ -36,12 +36,6 @@ export const colors = {
     300: '#629FEC',
     400: '#2F7CDE',
   },
-  gradient: {
-    1: 'linear-gradient(0.25turn, #00FFBB, #3D7DF3, #6E32E6);',
-    2: 'linear-gradient(0.25turn, #1FD5BC, #358BF2);',
-    3: 'linear-gradient(0.25turn, #1A90E8, #5143E3);',
-    4: 'linear-gradient(0.25turn, #C439F1, #6D32E6);',
-  },
   background: '#0E121B',
   error: '#D13838',
   errorLight: '#EF5E5E',
@@ -50,5 +44,5 @@ export const colors = {
     100: 'rgb(255,255,255,0.38)',
     200: 'rgb(255,255,255,0.6)',
     300: 'rgb(255,255,255,0.87)',
-  }
+  },
 }

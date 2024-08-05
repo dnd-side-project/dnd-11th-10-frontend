@@ -1,5 +1,6 @@
 export const colors = {
   primary: {
+    0: 'rgb(117,240,208,0.2)',
     50: '#BBFFE9',
     100: '#AAF4E0',
     200: '#75F0D0',
@@ -7,11 +8,11 @@ export const colors = {
     400: '#47D3AD',
   },
   secondary: {
+    0: 'rgb(166,131,233,0.2)',
     50: '#E5DCF7',
     100: '#CEBDF0',
     200: '#A683E9',
     300: '#8C5EE4',
-    400: '#6D37D3',
   },
   gray: {
     200: '#DCE3EB',

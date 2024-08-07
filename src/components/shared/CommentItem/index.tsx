@@ -5,7 +5,7 @@ import { getTimeAgo } from '@/utils/date'
 import Image from 'next/image'
 import Link from 'next/link'
 
-interface CommentItemProps extends SimpleCommentType {
+export interface CommentItemProps extends SimpleCommentType {
   showTags: boolean
 }
 

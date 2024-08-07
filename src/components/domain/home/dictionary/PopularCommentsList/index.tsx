@@ -1,7 +1,11 @@
 import CommentItem from '@/components/shared/CommentItem'
-import { PopularComments } from './data'
+import { SimpleCommentType } from '@/types/comment'
 
-export default function PopularCommentsList() {
+export default function PopularCommentsList({
+  PopularComments,
+}: {
+  PopularComments: SimpleCommentType[]
+}) {
   return (
     <div className="mx-4">
       <div className="w-full">

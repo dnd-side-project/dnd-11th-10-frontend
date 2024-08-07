@@ -1,8 +1,11 @@
 import HorizontalScrollArea from '@/components/common/HorizontalScrollArea'
-import WordItem from '../../WordItem'
-import { WordsList } from './data'
+import WordItem, { WordItemProps } from '../../WordItem'
 
-export default function RecentlyAddedWords() {
+export default function RecentlyAddedWords({
+  WordsList,
+}: {
+  WordsList: WordItemProps[]
+}) {
   return (
     <>
       <HorizontalScrollArea title="최근 등록된 업무 용어 🌟">

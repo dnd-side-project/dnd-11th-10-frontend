@@ -7,7 +7,7 @@ import Cross from '/public/icons/cross.svg'
 import Back from '/public/icons/back.svg'
 
 function Header() {
-  let currentProblems = 1
+  let currentProblems = 3
   let currentPersent = 20 * currentProblems
   const problems = 5
   const isBack = true
@@ -34,9 +34,9 @@ function Header() {
         </div>
       )}
 
-      <div className="mt-4 w-72 h-3 bg-outline rounded-2xl">
+      <div className="mt-4 p-[0.05rem] w-72 h-3 bg-outline rounded-2xl">
         <div
-          className="bg-blue-600 h-3 rounded-2xl"
+          className="bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% h-2.5 rounded-2xl"
           style={{ width: `${currentPersent}%` }}
         />
       </div>

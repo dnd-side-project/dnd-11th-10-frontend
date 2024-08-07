@@ -8,6 +8,7 @@ import Back from '/public/icons/back.svg'
 
 function Header() {
   let currentProblems = 1
+  let currentPersent = 20 * currentProblems
   const problems = 5
   const isBack = true
 
@@ -33,7 +34,12 @@ function Header() {
         </div>
       )}
 
-      <div className="mt-4 w-72 h-3 bg-outline rounded-2xl" />
+      <div className="mt-4 w-72 h-3 bg-outline rounded-2xl">
+        <div
+          className="bg-blue-600 h-3 rounded-2xl"
+          style={{ width: `${currentPersent}%` }}
+        />
+      </div>
 
       <div className="flex mt-2 text-onSurface-300 text-xl">
         {currentProblems}

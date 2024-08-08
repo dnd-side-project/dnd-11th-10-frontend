@@ -11,7 +11,7 @@ export default function HomeLayout({ children }: LayoutProps) {
     <>
       <Header />
       <Tabs />
-      <div className="h-fit px-4">{children}</div>
+      <div className="h-fit">{children}</div>
     </>
   )
 }

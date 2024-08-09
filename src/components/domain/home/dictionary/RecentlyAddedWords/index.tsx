@@ -1,26 +1,23 @@
 import HorizontalScrollArea from '@/components/common/HorizontalScrollArea'
-import WordItem, { WordItemProps } from '../../WordItem'
+import WordItem, { WordItemProps } from '../../../../shared/WordItem'
 
 export default function RecentlyAddedWords({
-  WordsList,
+  wordsList,
 }: {
-  WordsList: WordItemProps[]
+  wordsList: WordItemProps[]
 }) {
   return (
     <>
       <HorizontalScrollArea title="최근 등록된 업무 용어 🌟">
-        {WordsList.map(
-          ({ id, name, meaning, pronunciationInfo, category }, idx) => (
-            <WordItem
-              key={id}
-              id={id}
-              name={name}
-              meaning={meaning}
-              pronunciationInfo={pronunciationInfo}
-              category={category}
-            />
-          ),
-        )}
+        {wordsList.map(({ id, name, meaning, category }, idx) => (
+          <WordItem
+            key={id}
+            id={id}
+            name={name}
+            meaning={meaning}
+            category={category}
+          />
+        ))}
       </HorizontalScrollArea>
     </>
   )

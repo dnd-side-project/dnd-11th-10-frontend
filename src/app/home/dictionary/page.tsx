@@ -7,9 +7,9 @@ import ViewAllWords from '@/components/domain/home/dictionary/ViewAllWords'
 
 export default function DictionaryTab() {
   return (
-    <div className="w-full mt-12 flex flex-col gap-[60px]">
+    <div className="w-full my-12 flex flex-col gap-[60px]">
       <ViewAllWords />
-      <RecentlyAddedWords WordsList={WordsList} />
+      <RecentlyAddedWords wordsList={WordsList} />
       <Bookmarks />
       <PopularCommentsList PopularComments={PopularComments} />
     </div>

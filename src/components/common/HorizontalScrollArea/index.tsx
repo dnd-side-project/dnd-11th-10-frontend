@@ -15,11 +15,11 @@ export default function HorizontalScrollArea({
   const containerRef = useRef<HTMLDivElement>(null)
 
   const handlePrevClick = () => {
-    scrollTo(-containerRef.current!.offsetWidth / 2)
+    scrollTo(-containerRef.current!.offsetWidth + 16)
   }
 
   const handleNextClick = () => {
-    scrollTo(containerRef.current!.offsetWidth / 2)
+    scrollTo(containerRef.current!.offsetWidth - 16)
   }
 
   const scrollTo = (moveX: number) => {
@@ -54,7 +54,7 @@ export default function HorizontalScrollArea({
       </div>
       <div
         ref={containerRef}
-        className="flex gap-4 relative px-4 overflow-x-auto transition-transform duration-500"
+        className="flex gap-4 relative px-4 overflow-x-auto transition-transform transition-duration-500"
       >
         {children}
       </div>

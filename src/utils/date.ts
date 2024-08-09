@@ -35,3 +35,13 @@ export function getFormattedDate(dateStr: string) {
 
   return `${year}.${month}.${day}`
 }
+
+// 오늘 날짜 08.10 형태로 반환
+export function getTodayDate() {
+  const date = new Date()
+
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+
+  return `${month}월 ${day}일`
+}

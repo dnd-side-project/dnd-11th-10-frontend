@@ -38,6 +38,7 @@ function Quiz() {
       <div className="text-center text-onSurface-300 text-xl">
         <p>어떤 분야의 퀴즈를 진행할까요?</p>
       </div>
+
       <div className="mt-5 flex flex-wrap justify-around">
         {quizType.map((quiz) => {
           return (
@@ -53,10 +54,21 @@ function Quiz() {
               <p className={`text-${quiz.color}`}>{quiz.name}</p>
               <p>용어</p>
               <p>퀴즈하기</p>
-              <div className=''/>
+              <div className="" />
             </div>
           )
         })}
+      </div>
+      <div className="flex justify-between px-5">
+        <button className="mt-5 px-6 w-28 h-14 bg-outline rounded-md text-onSurface-300">
+          이전
+        </button>
+        <button
+          disabled={true}
+          className="mt-5 px-6 w-56 h-14 bg-outline active:bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300"
+        >
+          다음
+        </button>
       </div>
     </div>
   )

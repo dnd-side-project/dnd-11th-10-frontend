@@ -1,0 +1,41 @@
+import CategoryChartItem from './CategoryChartItem'
+import TotalChart from './TotalChart'
+import { StatsInfo } from './data'
+
+export type Category = 'develop' | 'design' | 'business'
+const categories: Category[] = ['develop', 'design', 'business']
+
+export default function CommunicationStats() {
+  return (
+    <>
+      <div className="w-full flex flex-col items-center text-onSurface-300 px-4">
+        <div className="w-full flex justify-between items-end mb-6">
+          <div>
+            <p className="text-xl font-semibold mb-3">
+              나의 업무 소통 능력치 📊
+            </p>
+            <p className="text-onSurface-200">
+              실무 용어 퀴즈로 단어를 학습하고 <br />
+              소통 능력치를 높일 수 있어요.
+            </p>
+          </div>
+          <TotalChart
+            topPercent={StatsInfo.topPercent}
+            percent={StatsInfo.totalPercent}
+          />
+        </div>
+        <div className="w-full flex justify-between gap-4 max-xs:flex-col">
+          {categories.map((category: Category, idx: number) => (
+            <CategoryChartItem
+              key={idx}
+              category={category}
+              percent={StatsInfo[category].percent}
+              cnt={StatsInfo[category].cnt}
+              totalCnt={StatsInfo[category].totalCnt}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  )
+}

@@ -3,16 +3,18 @@
 import React from 'react'
 import Image from 'next/image'
 
-import Back from '/public/icons/back.svg'
+import Cross from '/public/icons/cross.svg'
+import { useRouter } from 'next/navigation'
 
 function Header() {
+  const router = useRouter()
   return (
     <div className="flex justify-start p-4 h-20 ">
       <div className="mt-3">
         <Image
-          src={Back}
+          src={Cross}
           alt="Back.svg"
-          onClick={() => console.log('back logo clicked')}
+          onClick={() => router.push('/home/dictionary')}
           className="cursor-pointer"
         />
       </div>

@@ -1,4 +1,6 @@
-const Start = () => {
+import React from 'react'
+
+export default function QuizStart() {
   return (
     <div>
       <div className="text-center text-onSurface-300 text-xl">
@@ -12,5 +14,3 @@ const Start = () => {
     </div>
   )
 }
-
-export default Start

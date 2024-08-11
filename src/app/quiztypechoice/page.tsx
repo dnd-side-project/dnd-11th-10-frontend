@@ -31,7 +31,7 @@ const quizType: QuizType[] = [
   },
 ]
 
-function QuizType() {
+function QuizTypeChoice() {
   return (
     <div>
       <div className="text-center text-onSurface-300 text-xl">
@@ -75,4 +75,4 @@ function QuizType() {
   )
 }
 
-export default QuizType
+export default QuizTypeChoice

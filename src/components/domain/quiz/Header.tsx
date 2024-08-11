@@ -4,7 +4,6 @@ import React from 'react'
 import Image from 'next/image'
 
 import Cross from '/public/icons/cross.svg'
-import Back from '/public/icons/back.svg'
 
 function Header() {
   let currentProblems = 3
@@ -14,25 +13,14 @@ function Header() {
 
   return (
     <div className="flex justify-around p-4 h-20 ">
-      {isBack ? (
-        <div className="mt-3">
-          <Image
-            src={Back}
-            alt="Back.svg"
-            onClick={() => console.log('back logo clicked')}
-            className="cursor-pointer"
-          />
-        </div>
-      ) : (
-        <div className="mt-3">
-          <Image
-            src={Cross}
-            alt="cross.svg"
-            onClick={() => console.log('cross logo clicked')}
-            className="cursor-pointer"
-          />
-        </div>
-      )}
+      <div className="mt-3">
+        <Image
+          src={Cross}
+          alt="cross.svg"
+          onClick={() => console.log('cross logo clicked')}
+          className="cursor-pointer"
+        />
+      </div>
 
       <div className="mt-4 p-[0.05rem] w-72 h-3 bg-outline rounded-2xl">
         <div

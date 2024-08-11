@@ -16,9 +16,11 @@ const config: Config = {
       },
       colors,
       fontFamily: {
-        pretendard: ['var(--font-pretendard)']
+        pretendard: ['var(--font-pretendard)'],
       },
-
+      screens: {
+        xs: '360px',
+      },
     },
   },
   plugins: [],

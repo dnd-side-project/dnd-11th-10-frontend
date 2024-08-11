@@ -4,10 +4,10 @@ import React from 'react'
 import Image from 'next/image'
 
 import Cross from '/public/icons/cross.svg'
+import { useStore } from '@/lib/store'
 
 function Header() {
-  let currentProblems = 3
-  let currentPersent = 20 * currentProblems
+  const { currentProblem, currentPersent } = useStore()
   const problems = 5
   const isBack = true
 
@@ -30,7 +30,7 @@ function Header() {
       </div>
 
       <div className="flex mt-2 text-onSurface-300 text-xl">
-        {currentProblems}
+        {currentProblem}
         <p className="text-onSurface-200">
           {'/'}
           {problems}

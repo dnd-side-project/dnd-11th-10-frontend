@@ -19,9 +19,9 @@ function Quiz() {
     if (problemIndex < quizData.problemInfo.length - 1) {
       setProblemIndex((prevIndex) => prevIndex + 1)
       setSelectedOption(null)
+      setCurrentProblem(problemIndex)
+      setCurrentPersent(problemIndex)
     }
-    setCurrentProblem(problemIndex);
-    setCurrentPersent(problemIndex);
   }
 
   const handleOptionSelect = (option: OptionInfoType) => {
@@ -34,7 +34,7 @@ function Quiz() {
 
   return (
     <div className="mt-10">
-      <CategoryTag category={`${problem.category}`} />
+      <CategoryTag category={problem.category} />
       <div className="text-onSurface-300">
         <p>{problem.question}</p>
       </div>
@@ -55,13 +55,19 @@ function Quiz() {
           </li>
         ))}
       </ul>
-      <button
-        onClick={handleNext}
-        disabled={!selectedOption}
-        className="text-primary-200"
-      >
-        다음
-      </button>
+      <div>
+        <div className="mt-28 flex justify-around ">
+          <button className="mt-5 px-6 w-32 h-14 bg-outline rounded-md text-onSurface-300">
+            이전
+          </button>
+          <button
+            className="mt-5 px-6 w-60 h-14 bg-outline text-onSurface-100 active:bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300"
+            onClick={handleNext}
+          >
+            다음
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

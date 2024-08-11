@@ -5,11 +5,12 @@ import Image from 'next/image'
 
 import Cross from '/public/icons/cross.svg'
 import { useStore } from '@/lib/store'
+import { useRouter } from 'next/navigation'
 
 function Header() {
+  const router = useRouter()
   const { currentProblem, currentPersent } = useStore()
   const problems = 5
-  const isBack = true
 
   return (
     <div className="flex justify-around p-4 h-20 ">
@@ -17,7 +18,7 @@ function Header() {
         <Image
           src={Cross}
           alt="cross.svg"
-          onClick={() => console.log('cross logo clicked')}
+          onClick={() => router.push('/home/dictionary')}
           className="cursor-pointer"
         />
       </div>

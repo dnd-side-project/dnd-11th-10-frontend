@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 
 interface QuizType {
   participantCount: number
@@ -32,6 +33,13 @@ const quizType: QuizType[] = [
 ]
 
 function QuizTypeChoice() {
+  const router = useRouter()
+  const [selectedQuiz, setSelectedQuiz] = useState<string | null>(null)
+
+  const handleClick = (quizName: string) => {
+    setSelectedQuiz(quizName)
+  }
+
   return (
     <div>
       <div className="text-center text-onSurface-300 text-xl">
@@ -40,10 +48,14 @@ function QuizTypeChoice() {
 
       <div className="mt-5 flex flex-wrap justify-around">
         {quizType.map((quiz) => {
+          const isSelected = selectedQuiz === quiz.name
           return (
             <div
-              className="mt-4 p-4 w-44 h-56 bg-gray-800 text-onSurface-200 rounded-xl"
+              className={`mt-4 p-4 w-44 h-56 bg-gray-800 text-onSurface-200 rounded-xl cursor-pointer ${
+                isSelected ? 'border-2 border-primary-400' : ''
+              }`}
               key={quiz.name}
+              onClick={() => handleClick(quiz.name)}
             >
               <div className="flex">
                 오늘&nbsp;
@@ -60,13 +72,18 @@ function QuizTypeChoice() {
           )
         })}
       </div>
-      <div className="mt-28 flex justify-around ">
+      <div className="mt-28 flex justify-around">
         <button className="mt-5 px-6 w-32 h-14 bg-outline rounded-md text-onSurface-300">
           이전
         </button>
         <button
-          disabled={true}
-          className="mt-5 px-6 w-60 h-14 bg-outline text-onSurface-100 active:bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300"
+          disabled={!selectedQuiz}
+          className={`mt-5 px-6 w-60 h-14 rounded-md text-onSurface-300 ${
+            selectedQuiz
+              ? 'bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
+              : 'bg-outline text-onSurface-100'
+          }`}
+          onClick={() => router.push('/quiz')}
         >
           다음
         </button>

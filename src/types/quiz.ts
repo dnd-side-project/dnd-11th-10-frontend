@@ -7,7 +7,7 @@ export interface ProblemInfoType {
   answerId: number
   question: string
   name: string
-  category: string
+  category: "비즈니스" | "개발" | "디자인"
   correctPercent: number
   wrongPercent: number
   optionInfo: OptionInfoType[]

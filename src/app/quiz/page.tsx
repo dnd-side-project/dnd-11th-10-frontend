@@ -2,30 +2,27 @@
 
 import React, { useState } from 'react'
 import { quizData } from '@/components/domain/quiz/data'
-import { OptionInfoType } from '@/types/quiz'
 import CategoryTag from '@/components/shared/CategoryTag'
 import { useStore } from '@/lib/store'
 
 function Quiz() {
   const [problemIndex, setProblemIndex] = useState(0)
-  const [selectedOption, setSelectedOption] = useState<OptionInfoType | null>(
-    null,
-  )
   const { setCurrentProblem, setCurrentPersent } = useStore()
 
   const problem = quizData.problemInfo[problemIndex]
 
+  const [isActive, setIsActive] = useState(false)
+
+  function handleClick() {
+    setIsActive(!isActive)
+  }
+
   const handleNext = () => {
     if (problemIndex < quizData.problemInfo.length - 1) {
       setProblemIndex((prevIndex) => prevIndex + 1)
-      setSelectedOption(null)
       setCurrentProblem(problemIndex)
       setCurrentPersent(problemIndex)
     }
-  }
-
-  const handleOptionSelect = (option: OptionInfoType) => {
-    setSelectedOption(option)
   }
 
   if (!problem) {
@@ -34,24 +31,24 @@ function Quiz() {
 
   return (
     <div className="mt-10">
-      <CategoryTag category={problem.category} />
-      <div className="text-onSurface-300">
-        <p>{problem.question}</p>
+      <div className="m-10">
+        <div className="mx-20 px-8">
+          <CategoryTag category={problem.category} />
+        </div>
+        <div className="my-6 text-onSurface-300 text-xl text-center">
+          <p>{problem.question}</p>
+        </div>
       </div>
 
       <ul>
         {problem.optionInfo.map((option) => (
-          <li key={option.optionWordId}>
-            <label className="text-onSurface-300">
-              <input
-                type="radio"
-                name="option"
-                value={option.optionWordId}
-                onChange={() => handleOptionSelect(option)}
-                checked={selectedOption?.optionWordId === option.optionWordId}
-              />
+          <li key={option.optionWordId} className="mb-3 text-onSurface-300">
+            <div
+              className="p-5 bg-gray-800 rounded-xl text-center text-xl"
+              onClick={handleClick}
+            >
               {option.meaning}
-            </label>
+            </div>
           </li>
         ))}
       </ul>
@@ -61,7 +58,7 @@ function Quiz() {
             이전
           </button>
           <button
-            className="mt-5 px-6 w-60 h-14 bg-outline text-onSurface-100 active:bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300"
+            className={`mt-5 px-6 w-60 h-14 bg-outline text-onSurface-100 active:bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300`}
             onClick={handleNext}
           >
             다음

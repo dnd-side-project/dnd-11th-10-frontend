@@ -1,4 +1,4 @@
-import { CategoryProps } from '@/components/shared/CategoryTag'
+import { CategoryType } from './word'
 
 export interface SimpleCommentType {
   id: number
@@ -20,7 +20,7 @@ export interface SimpleCommentType {
     pronunciationInfo: {
       korean: string
     }
-  } & CategoryProps
+  } & CategoryType
 }
 
 export type CommentType = {}

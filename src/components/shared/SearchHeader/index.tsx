@@ -16,7 +16,7 @@ export default function SearchHeader({
 
   return (
     <>
-      <div className="flex flex-grow gap-4 px-4 py-6 fixed top-0 bg-background">
+      <div className="max-w-[430px] w-full flex gap-4 px-4 py-6 fixed top-0 bg-background">
         <Image
           alt="back"
           src={'/icons/left_arrow.svg'}
@@ -37,7 +37,7 @@ export default function SearchHeader({
           />
           {disabled && <div className="absolute inset-0 z-10" />}
           <input
-            className="w-[355px] pl-12 py-[10px] pr-3 bg-gray-800 rounded-lg outline-none focus:outline-primary-400"
+            className="w-full pl-12 py-[10px] pr-3 bg-gray-800 rounded-lg outline-none focus:outline-primary-400"
             placeholder="단어, 뜻, 예문, 발음으로 검색하기"
             disabled={disabled}
             onClick={handleClick}

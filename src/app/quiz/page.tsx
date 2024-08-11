@@ -43,28 +43,31 @@ function Quiz() {
         {quizType.map((quiz) => {
           return (
             <div
-              className="mt-8 w-40 h-56 bg-gray-800 text-onSurface-200"
+              className="mt-4 p-4 w-44 h-56 bg-gray-800 text-onSurface-200 rounded-xl"
               key={quiz.name}
             >
-              <div className="">
-                오늘 <p className={`${quiz.color}`}>{quiz.participantCount}</p>
+              <div className="flex">
+                오늘&nbsp;
+                <p className={`${quiz.color}`}>{quiz.participantCount}</p>
                 명이 참여 중
               </div>
-              <p className={`${quiz.color}`}>{quiz.name}</p>
-              <p>용어</p>
-              <p>퀴즈하기</p>
-              <div className="" />
+              <div className="mt-2 flex text-xl">
+                <p className={`${quiz.color}`}>{quiz.name}</p>
+                <p>용어</p>
+              </div>
+              <p className="text-xl">퀴즈하기</p>
+              <div className="mt-2 w-36 h-24 bg-gray-600" />
             </div>
           )
         })}
       </div>
-      <div className="flex justify-between px-5">
-        <button className="mt-5 px-6 w-28 h-14 bg-outline rounded-md text-onSurface-300">
+      <div className="mt-28 flex justify-around ">
+        <button className="mt-5 px-6 w-32 h-14 bg-outline rounded-md text-onSurface-300">
           이전
         </button>
         <button
           disabled={true}
-          className="mt-5 px-6 w-56 h-14 bg-outline active:bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300"
+          className="mt-5 px-6 w-60 h-14 bg-outline text-onSurface-100 active:bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300"
         >
           다음
         </button>

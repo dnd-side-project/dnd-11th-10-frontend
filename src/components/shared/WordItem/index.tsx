@@ -1,4 +1,5 @@
-import CategoryTag, { CategoryProps } from '@/components/shared/CategoryTag'
+import CategoryTag from '@/components/shared/CategoryTag'
+import { CategoryType } from '@/types/word'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -6,7 +7,7 @@ export type WordItemProps = {
   id: number
   name: string
   meaning: string
-} & CategoryProps
+} & CategoryType
 
 export default function WordItem({
   id,

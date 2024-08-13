@@ -23,3 +23,17 @@ export const LOGIN_BOTTOMSHEET: {
       '별별 저장소, 업무 소통 능력치, 댓글 쓰기등\n다양한 기능을 이용하려면 로그인이 필요해요.',
   },
 }
+
+// FilterBottomSheet에 표기할 페이지별 메뉴 목록
+export const FILTER_MENUS = {
+  comments: ['좋아요순', '최신순', '오래된순'],
+  words: ['사전순', '조회순'],
+}
+
+// CommentBottomSheet에서 표기할 메뉴 목록(target에 따라 선택)
+export const COMMENT_MENUS = {
+  mine: ['수정하기', '삭제하기'],
+  others: ['차단하기', '신고하기'],
+}
+
+//

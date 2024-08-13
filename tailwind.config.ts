@@ -17,6 +17,7 @@ const config: Config = {
       colors,
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],
+        notoSans: ['var(--font-notoSans)'],
       },
       screens: {
         xs: '360px',

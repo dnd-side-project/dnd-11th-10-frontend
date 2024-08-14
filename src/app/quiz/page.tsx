@@ -7,14 +7,15 @@ import { useStore } from '@/lib/store'
 
 function Quiz() {
   const [problemIndex, setProblemIndex] = useState(0)
-  const { setCurrentProblem, setCurrentPersent } = useStore()
-
   const problem = quizData.problemInfo[problemIndex]
 
-  const [isActive, setIsActive] = useState(false)
+  const { setCurrentProblem, setCurrentPersent } = useStore()
 
-  function handleClick() {
-    setIsActive(!isActive)
+  // 클릭된 옵션을 추적하기 위한 상태
+  const [selectedOptionId, setSelectedOptionId] = useState<number | null>(null)
+
+  const handleClick = (optionWordId: number) => {
+    setSelectedOptionId(optionWordId)
   }
 
   const handleNext = () => {
@@ -22,6 +23,7 @@ function Quiz() {
       setProblemIndex((prevIndex) => prevIndex + 1)
       setCurrentProblem(problemIndex)
       setCurrentPersent(problemIndex)
+      setSelectedOptionId(null)
     }
   }
 
@@ -36,7 +38,7 @@ function Quiz() {
           <CategoryTag category={problem.category} />
         </div>
         <div className="my-6 text-onSurface-300 text-xl text-center">
-          <p>{problem.question}</p>
+          <p>아래 예문 속{problem.question}의 의미는 무엇일까요?</p>
         </div>
       </div>
 
@@ -44,8 +46,12 @@ function Quiz() {
         {problem.optionInfo.map((option) => (
           <li key={option.optionWordId} className="mb-3 text-onSurface-300">
             <div
-              className="p-5 bg-gray-800 rounded-xl text-center text-xl"
-              onClick={handleClick}
+              className={`p-5 bg-gray-800 rounded-xl text-center text-xl ${
+                selectedOptionId === option.optionWordId
+                  ? 'border-2 border-primary-400'
+                  : ''
+              }`}
+              onClick={() => handleClick(option.optionWordId)}
             >
               {option.meaning}
             </div>
@@ -53,12 +59,17 @@ function Quiz() {
         ))}
       </ul>
       <div>
-        <div className="mt-28 flex justify-around ">
+        <div className="mt-28 flex justify-around">
           <button className="mt-5 px-6 w-32 h-14 bg-outline rounded-md text-onSurface-300">
             이전
           </button>
           <button
-            className={`mt-5 px-6 w-60 h-14 bg-outline text-onSurface-100 active:bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300`}
+            disabled={selectedOptionId === null} // 옵션이 선택되지 않으면 비활성화
+            className={`mt-5 px-6 w-60 h-14 rounded-md text-onSurface-300 ${
+              selectedOptionId !== null
+                ? 'bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
+                : 'bg-outline text-onSurface-100'
+            }`}
             onClick={handleNext}
           >
             다음

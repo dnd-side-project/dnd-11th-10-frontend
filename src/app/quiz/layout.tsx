@@ -8,7 +8,7 @@ type LayoutProps = {
 export default function QuizLayout({ children }: LayoutProps) {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="h-fit px-4">{children}</div>
     </>
   )

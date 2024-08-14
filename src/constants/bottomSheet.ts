@@ -33,7 +33,21 @@ export const FILTER_MENUS = {
 // CommentBottomSheet에서 표기할 메뉴 목록(target에 따라 선택)
 export const COMMENT_MENUS = {
   mine: ['수정하기', '삭제하기'],
-  others: ['차단하기', '신고하기'],
+  others: ['신고하기'],
 }
 
-//
+// CheckboxBottomSheet에서 표기할 메뉴 목록
+export const CHECKBOX_MENUS = {
+  report: {
+    title: '신고하기',
+    description: '중복 선택 가능',
+    options: [
+      { id: 0, text: '광고 및 홍보성 내용' },
+      { id: 1, text: '개인정보 노출 위험' },
+      { id: 2, text: '댓글 도배' },
+      { id: 3, text: '욕설, 음란 등 부적절한 내용' },
+      { id: 4, text: '기타' },
+    ],
+    btnText: '신고 완료',
+  },
+}

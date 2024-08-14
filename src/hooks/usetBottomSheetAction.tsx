@@ -17,8 +17,7 @@ export default function useBottomSheetAction() {
   }
 
   const reportComment = (id: number) => {
-    console.log('id', id)
-    alert(id)
+    console.log('comment id', id)
     openBottomSheet('checkbox')
   }
 

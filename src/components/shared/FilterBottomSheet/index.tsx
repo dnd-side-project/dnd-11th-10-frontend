@@ -1,6 +1,5 @@
 import BottomSheet from '@/components/common/BottomSheet'
 import { FILTER_MENUS } from '@/constants/bottomSheet'
-import useUIStore from '@/store/useUIStore'
 import Image from 'next/image'
 import { cn } from '@/lib/core'
 
@@ -17,11 +16,10 @@ export default function FilterBottomSheet({
   selected,
   setSelected,
 }: BottomSheetProps) {
-  const { closeBottomSheet } = useUIStore()
   if (!isOpen) return null
   const menuItems = FILTER_MENUS[target]
   return (
-    <BottomSheet onClose={closeBottomSheet}>
+    <BottomSheet>
       {menuItems.map((menu, idx) => (
         <li
           key={idx}

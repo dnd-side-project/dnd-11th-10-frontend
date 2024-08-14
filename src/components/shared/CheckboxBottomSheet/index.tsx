@@ -1,4 +1,3 @@
-'use client'
 import BottomSheet from '@/components/common/BottomSheet'
 import { CHECKBOX_MENUS } from '@/constants/bottomSheet'
 import useUIStore from '@/store/useUIStore'
@@ -36,7 +35,7 @@ export default function CheckboxBottomSheet({
 
   if (!isOpen) return null
   return (
-    <BottomSheet onClose={closeBottomSheet}>
+    <BottomSheet>
       <p className="text-h2 mb-1">{title}</p>
       <p className="text-body2 text-onSurface-200 mb-5">{description}</p>
       <ul className="mb-5">

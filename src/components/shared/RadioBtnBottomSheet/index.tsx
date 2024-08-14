@@ -1,7 +1,5 @@
-'use client'
 import BottomSheet from '@/components/common/BottomSheet'
 import { RADIOBTN_MENUS } from '@/constants/bottomSheet'
-import useUIStore from '@/store/useUIStore'
 import OneRadioBtn from './OneRadioBtn'
 
 type BottomSheetProps = {
@@ -19,13 +17,12 @@ export default function RadioBtnBottomSheet({
   onChange,
   onSubmit,
 }: BottomSheetProps) {
-  const { closeBottomSheet } = useUIStore()
   const { title, options, btnText } = RADIOBTN_MENUS[type]
   const nickname = '상큼한화성009'
 
   if (!isOpen) return null
   return (
-    <BottomSheet onClose={closeBottomSheet}>
+    <BottomSheet>
       <p className="text-h2 mb-5">{`${nickname}님,` + `\n` + title}</p>
       <ul className="mb-5">
         {options.map(({ id, item }, idx) => (

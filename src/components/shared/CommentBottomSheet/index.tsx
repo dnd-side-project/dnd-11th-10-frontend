@@ -1,7 +1,6 @@
 import BottomSheet from '@/components/common/BottomSheet'
 import { COMMENT_MENUS } from '@/constants/bottomSheet'
 import useBottomSheetAction from '@/hooks/usetBottomSheetAction'
-import useUIStore from '@/store/useUIStore'
 
 export type BottomSheetProps = {
   isOpen: boolean
@@ -14,12 +13,11 @@ export default function CommentBottomSheet({
   target,
   commentId,
 }: BottomSheetProps) {
-  const { closeBottomSheet } = useUIStore()
   const actions = useBottomSheetAction()
   if (!isOpen) return null
   const menuItems = COMMENT_MENUS[target]
   return (
-    <BottomSheet onClose={closeBottomSheet}>
+    <BottomSheet>
       {menuItems.map((menu, idx) => (
         <li
           key={idx}

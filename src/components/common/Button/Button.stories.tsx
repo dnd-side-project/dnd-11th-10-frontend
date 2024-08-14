@@ -22,34 +22,34 @@ type Story = StoryObj<typeof Button>
 export const Default: Story = {
   args: {
     type: 'default',
-    children: <p>Button</p>,
+    children: 'Button',
   },
 }
 export const Gradient: Story = {
   args: {
     type: 'gradient',
-    children: <p>Gradient Button</p>,
+    children: 'Gradient Button',
   },
 }
 
 export const Black: Story = {
   args: {
     type: 'black',
-    children: <p>Black Button</p>,
+    children: 'Black Button',
   },
 }
 
 export const Disabled: Story = {
   args: {
     type: 'disabled',
-    children: <p>Disabled Button</p>,
+    children: 'Disabled Button',
   },
 }
 
 export const Light: Story = {
   args: {
     type: 'light',
-    children: <p>Light Button</p>,
+    children: 'Light Button',
   },
 }
 

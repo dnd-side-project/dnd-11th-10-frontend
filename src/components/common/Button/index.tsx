@@ -1,7 +1,7 @@
 'use client'
 import { cn } from '@/lib/core'
 
-type ButtonProps = {
+export type ButtonProps = {
   children: React.ReactNode
   type: 'default' | 'gradient' | 'black' | 'disabled' | 'light'
   width?: number
@@ -18,7 +18,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={cn(`py-4 text-onSurface-300 text-sub2 rounded-lg`, {
+      className={cn(`py-4 text-sub2 text-onSurface-300 rounded-lg px-6 w-fit`, {
         'bg-gray-800 hover:bg-gray-700': type === 'default',
         'bg-btn-gradient hover:bg-btn-gradient-hover': type === 'gradient',
         'bg-background': type === 'black',

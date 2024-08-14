@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 type BottomSheetType = {
-  type: 'login' | 'checkbox' | 'filter' | 'comment' | 'profileEdit' | null
+  type: 'login' | 'checkbox' | 'filter' | 'comment' | 'radioBtn' | null
 }
 
 type UIStoreType = {

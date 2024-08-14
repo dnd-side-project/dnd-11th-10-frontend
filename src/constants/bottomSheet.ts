@@ -51,3 +51,35 @@ export const CHECKBOX_MENUS = {
     btnText: '신고 완료',
   },
 }
+
+// RadioBtnBottomSheet에서 표기할 항목 목록
+export const RADIOBTN_MENUS = {
+  // 마이페이지 직장 수정
+  company: {
+    title: '직장을 선택해보세요',
+    options: [
+      { id: 0, item: '비공개' },
+      { id: 1, item: '대기업' },
+      { id: 2, item: '중견기업' },
+      { id: 3, item: '중소기업' },
+      { id: 4, item: '스타트업' },
+      { id: 5, item: '외국계' },
+      { id: 6, item: '취준생/인턴' },
+    ],
+    btnText: '선택 완료',
+  },
+  // 마이페이지 경력 수정
+  experience: {
+    title: '몇 년 차인지 선택해보세요',
+    options: [
+      { id: 0, item: '비공개' },
+      { id: 1, item: '1년 차 미만' },
+      { id: 2, item: '1~2년 차' },
+      { id: 3, item: '2~3년 차' },
+      { id: 4, item: '3~4년 차' },
+      { id: 5, item: '4~5년 차' },
+      { id: 6, item: '5년 차 이상' },
+    ],
+    btnText: '선택 완료',
+  },
+}

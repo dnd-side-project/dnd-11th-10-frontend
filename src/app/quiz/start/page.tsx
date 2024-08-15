@@ -13,7 +13,7 @@ export default function QuizStart() {
       </div>
       <div className="flex-grow bg-gray-800" />
       <button
-        className="px-6 w-full h-14 bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300"
+        className="px-6 w-full h-14 bg-gradient-to-br from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300 hover:"
         onClick={() => router.push('/quiz/typechoice')}
       >
         시작하기

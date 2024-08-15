@@ -17,9 +17,7 @@ export default function ViewAllWords() {
           지금까지 등록된 실무 용어{' '}
           <span className="text-primary-200 font-semibold">100</span>개
         </p>
-        <p className="text-xl font-semibold leading-6 text-onSurface-300">
-          전체 실무 용어 보러가기
-        </p>
+        <p className="text-h2 text-onSurface-300">전체 실무 용어 보러가기</p>
       </div>
       <Image
         alt="보러가기"

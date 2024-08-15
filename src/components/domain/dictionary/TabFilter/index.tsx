@@ -32,14 +32,15 @@ export default function TabFilter({
 
   return (
     <button
-      className={cn('w-fit px-3 py-2 rounded-full text-sm leading-[18px]', {
-        'bg-primary-400 text-background font-medium': isSelected,
-        'bg-none text-onSurface-300 font-normal outline outline-outline':
-          !isSelected,
+      className={cn('w-fit px-3 py-[7px] rounded-full ', {
+        'bg-primary-400 text-background': isSelected,
+        'bg-none text-onSurface-300 outline outline-outline': !isSelected,
       })}
       onClick={handleSelect}
     >
-      {filter}
+      <p className={cn({ 'text-sub3': isSelected, 'text-body3': !isSelected })}>
+        {filter}
+      </p>
     </button>
   )
 }

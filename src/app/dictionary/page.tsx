@@ -17,7 +17,7 @@ export default function DictionaryPage() {
       <div className="relative overflow-y-auto bg-background text-onSurface-300">
         <SearchHeader disabled={true} />
         <div className="flex flex-col px-4 gap-5 mt-[90px]">
-          <p className="text-xl font-semibold">
+          <p className="text-h2">
             등록된 실무 용어
             <span className="text-primary-400 ml-2">{totalCnt}</span>
           </p>

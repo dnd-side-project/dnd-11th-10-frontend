@@ -1,7 +1,6 @@
 'use client'
-
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type HorizontalScrollAreaProps = {
   children: React.ReactNode
@@ -13,13 +12,15 @@ export default function HorizontalScrollArea({
   title,
 }: HorizontalScrollAreaProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isStart, setIsStart] = useState<boolean>(true)
+  const [isEnd, setIsEnd] = useState<boolean>(false)
 
   const handlePrevClick = () => {
-    scrollTo(-containerRef.current!.offsetWidth + 16)
+    scrollTo(-containerRef.current!.offsetWidth / 2)
   }
 
   const handleNextClick = () => {
-    scrollTo(containerRef.current!.offsetWidth - 16)
+    scrollTo(containerRef.current!.offsetWidth / 2)
   }
 
   const scrollTo = (moveX: number) => {
@@ -29,12 +30,27 @@ export default function HorizontalScrollArea({
         behavior: 'smooth',
       })
     }
+    updateScrollPosition()
   }
+
+  // scroll 위치 업데이트
+  const updateScrollPosition = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
+
+      setIsStart(scrollLeft <= 0)
+      setIsEnd(scrollLeft + clientWidth >= scrollWidth - 1)
+    }
+  }
+
+  useEffect(() => {
+    containerRef.current!.addEventListener('scroll', updateScrollPosition)
+  }, [])
 
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex overflow-hidden justify-between mb-3 px-4">
-        <p className="text-xl font-semibold text-[#f3f3f3] ">{title}</p>
+        <p className="text-h2 text-[#f3f3f3] ">{title}</p>
         <div className="flex gap-3">
           <Image
             alt="left"
@@ -42,6 +58,7 @@ export default function HorizontalScrollArea({
             width={24}
             height={24}
             onClick={handlePrevClick}
+            className={isStart ? 'opacity-60' : 'opacity-100 cursor-pointer'}
           />
           <Image
             alt="right"
@@ -49,6 +66,7 @@ export default function HorizontalScrollArea({
             width={24}
             height={24}
             onClick={handleNextClick}
+            className={isEnd ? 'opacity-60' : 'opacity-100 cursor-pointer'}
           />
         </div>
       </div>

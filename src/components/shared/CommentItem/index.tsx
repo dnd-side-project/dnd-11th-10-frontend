@@ -31,7 +31,7 @@ export default function CommentItem({
       className="flex flex-col gap-3 justify-between p-5 bg-gray-800 rounded-2xl"
     >
       <div className="flex justify-between">
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           <Image
             src={'/images/logo.svg'}
             width={38}
@@ -39,8 +39,8 @@ export default function CommentItem({
             alt="profile"
           />
           <div>
-            <p className="text-onSurface-300 text-sm">{nickname}</p>
-            <p className="text-onSurface-200 text-xs">
+            <p className="text-onSurface-300 text-body3">{nickname}</p>
+            <p className="text-onSurface-200 text-caption">
               {jobGroup + ' · ' + company + ' · ' + experience}
             </p>
           </div>
@@ -71,9 +71,11 @@ export default function CommentItem({
             width={16}
             height={16}
           />
-          <p className="text-xs text-onSurface-200">{likeCount}</p>
+          <p className="text-caption text-onSurface-200">{likeCount}</p>
         </div>
-        <p className="text-xs text-onSurface-200">{getTimeAgo(createdAt)}</p>
+        <p className="text-caption text-onSurface-200">
+          {getTimeAgo(createdAt)}
+        </p>
       </div>
     </Link>
   )

@@ -68,7 +68,7 @@ export default function CategoryChartItem({
             </p>
           </div>
         </div>
-        <p className="text-xs text-onSurface-200">
+        <p className="text-caption text-onSurface-200">
           <span className={values[category].textColor}>{cnt}</span>/{totalCnt}
           문제 정답
         </p>

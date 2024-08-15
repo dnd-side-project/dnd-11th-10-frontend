@@ -68,7 +68,7 @@ function QuizTypeChoice() {
               </div>
               <p className="text-xl">퀴즈하기</p>
               <div
-                className={`mt-2 w-[158px] h-[120px]   ${isSelected ? 'bg-gray-600' : 'bg-gray-700'}`}
+                className={`mt-2 w-[158px] h-[120px] ${isSelected ? 'bg-gray-600' : 'bg-gray-700'}`}
               />
             </div>
           )
@@ -82,7 +82,7 @@ function QuizTypeChoice() {
           disabled={!selectedQuiz}
           className={`mt-5 px-6 w-[270px] h-14 rounded-md text-onSurface-300 ${
             selectedQuiz
-              ? 'bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
+              ? 'bg-gradient-to-br from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
               : 'bg-outline text-onSurface-100'
           }`}
           onClick={() => router.push(`/quiz/problem/${selectedQuiz}/1`)}

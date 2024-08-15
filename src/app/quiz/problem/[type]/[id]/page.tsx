@@ -33,13 +33,13 @@ function Quiz() {
         </div>
       </div>
 
-      <div className="relative my-[60px] mx-auto px-[calc(8px+12.427px)] py-6 w-[calc(360px+12.427px)] h-24 bg-gray-700 rounded-xl text-onSurface-300 text-[18px] text-center break-keep">
+      <div className="relative my-[60px] mx-auto px-[calc(8px+12.427px)] py-6 w-[calc(360px+12.427px)] h-24 bg-gray-200 rounded-xl text-background text-[18px] text-center break-keep">
         <p>
           {'"'}
           {problem.question}
           {'"'}
         </p>
-        <div className="absolute -bottom-1 left-0 w-0 h-0 border-l-3 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-gray-700 transform rotate-45" />
+        <div className="absolute -bottom-1 left-0 w-0 h-0 border-l-3 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-gray-200 transform rotate-45" />
       </div>
       <ul>
         {problem.optionInfo.map((option) => (

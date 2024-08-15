@@ -68,7 +68,7 @@ function QuizTypeChoice() {
               </div>
               <p className="text-xl">퀴즈하기</p>
               <div
-                className={`mt-2 w-[158px] h-[120px]  ${selectedQuiz ? 'bg-gray-600' : 'bg-gray-700'}`}
+                className={`mt-2 w-[158px] h-[120px]   ${isSelected ? 'bg-gray-600' : 'bg-gray-700'}`}
               />
             </div>
           )

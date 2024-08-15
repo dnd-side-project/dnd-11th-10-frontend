@@ -1,6 +1,7 @@
 import BottomSheet from '@/components/common/BottomSheet'
 import { RADIOBTN_MENUS } from '@/constants/bottomSheet'
 import OneRadioBtn from './OneRadioBtn'
+import Button from '@/components/common/Button'
 
 type BottomSheetProps = {
   isOpen: boolean
@@ -35,7 +36,9 @@ export default function RadioBtnBottomSheet({
           />
         ))}
       </ul>
-      <button onClick={onSubmit}>{btnText}</button>
+      <Button type="gradient" isFullWidth onClick={onSubmit}>
+        {btnText}
+      </Button>
     </BottomSheet>
   )
 }

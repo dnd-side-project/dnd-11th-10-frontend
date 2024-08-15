@@ -3,6 +3,7 @@ import { CHECKBOX_MENUS } from '@/constants/bottomSheet'
 import useUIStore from '@/store/useUIStore'
 import { useState } from 'react'
 import OneCheckbox from './OneCheckbox'
+import Button from '@/components/common/Button'
 
 type BottomSheetProps = {
   isOpen: boolean
@@ -48,7 +49,13 @@ export default function CheckboxBottomSheet({
           />
         ))}
       </ul>
-      <button onClick={handleSubmit}>{btnText}</button>
+      <Button
+        type={checked.size ? 'gradient' : 'disabled'}
+        isFullWidth
+        onClick={handleSubmit}
+      >
+        {btnText}
+      </Button>
     </BottomSheet>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '@/components/domain/quizstart/Header'
+import Header from '@/components/domain/quiz/quizstart/Header'
 
 type LayoutProps = {
   children: React.ReactNode

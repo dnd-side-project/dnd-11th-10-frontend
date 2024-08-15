@@ -1,15 +1,14 @@
 import React from 'react'
-import Header from '@/components/domain/quiztypechoice/Header'
+import Header from '@/components/domain/quiz/typechoice/Header'
 
 type LayoutProps = {
   children: React.ReactNode
 }
-
-export default function QuizTypeChoiceLayout({ children }: LayoutProps) {
+export default function QuizStartLayout({ children }: LayoutProps) {
   return (
     <>
       <Header />
-      <div className="h-fit px-4">{children}</div>
+      <div className="h-[calc(100%-80px)] px-4 pb-8">{children}</div>
     </>
   )
 }

@@ -1,6 +1,8 @@
 'use client'
+
 import React from 'react'
 import { useRouter } from 'next/navigation'
+
 export default function QuizStart() {
   const router = useRouter()
   return (
@@ -12,7 +14,7 @@ export default function QuizStart() {
       <div className="flex-grow bg-gray-800" />
       <button
         className="px-6 w-full h-14 bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% rounded-md text-onSurface-300"
-        onClick={() => router.push('/quiztypechoice')}
+        onClick={() => router.push('/quiz/typechoice')}
       >
         시작하기
       </button>

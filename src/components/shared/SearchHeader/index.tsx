@@ -37,7 +37,7 @@ export default function SearchHeader({
           />
           {disabled && <div className="absolute inset-0 z-10" />}
           <input
-            className="w-full pl-12 py-[10px] pr-3 bg-gray-800 rounded-lg outline-none focus:outline-primary-400"
+            className="w-full pl-12 py-[10px] pr-3 bg-gray-800 rounded-lg outline-none text-body3 focus:outline-primary-400"
             placeholder="단어, 뜻, 예문, 발음으로 검색하기"
             disabled={disabled}
             onClick={handleClick}

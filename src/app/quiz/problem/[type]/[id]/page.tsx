@@ -3,18 +3,11 @@
 import React, { useState } from 'react'
 import { quizData } from '@/components/domain/quiz/data'
 import CategoryTag from '@/components/shared/CategoryTag'
-import { useSelectQuizTypeStore, useStore } from '@/lib/store'
-import { useRouter } from 'next/navigation'
 
 function Quiz() {
-  const router = useRouter()
   const [problemIndex, setProblemIndex] = useState(0)
   const problem = quizData.problemInfo[problemIndex]
 
-  const { setCurrentProblem, setCurrentPersent } = useStore()
-  const { selectedQuiz } = useSelectQuizTypeStore()
-
-  // 클릭된 옵션을 추적하기 위한 상태
   const [selectedOptionId, setSelectedOptionId] = useState<number | null>(null)
 
   const handleClick = (optionWordId: number) => {
@@ -22,12 +15,7 @@ function Quiz() {
   }
 
   const handleNext = () => {
-    if (problemIndex < quizData.problemInfo.length - 1) {
-      setProblemIndex((prevIndex) => prevIndex + 1)
-      setCurrentProblem(problemIndex)
-      setCurrentPersent(problemIndex)
-      setSelectedOptionId(null)
-    }
+    console.log('다음 버튼')
   }
 
   if (!problem) {
@@ -45,13 +33,21 @@ function Quiz() {
         </div>
       </div>
 
+      <div className="my-[60px] mx-auto px-[calc(8px+12.427px)] py-6 w-[calc(363px+12.427px)] h-24 bg-gray-700 rounded-xl text-onSurface-300 text-[18px] text-center">
+        <p>
+          {'"'}
+          {problem.question}
+          {'"'}
+        </p>
+      </div>
+
       <ul>
         {problem.optionInfo.map((option) => (
           <li key={option.optionWordId} className="mb-3 text-onSurface-300">
             <div
               className={`p-5 bg-gray-800 rounded-xl text-center text-[1rem] ${
                 selectedOptionId === option.optionWordId
-                  ? 'border-[1px] border-primary-400'
+                  ? 'bg-gray-700 border-[1px] border-primary-400'
                   : ''
               }`}
               onClick={() => handleClick(option.optionWordId)}
@@ -72,9 +68,7 @@ function Quiz() {
               ? 'bg-gradient-to-br from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
               : 'bg-outline text-onSurface-100'
           }`}
-          onClick={() =>
-            router.push(`/quiz/problem/${selectedQuiz}/${selectedOptionId}`)
-          }
+          onClick={handleNext}
         >
           다음
         </button>

@@ -46,13 +46,13 @@ function QuizTypeChoice() {
         <p>어떤 분야의 퀴즈를 진행할까요?</p>
       </div>
 
-      <div className="mt-5 flex flex-wrap justify-around">
+      <div className="mt-5 flex flex-wrap justify-between">
         {quizType.map((quiz) => {
           const isSelected = selectedQuiz === quiz.name
           return (
             <div
-              className={`mt-4 p-4 w-44 h-56 bg-gray-800 text-onSurface-200 rounded-xl cursor-pointer ${
-                isSelected ? 'border-2 border-primary-400' : ''
+              className={`mt-4 p-4 w-[190px] h-[248px] bg-gray-800 text-onSurface-200 rounded-xl cursor-pointer ${
+                isSelected ? 'bg-gray-700 border-[1px] border-primary-400' : ''
               }`}
               key={quiz.name}
               onClick={() => handleClick(quiz.name)}
@@ -67,23 +67,25 @@ function QuizTypeChoice() {
                 <p>용어</p>
               </div>
               <p className="text-xl">퀴즈하기</p>
-              <div className="mt-2 w-36 h-24 bg-gray-600" />
+              <div
+                className={`mt-2 w-[158px] h-[120px]  ${selectedQuiz ? 'bg-gray-600' : 'bg-gray-700'}`}
+              />
             </div>
           )
         })}
       </div>
-      <div className="mt-28 flex justify-around">
-        <button className="mt-5 px-6 w-32 h-14 bg-outline rounded-md text-onSurface-300">
+      <div className="mt-28 flex justify-between">
+        <button className="mt-5 px-6 w-[116px] h-14 bg-outline rounded-md text-onSurface-300">
           이전
         </button>
         <button
           disabled={!selectedQuiz}
-          className={`mt-5 px-6 w-60 h-14 rounded-md text-onSurface-300 ${
+          className={`mt-5 px-6 w-[270px] h-14 rounded-md text-onSurface-300 ${
             selectedQuiz
               ? 'bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
               : 'bg-outline text-onSurface-100'
           }`}
-          onClick={() => router.push('/quiz')}
+          onClick={() => router.push(`/quiz/problem/${selectedQuiz}/1`)}
         >
           다음
         </button>

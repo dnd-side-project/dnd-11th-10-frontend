@@ -8,7 +8,7 @@ export default function QuizStartLayout({ children }: LayoutProps) {
   return (
     <>
       <Header />
-      <div className="h-[calc(100%-80px)] px-4 pb-8">{children}</div>
+      <div className="h-[calc(100%-80px)] pb-8">{children}</div>
     </>
   )
 }

@@ -15,11 +15,11 @@ export default function HorizontalScrollArea({
   const containerRef = useRef<HTMLDivElement>(null)
 
   const handlePrevClick = () => {
-    scrollTo(-containerRef.current!.offsetWidth + 16)
+    scrollTo(-containerRef.current!.offsetWidth / 2)
   }
 
   const handleNextClick = () => {
-    scrollTo(containerRef.current!.offsetWidth - 16)
+    scrollTo(containerRef.current!.offsetWidth / 2)
   }
 
   const scrollTo = (moveX: number) => {

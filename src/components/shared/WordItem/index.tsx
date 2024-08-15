@@ -1,7 +1,8 @@
+'use client'
 import CategoryTag from '@/components/shared/CategoryTag'
 import { CategoryType } from '@/types/word'
-import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 
 export type WordItemProps = {
   id: number
@@ -15,27 +16,35 @@ export default function WordItem({
   meaning,
   category,
 }: WordItemProps) {
+  const anchorRef = useRef<HTMLDivElement>(null)
+  const [width, setWidth] = useState<number>(180)
+
+  useEffect(() => {
+    if (anchorRef.current) {
+      const anchorWidth = anchorRef.current.offsetWidth
+      setWidth(anchorWidth)
+    }
+  }, [])
+
   return (
     <Link
       href={`/word/${id}`}
-      className="min-w-full max-h-[152px] flex flex-col justify-between gap-3 py-5 rounded-xl px-5 text-white bg-gray-800 bg-opacity-outline"
+      className="w-min-[200px] w-max h-[140px] py-5 rounded-xl px-5 text-white bg-gray-800 bg-opacity-outline"
     >
-      <div className="flex flex-col justify-between">
-        <div className="flex justify-between mb-2">
-          <p className="text-sub1">{name}</p>
-          <Image
-            alt="북마크"
-            src={'/icons/bookmark.svg'}
-            width={24}
-            height={24}
-          />
+      <div className="w-max flex flex-col gap-2">
+        <CategoryTag category={category} />
+        <div ref={anchorRef} className={'flex gap-1 items-center shrink-0'}>
+          <p className="text-body1 shrink-0">{name}</p>
         </div>
-        <p className="text-body3 text-onSurface-200 mr-6 break-keep overflow-hidden line-clamp-2">
-          {meaning}
-        </p>
+        {width !== 0 && (
+          <p
+            style={{ width: width }}
+            className="text-body3 text-onSurface-200 break-keep overflow-hidden line-clamp-2"
+          >
+            {meaning}
+          </p>
+        )}
       </div>
-
-      <CategoryTag category={category} />
     </Link>
   )
 }

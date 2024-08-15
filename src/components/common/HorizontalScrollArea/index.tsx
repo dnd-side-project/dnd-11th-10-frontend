@@ -34,7 +34,7 @@ export default function HorizontalScrollArea({
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex overflow-hidden justify-between mb-3 px-4">
-        <p className="text-xl font-semibold text-[#f3f3f3] ">{title}</p>
+        <p className="text-h2 text-[#f3f3f3] ">{title}</p>
         <div className="flex gap-3">
           <Image
             alt="left"

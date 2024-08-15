@@ -27,12 +27,10 @@ export default function TotalChart({ topPercent, percent }: TotalChartProps) {
             />
           </div>
           <div className="w-full absolute bottom-0 text-center">
-            <p className="text-xs leading-4 mb-[2px]">전체</p>
-            <p className={'text-2xl leading-6 font-semibold text-primary-200'}>
-              {Math.round(percent)}%
-            </p>
+            <p className="text-caption mb-[2px]">전체</p>
+            <p className={'text-h1 text-primary-200'}>{Math.round(percent)}%</p>
           </div>
-          <span className="absolute -top-[18px] -right-4 text-xs rounded py-1 px-2 bg-[#8C5EE4]">
+          <span className="absolute -top-[18px] -right-4 text-caption rounded py-1 px-2 bg-[#8C5EE4]">
             상위 {topPercent}%
           </span>
         </div>

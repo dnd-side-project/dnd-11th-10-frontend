@@ -9,7 +9,7 @@ export default function Bookmarks() {
       <div className="w-full flex flex-col gap-3 p-5 rounded-2xl bg-devBlue-400">
         <div className="flex gap-4">
           <div className="flex-1 flex flex-col gap-2 text-onSurface-300">
-            <p className="text-2xl font-semibold leading-8">별별 저장소 ⭐</p>
+            <p className="text-h1">별별 저장소 ⭐</p>
             <p className="leading-5">
               {isLoggedIn ? (
                 <>

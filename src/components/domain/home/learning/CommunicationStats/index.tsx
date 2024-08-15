@@ -11,9 +11,7 @@ export default function CommunicationStats() {
       <div className="w-full flex flex-col items-center text-onSurface-300 px-4">
         <div className="w-full flex justify-between items-end mb-6">
           <div>
-            <p className="text-xl font-semibold mb-3">
-              나의 업무 소통 능력치 📊
-            </p>
+            <p className="text-h2 mb-3">나의 업무 소통 능력치 📊</p>
             <p className="text-onSurface-200">
               실무 용어 퀴즈로 단어를 학습하고 <br />
               소통 능력치를 높일 수 있어요.

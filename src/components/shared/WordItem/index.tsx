@@ -22,7 +22,7 @@ export default function WordItem({
     >
       <div className="flex flex-col justify-between">
         <div className="flex justify-between mb-2">
-          <p className="text-lg font-medium leading-6">{name}</p>
+          <p className="text-sub1">{name}</p>
           <Image
             alt="북마크"
             src={'/icons/bookmark.svg'}
@@ -30,7 +30,7 @@ export default function WordItem({
             height={24}
           />
         </div>
-        <p className="text-sm leading-[18px] text-onSurface-200 mr-6 break-keep overflow-hidden line-clamp-2">
+        <p className="text-body3 text-onSurface-200 mr-6 break-keep overflow-hidden line-clamp-2">
           {meaning}
         </p>
       </div>

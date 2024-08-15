@@ -9,7 +9,7 @@ export default function PopularCommentsList({
   return (
     <div className="mx-4">
       <div className="w-full">
-        <p className="text-xl font-semibold text-[#f3f3f3] mb-3">
+        <p className="text-h2 text-[#f3f3f3] mb-3">
           지금 반응이 뜨거운 댓글 🔥
         </p>
         <ul className="flex flex-col gap-4 w-full">

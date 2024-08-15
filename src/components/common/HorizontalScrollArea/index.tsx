@@ -1,7 +1,6 @@
 'use client'
-
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type HorizontalScrollAreaProps = {
   children: React.ReactNode
@@ -13,6 +12,8 @@ export default function HorizontalScrollArea({
   title,
 }: HorizontalScrollAreaProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isStart, setIsStart] = useState<boolean>(true)
+  const [isEnd, setIsEnd] = useState<boolean>(false)
 
   const handlePrevClick = () => {
     scrollTo(-containerRef.current!.offsetWidth / 2)
@@ -29,7 +30,22 @@ export default function HorizontalScrollArea({
         behavior: 'smooth',
       })
     }
+    updateScrollPosition()
   }
+
+  // scroll 위치 업데이트
+  const updateScrollPosition = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
+
+      setIsStart(scrollLeft <= 0)
+      setIsEnd(scrollLeft + clientWidth >= scrollWidth - 1)
+    }
+  }
+
+  useEffect(() => {
+    containerRef.current!.addEventListener('scroll', updateScrollPosition)
+  }, [])
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -42,6 +58,7 @@ export default function HorizontalScrollArea({
             width={24}
             height={24}
             onClick={handlePrevClick}
+            className={isStart ? 'opacity-60' : 'opacity-100 cursor-pointer'}
           />
           <Image
             alt="right"
@@ -49,6 +66,7 @@ export default function HorizontalScrollArea({
             width={24}
             height={24}
             onClick={handleNextClick}
+            className={isEnd ? 'opacity-60' : 'opacity-100 cursor-pointer'}
           />
         </div>
       </div>

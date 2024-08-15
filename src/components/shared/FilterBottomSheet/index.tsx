@@ -2,6 +2,7 @@ import BottomSheet from '@/components/common/BottomSheet'
 import { FILTER_MENUS } from '@/constants/bottomSheet'
 import Image from 'next/image'
 import { cn } from '@/lib/core'
+import useUIStore from '@/store/useUIStore'
 
 export type BottomSheetProps = {
   isOpen: boolean
@@ -16,8 +17,15 @@ export default function FilterBottomSheet({
   selected,
   setSelected,
 }: BottomSheetProps) {
-  if (!isOpen) return null
+  const { closeBottomSheet } = useUIStore()
   const menuItems = FILTER_MENUS[target]
+
+  if (!isOpen) return null
+
+  const handleClick = (menu: string) => {
+    setSelected(menu)
+    closeBottomSheet()
+  }
   return (
     <BottomSheet>
       {menuItems.map((menu, idx) => (
@@ -26,9 +34,9 @@ export default function FilterBottomSheet({
           className={cn('flex justify-between py-6 list-none cursor-pointer', {
             'text-primary-400': selected === menu,
           })}
-          onClick={() => setSelected(menu)}
+          onClick={() => handleClick(menu)}
         >
-          <p className="text-lg font-medium leading-6">{menu}</p>
+          <p className="text-sub1">{menu}</p>
           {selected === menu && (
             <Image
               alt="check"

@@ -26,7 +26,7 @@ export default function CommentBottomSheet({
             actions.find((action) => action.menu === menu)?.onClick(commentId)
           }
         >
-          <p className="text-lg font-medium leading-6">{menu}</p>
+          <p className="text-sub1">{menu}</p>
         </li>
       ))}
     </BottomSheet>

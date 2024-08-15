@@ -7,7 +7,7 @@ import Back from '/public/icons/back.svg'
 
 function Header() {
   return (
-    <div className="flex justify-start p-4 h-20 ">
+    <div className="flex justify-start h-20 mt-3">
       <div className="mt-3">
         <Image
           src={Back}

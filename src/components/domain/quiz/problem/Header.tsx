@@ -13,7 +13,7 @@ function Header() {
   const problems = 5
 
   return (
-    <div className="flex justify-around p-4 h-20 ">
+    <div className="flex justify-between h-20 mt-3">
       <div className="mt-3">
         <Image
           src={Cross}

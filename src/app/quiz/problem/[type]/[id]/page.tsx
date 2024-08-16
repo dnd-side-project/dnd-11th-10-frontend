@@ -47,7 +47,7 @@ function Quiz() {
             <div
               className={`p-5 bg-gray-800 rounded-xl text-center text-[1rem] break-keep ${
                 selectedOptionId === option.optionWordId
-                  ? 'bg-gray-700 border-[1px] border-primary-400'
+                  ? 'bg-primary-0 border-[1px] border-primary-400'
                   : ''
               }`}
               onClick={() => handleClick(option.optionWordId)}

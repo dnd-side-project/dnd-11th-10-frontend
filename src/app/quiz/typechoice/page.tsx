@@ -43,7 +43,7 @@ function QuizTypeChoice() {
   return (
     <div>
       <div className="text-center text-onSurface-300 text-xl">
-        <p>어떤 분야의 퀴즈를 진행할까요?</p>
+        <p>어떤 분야를 학습하시겠어요?</p>
       </div>
 
       <div className="mt-5 flex flex-wrap justify-between">

@@ -75,7 +75,7 @@ function QuizTypeChoice() {
         })}
       </div>
       <div className="mt-28 flex justify-between">
-        <button className="mt-5 px-6 w-[116px] h-14 bg-outline rounded-md text-onSurface-300">
+        <button className="mt-5 px-6 w-[116px] h-14 bg-gray-700 rounded-md text-onSurface-300">
           이전
         </button>
         <button
@@ -83,7 +83,7 @@ function QuizTypeChoice() {
           className={`mt-5 px-6 w-[270px] h-14 rounded-md text-onSurface-300 ${
             selectedQuiz
               ? 'bg-gradient-to-br from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
-              : 'bg-outline text-onSurface-100'
+              : 'bg-gray-800 text-onSurface-100'
           }`}
           onClick={() => router.push(`/quiz/problem/${selectedQuiz}/1`)}
         >

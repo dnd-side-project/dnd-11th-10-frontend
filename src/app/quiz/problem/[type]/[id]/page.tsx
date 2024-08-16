@@ -45,7 +45,7 @@ function Quiz() {
         {problem.optionInfo.map((option) => (
           <li key={option.optionWordId} className="mb-3 text-onSurface-300">
             <div
-              className={`p-5 bg-gray-800 rounded-xl text-center text-[1rem] ${
+              className={`p-5 bg-gray-800 rounded-xl text-center text-[1rem] break-keep ${
                 selectedOptionId === option.optionWordId
                   ? 'bg-gray-700 border-[1px] border-primary-400'
                   : ''

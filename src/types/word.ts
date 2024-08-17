@@ -22,6 +22,7 @@ export type DetailWordType = {
   viewCount: number
   commentCount: number
   isMarked: boolean
+  markedCount: number
   example: { text: string; source: string; createdAt: Date }[]
   source: string
   createdAt: Date

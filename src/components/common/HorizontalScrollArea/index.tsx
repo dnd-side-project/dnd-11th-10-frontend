@@ -1,14 +1,17 @@
 'use client'
+import { cn } from '@/lib/core'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 type HorizontalScrollAreaProps = {
   children: React.ReactNode
+  titleSize?: 'normal' | 'small'
   title: string
 }
 
 export default function HorizontalScrollArea({
   children,
+  titleSize = 'normal',
   title,
 }: HorizontalScrollAreaProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -49,8 +52,15 @@ export default function HorizontalScrollArea({
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="flex overflow-hidden justify-between mb-3 px-4">
-        <p className="text-h2 text-[#f3f3f3] ">{title}</p>
+      <div className="flex overflow-hidden justify-between items-center mb-3 px-4">
+        <p
+          className={cn({
+            'text-h2': titleSize === 'normal',
+            'text-h3': titleSize === 'small',
+          })}
+        >
+          {title}
+        </p>
         <div className="flex gap-3">
           <Image
             alt="left"

@@ -1,5 +1,5 @@
-import Header from '@/components/domain/quiz/problem/Header'
 import React from 'react'
+import { Header } from '@/components/domain/quiz/problem'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -7,7 +7,7 @@ type LayoutProps = {
 
 export default function QuizLayout({ children }: LayoutProps) {
   return (
-    <div className='p-4'>
+    <div className="p-4">
       <Header />
       <div className="h-[calc(100%-80px)]">{children}</div>
     </div>

@@ -14,18 +14,7 @@ export default function PopularCommentsList({
         </p>
         <ul className="flex flex-col gap-4 w-full">
           {PopularComments.map(
-            (
-              {
-                id,
-                content,
-                likeCount,
-                createdAt,
-                isLike,
-                writerInfo,
-                wordInfo,
-              },
-              idx,
-            ) => (
+            ({ id, content, likeCount, createdAt, isLike, wordInfo }, idx) => (
               <li key={id}>
                 <CommentItem
                   showTags
@@ -34,7 +23,6 @@ export default function PopularCommentsList({
                   likeCount={likeCount}
                   createdAt={createdAt}
                   isLike={isLike}
-                  writerInfo={writerInfo}
                   wordInfo={wordInfo}
                 />
               </li>

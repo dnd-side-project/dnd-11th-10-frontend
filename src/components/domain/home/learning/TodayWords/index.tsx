@@ -1,5 +1,5 @@
 import HorizontalScrollArea from '@/components/common/HorizontalScrollArea'
-import WordItem, { WordItemProps } from '../../../../shared/WordItem'
+import WordItem, { WordItemProps } from '@/components/shared/WordItem'
 
 export default function TodayWords({
   wordsList,
@@ -8,7 +8,7 @@ export default function TodayWords({
 }) {
   return (
     <>
-      <HorizontalScrollArea title="오늘의 실무 용어 세 가지 🔭">
+      <HorizontalScrollArea title="오늘의 실무 용어 🔭">
         {wordsList.map(({ id, name, meaning, category }, idx) => (
           <WordItem
             key={id}

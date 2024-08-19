@@ -2,8 +2,8 @@ import BottomSheet from '@/components/common/BottomSheet'
 import { CHECKBOX_MENUS } from '@/constants/bottomSheet'
 import useUIStore from '@/store/useUIStore'
 import { useState } from 'react'
-import OneCheckbox from './OneCheckbox'
 import Button from '@/components/common/Button'
+import Checkbox from '@/components/common/Checkbox'
 
 type BottomSheetProps = {
   isOpen: boolean
@@ -43,7 +43,7 @@ export default function CheckboxBottomSheet({
       <p className="text-body2 text-onSurface-200 mb-5">{description}</p>
       <ul className="mb-5">
         {options.map(({ id, text }, idx) => (
-          <OneCheckbox
+          <Checkbox
             key={id}
             text={text}
             isChecked={checked.has(id)}

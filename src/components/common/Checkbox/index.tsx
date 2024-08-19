@@ -1,19 +1,15 @@
 import { cn } from '@/lib/core'
-import React from 'react'
+import React, { ChangeEventHandler } from 'react'
 
 type CheckboxProps = {
   text: string
   isChecked: boolean
-  onChange: () => void
+  onChange: ChangeEventHandler<HTMLInputElement>
 }
 
-export default function OneCheckbox({
-  text,
-  isChecked,
-  onChange,
-}: CheckboxProps) {
+export default function Checkbox({ text, isChecked, onChange }: CheckboxProps) {
   return (
-    <label className="flex gap-3 py-4">
+    <label className="flex gap-3 py-4 items-center">
       <input
         type="checkbox"
         checked={isChecked}

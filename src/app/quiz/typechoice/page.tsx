@@ -80,7 +80,7 @@ function QuizTypeChoice() {
         </button>
         <button
           disabled={!selectedQuiz}
-          className={`mt-5 px-6 w-[270px] h-14 rounded-md text-onSurface-300 ${
+          className={`mt-5 px-6 w-[270px] h-14 rounded-md ${
             selectedQuiz
               ? 'bg-gradient-to-br from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
               : 'bg-gray-800 text-onSurface-100'

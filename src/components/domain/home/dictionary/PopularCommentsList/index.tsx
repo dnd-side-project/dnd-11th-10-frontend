@@ -1,5 +1,5 @@
-import CommentItem from '@/components/shared/CommentItem'
 import { SimpleCommentType } from '@/types/comment'
+import PopularCommentItem from './PopularCommentItem'
 
 export default function PopularCommentsList({
   PopularComments,
@@ -13,21 +13,11 @@ export default function PopularCommentsList({
           지금 반응이 뜨거운 댓글 🔥
         </p>
         <ul className="flex flex-col gap-4 w-full">
-          {PopularComments.map(
-            ({ id, content, likeCount, createdAt, isLike, wordInfo }, idx) => (
-              <li key={id}>
-                <CommentItem
-                  showTags
-                  id={id}
-                  content={content}
-                  likeCount={likeCount}
-                  createdAt={createdAt}
-                  isLike={isLike}
-                  wordInfo={wordInfo}
-                />
-              </li>
-            ),
-          )}
+          {PopularComments.map((comment, idx) => (
+            <li key={comment.id}>
+              <PopularCommentItem comment={comment} />
+            </li>
+          ))}
         </ul>
       </div>
     </div>

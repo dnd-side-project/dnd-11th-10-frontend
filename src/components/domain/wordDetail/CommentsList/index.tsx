@@ -48,8 +48,9 @@ export default function CommentsList() {
         <div className="w-full box-border px-4">
           <CommentInput wordId={wordId} />
         </div>
-        <div>
-          {Comments.map((comment, idx) => {
+        {/* 댓글 리스트 */}
+        {Comments.length > 0 ? (
+          Comments.map((comment, idx) => {
             return (
               <CommentItem
                 key={comment.id}
@@ -57,8 +58,19 @@ export default function CommentsList() {
                 setTargetId={setTargetId}
               />
             )
-          })}
-        </div>
+          })
+        ) : (
+          <div className="w-full flex flex-col gap-5 items-center py-10">
+            {/* 일러 변경 필요 */}
+            <Image
+              alt="image"
+              src={'/images/logo.svg'}
+              width={80}
+              height={80}
+            />
+            <p className="text-onSurface-100">첫 댓글을 남겨보세요.</p>
+          </div>
+        )}
       </div>
       {/* 정렬 bottomSheet */}
       <FilterBottomSheet

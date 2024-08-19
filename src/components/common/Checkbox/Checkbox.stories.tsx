@@ -8,11 +8,10 @@ const meta: Meta<typeof Checkbox> = {
   tags: ['autodocs'],
   argTypes: {
     isChecked: {
-      control: 'boolean',
+      description: '체크 유무를 결정합니다.',
     },
     text: {
-      control: 'text',
-      description: 'Label for the checkbox',
+      description: 'label에 표기할 텍스트를 입력합니다.',
     },
   },
 }

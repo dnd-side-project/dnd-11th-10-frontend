@@ -1,18 +1,19 @@
 import { cn } from '@/lib/core'
+import { ChangeEventHandler } from 'react'
 
-type OneRadioBtnProps = {
+type RadioButtonProps = {
   id: number
   item: string
   isChecked: boolean
-  onChange: () => void
+  onChange: ChangeEventHandler<HTMLInputElement>
 }
 
-export default function OneRadioBtn({
+export default function RadioButton({
   id,
   item,
   isChecked,
   onChange,
-}: OneRadioBtnProps) {
+}: RadioButtonProps) {
   return (
     <label className="text-sub2 flex items-center gap-3 py-4">
       <input

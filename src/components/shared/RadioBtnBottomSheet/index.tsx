@@ -1,7 +1,7 @@
 import BottomSheet from '@/components/common/BottomSheet'
 import { RADIOBTN_MENUS } from '@/constants/bottomSheet'
-import OneRadioBtn from './OneRadioBtn'
 import Button from '@/components/common/Button'
+import RadioButton from '@/components/common/RadioButton'
 
 type BottomSheetProps = {
   isOpen: boolean
@@ -27,7 +27,7 @@ export default function RadioBtnBottomSheet({
       <p className="text-h2 mb-5">{`${nickname}님,` + `\n` + title}</p>
       <ul className="mb-5">
         {options.map(({ id, item }, idx) => (
-          <OneRadioBtn
+          <RadioButton
             key={id}
             id={id}
             isChecked={value === id}

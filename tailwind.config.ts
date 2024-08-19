@@ -14,9 +14,9 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'btn-gradient': 'linear-gradient(117deg, #1FD5BC 4.97%, #358BF2 54%)',
+        'btn-gradient': 'linear-gradient(103deg, #00FFBB 0%, #3D7DF3 148.93%)',
         'btn-gradient-hover':
-          'linear-gradient(117deg, rgba(31, 213, 188, 0.80) 4.97%, rgba(53, 139, 242, 0.80) 54%)',
+          'linear-gradient(103deg, rgba(0, 255, 187, 0.80) 0%, rgba(61, 125, 243, 0.80) 148.93%)',
       },
       colors,
       fontFamily: {

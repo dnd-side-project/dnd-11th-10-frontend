@@ -9,13 +9,14 @@ import CommentItem from '@/components/shared/CommentItem'
 import CommentBottomSheet from '@/components/shared/CommentBottomSheet'
 import CommentInput from '../CommentTextarea'
 import { usePathname } from 'next/navigation'
+import CheckboxBottomSheet from '@/components/shared/CheckboxBottomSheet'
 
 export default function CommentsList() {
   const pathname = usePathname()
   const wordId = pathname.split('/').at(-1) ?? ''
 
   const [sortType, setSortType] = useState('좋아요순')
-  const [openId, setOpenId] = useState<number>()
+  const [targetId, setTargetId] = useState<number>()
   const { bottomSheetType, openBottomSheet } = useUIStore()
 
   const handleRefresh = () => {
@@ -53,7 +54,7 @@ export default function CommentsList() {
               <CommentItem
                 key={comment.id}
                 comment={comment}
-                setOpenId={setOpenId}
+                setTargetId={setTargetId}
               />
             )
           })}
@@ -68,9 +69,14 @@ export default function CommentsList() {
       />
       <CommentBottomSheet
         isOpen={bottomSheetType === 'comment'}
-        commentId={openId as number}
+        targetId={targetId as number}
         // 로그인 사용자와 writerInfo 사용자와 일치하면 mine 아니면 others
         target="others"
+      />
+      <CheckboxBottomSheet
+        isOpen={bottomSheetType === 'checkbox'}
+        type="report"
+        targetId={targetId as number}
       />
     </>
   )

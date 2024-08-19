@@ -5,10 +5,13 @@ import useUIStore from '@/store/useUIStore'
 
 export type CommentItemProps = {
   comment: DetailCommentType
-  setOpenId: (id: number) => void
+  setTargetId: (id: number) => void
 }
 
-export default function CommentItem({ comment, setOpenId }: CommentItemProps) {
+export default function CommentItem({
+  comment,
+  setTargetId,
+}: CommentItemProps) {
   const {
     id,
     content,
@@ -50,7 +53,7 @@ export default function CommentItem({ comment, setOpenId }: CommentItemProps) {
             width={24}
             height={24}
             onClick={() => {
-              setOpenId(id)
+              setTargetId(id)
               openBottomSheet('comment')
             }}
             className="cursor-pointer"

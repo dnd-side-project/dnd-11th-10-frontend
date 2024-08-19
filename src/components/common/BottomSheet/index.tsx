@@ -8,10 +8,10 @@ export default function BottomSheet({ children }: BottomSheetType) {
   return (
     <>
       <div
-        className="w-full max-w-[430px] h-dvh absolute top-0 bg-background bg-opacity-50"
+        className="w-full max-w-[430px] h-dvh fixed top-0 bg-background bg-opacity-50"
         onClick={closeBottomSheet}
       />
-      <div className="w-full max-w-[430px] h-fit fixed bottom-0 rounded-t-2xl py-7 px-6 bg-gray-700 text-onSurface-300">
+      <div className="w-full max-w-[430px] fixed bottom-0 rounded-t-2xl py-7 px-6 bg-gray-700 text-onSurface-300">
         {children}
       </div>
     </>

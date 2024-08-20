@@ -1,14 +1,17 @@
-import { DetailCommentType } from '@/types/comment'
+import CategoryTag from '@/components/shared/CategoryTag'
+import WordTag from '@/components/shared/WordTag'
+import useUIStore from '@/store/useUIStore'
+import { SimpleCommentType } from '@/types/comment'
 import { getTimeAgo } from '@/utils/date'
 import Image from 'next/image'
-import useUIStore from '@/store/useUIStore'
+import Link from 'next/link'
 
 export type CommentItemProps = {
-  comment: DetailCommentType
+  comment: SimpleCommentType
   setTargetId: (id: number) => void
 }
 
-export default function CommentItem({
+export default function PopularCommentItem({
   comment,
   setTargetId,
 }: CommentItemProps) {
@@ -18,45 +21,34 @@ export default function CommentItem({
     isLike,
     likeCount,
     createdAt,
-    writerInfo: {
-      id: writerId,
-      nickname,
-      profileImage,
-      company,
-      jobGroup,
-      experience,
-    },
+    wordInfo: { id: wordId, name, category, pronunciationInfo },
   } = comment
   const { openBottomSheet } = useUIStore()
+
+  const handleClickMenu = (e: React.MouseEvent) => {
+    e.preventDefault()
+    openBottomSheet('comment')
+    setTargetId(id)
+  }
+
   return (
     <>
-      <div className="flex flex-col gap-3 justify-between py-8 px-4 border-b-[1.5px] border-outline">
+      <Link
+        href={`/words/${wordId}`}
+        className="flex flex-col gap-3 justify-between py-6 px-5 bg-gray-800 rounded-2xl"
+      >
         <div className="flex justify-between">
-          <div className="flex gap-2 items-center">
-            <Image
-              // 프로필 이미지 url 변경 필요
-              src={'/images/logo.svg'}
-              width={38}
-              height={38}
-              alt="profile"
-            />
-            <div>
-              <p className="text-onSurface-300 text-body3">{nickname}</p>
-              <p className="text-onSurface-200 text-caption">
-                {jobGroup + ' · ' + company + ' · ' + experience}
-              </p>
-            </div>
+          <div className="flex gap-2">
+            <WordTag text={name} />
+            <WordTag text={pronunciationInfo.korean} />
+            <CategoryTag category={category} />
           </div>
           <Image
             alt="menu"
             src={'/icons/vertical_menu.svg'}
             width={24}
             height={24}
-            onClick={() => {
-              setTargetId(id)
-              openBottomSheet('comment')
-            }}
-            className="cursor-pointer"
+            onClick={handleClickMenu}
           />
         </div>
         <p className="text-onSurface-300 break-keep overflow-hidden line-clamp-3">
@@ -76,7 +68,7 @@ export default function CommentItem({
             {getTimeAgo(createdAt)}
           </p>
         </div>
-      </div>
+      </Link>
     </>
   )
 }

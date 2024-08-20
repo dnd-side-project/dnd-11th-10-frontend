@@ -8,7 +8,7 @@ export default function RecentlyAddedWords({
 }) {
   return (
     <>
-      <HorizontalScrollArea title="최근 등록된 업무 용어 🌟">
+      <HorizontalScrollArea title="최근 등록된 업무 용어 🌟" scrollDivisor={2}>
         {wordsList.map(({ id, name, meaning, category }, idx) => (
           <WordItem
             key={id}

@@ -6,14 +6,6 @@ export interface SimpleCommentType {
   likeCount: number
   createdAt: string
   isLike: boolean
-  writerInfo: {
-    id: number
-    nickname: string
-    profileImage: string
-    company: string
-    jobGroup: string
-    experience: string
-  }
   wordInfo: {
     id: number
     name: string
@@ -23,4 +15,13 @@ export interface SimpleCommentType {
   } & CategoryType
 }
 
-export type CommentType = {}
+export type DetailCommentType = {
+  writerInfo: {
+    id: number
+    nickname: string
+    profileImage: string
+    company: string
+    jobGroup: string
+    experience: string
+  }
+} & SimpleCommentType

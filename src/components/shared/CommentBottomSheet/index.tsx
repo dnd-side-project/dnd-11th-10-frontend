@@ -5,17 +5,18 @@ import useBottomSheetAction from '@/hooks/usetBottomSheetAction'
 export type BottomSheetProps = {
   isOpen: boolean
   target: 'mine' | 'others'
-  commentId: number
+  targetId: number
 }
 
 export default function CommentBottomSheet({
   isOpen,
   target,
-  commentId,
+  targetId,
 }: BottomSheetProps) {
   const actions = useBottomSheetAction()
   if (!isOpen) return null
   const menuItems = COMMENT_MENUS[target]
+  console.log('targetId', targetId)
   return (
     <BottomSheet>
       {menuItems.map((menu, idx) => (
@@ -23,7 +24,7 @@ export default function CommentBottomSheet({
           key={idx}
           className="flex justify-between py-6 list-none cursor-pointer"
           onClick={() =>
-            actions.find((action) => action.menu === menu)?.onClick(commentId)
+            actions.find((action) => action.menu === menu)?.onClick(targetId)
           }
         >
           <p className="text-sub1">{menu}</p>

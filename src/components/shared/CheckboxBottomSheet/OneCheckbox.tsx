@@ -21,7 +21,7 @@ export default function OneCheckbox({
         className={cn(
           'appearance-none w-[22px] h-[22px] outline-gray-500 outline outline-[1.5px] p-1 rounded-[4px]',
           {
-            "bg-primary-400 outline-0 bg-[url('/icons/check_white.svg')] bg-no-repeat bg-center":
+            "bg-primary-400 outline-0 bg-[url('/icons/check_black.svg')] bg-no-repeat bg-center":
               isChecked,
           },
         )}

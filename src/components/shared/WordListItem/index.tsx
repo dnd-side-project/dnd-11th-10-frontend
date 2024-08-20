@@ -2,14 +2,19 @@ import CategoryTag from '@/components/shared/CategoryTag'
 import { SimpleWordType } from '@/types/word'
 import Image from 'next/image'
 import Link from 'next/link'
+import BookmarkButton from '../BookmarkButton'
 
-type OneWordItemProps = {
+type WordListItemProps = {
   word: SimpleWordType
+  showBookmarkBtn?: boolean
+  isMarked?: boolean
 }
 
-export default function OneWordItem({
+export default function WordListItem({
   word: { id, category, name, meaning, viewCnt, commentCnt },
-}: OneWordItemProps) {
+  showBookmarkBtn = false,
+  isMarked,
+}: WordListItemProps) {
   return (
     <>
       <Link
@@ -17,7 +22,13 @@ export default function OneWordItem({
         className="w-full block px-4 py-6 border-b-[1px] border-outline"
       >
         <div className="flex flex-col gap-1">
-          <CategoryTag category={category} />
+          <div className="flex justify-between">
+            <CategoryTag category={category} />
+            {showBookmarkBtn && (
+              <BookmarkButton isMarked={isMarked!} wordId={id} />
+            )}
+          </div>
+
           <p className="text-sub1">{name}</p>
           <p className="text-onSurface-200 break-keep line-clamp-3">
             {meaning}

@@ -11,3 +11,20 @@ export type SimpleWordType = {
   viewCnt: number
   commentCnt: number
 } & CategoryType
+
+export type DetailWordType = {
+  id: number
+  name: string
+  pronunciationInfo: {
+    english: string
+  }
+  meaning: string
+  viewCount: number
+  commentCount: number
+  isMarked: boolean
+  markedCount: number
+  example: { text: string; source: string; createdAt: Date }[]
+  source: string
+  createdAt: Date
+  updatedAt: Date
+} & CategoryType

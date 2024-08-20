@@ -1,26 +1,31 @@
 'use client'
+import { cn } from '@/lib/core'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 type HorizontalScrollAreaProps = {
   children: React.ReactNode
+  titleSize?: 'normal' | 'small'
   title: string
+  scrollDivisor: number
 }
 
 export default function HorizontalScrollArea({
   children,
+  titleSize = 'normal',
   title,
+  scrollDivisor,
 }: HorizontalScrollAreaProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isStart, setIsStart] = useState<boolean>(true)
   const [isEnd, setIsEnd] = useState<boolean>(false)
 
   const handlePrevClick = () => {
-    scrollTo(-containerRef.current!.offsetWidth / 2)
+    scrollTo(-containerRef.current!.offsetWidth / scrollDivisor)
   }
 
   const handleNextClick = () => {
-    scrollTo(containerRef.current!.offsetWidth / 2)
+    scrollTo(containerRef.current!.offsetWidth / scrollDivisor)
   }
 
   const scrollTo = (moveX: number) => {
@@ -49,8 +54,15 @@ export default function HorizontalScrollArea({
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="flex overflow-hidden justify-between mb-3 px-4">
-        <p className="text-h2 text-[#f3f3f3] ">{title}</p>
+      <div className="flex overflow-hidden justify-between items-center mb-3 px-4 text-[#f3f3f3]">
+        <p
+          className={cn({
+            'text-h2': titleSize === 'normal',
+            'text-h3': titleSize === 'small',
+          })}
+        >
+          {title}
+        </p>
         <div className="flex gap-3">
           <Image
             alt="left"

@@ -1,6 +1,7 @@
 import CategoryTag from '@/components/shared/CategoryTag'
 import { SimpleWordType } from '@/types/word'
 import Image from 'next/image'
+import Link from 'next/link'
 
 type OneWordItemProps = {
   word: SimpleWordType
@@ -11,7 +12,10 @@ export default function OneWordItem({
 }: OneWordItemProps) {
   return (
     <>
-      <div className="w-full px-4 py-6 border-b-[1px] border-outline">
+      <Link
+        href={`/words/${id}`}
+        className="w-full block px-4 py-6 border-b-[1px] border-outline"
+      >
         <div className="flex flex-col gap-1">
           <CategoryTag category={category} />
           <p className="text-sub1">{name}</p>
@@ -35,7 +39,7 @@ export default function OneWordItem({
             <p>{commentCnt}</p>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   )
 }

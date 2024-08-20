@@ -8,11 +8,13 @@ import Button from '@/components/common/Button'
 type BottomSheetProps = {
   isOpen: boolean
   type: 'report'
+  targetId?: number
 }
 
 export default function CheckboxBottomSheet({
   isOpen,
   type,
+  targetId,
 }: BottomSheetProps) {
   const { closeBottomSheet } = useUIStore()
   const [checked, setChecked] = useState(new Set<number>())
@@ -29,7 +31,7 @@ export default function CheckboxBottomSheet({
   }
 
   const handleSubmit = () => {
-    console.log('checked list 전송')
+    console.log('checked list 전송', targetId, checked)
     setChecked(new Set()) // checked 리스트 초기화
     closeBottomSheet()
   }

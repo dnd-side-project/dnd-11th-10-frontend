@@ -13,7 +13,7 @@ export default function WordDetailPage({
   const wordId = parseInt(params.slug.split('/').at(-1) ?? '')
   const markCount = 23
   return (
-    <div className=" text-onSurface-300">
+    <div className="text-onSurface-300">
       <Header
         title="실무 영어"
         rightItem={
@@ -24,9 +24,11 @@ export default function WordDetailPage({
           />
         }
       />
-      <WordInfo word={wordData} />
-      <ContactButton />
-      <CommentsList />
+      <div className="mt-[90px]">
+        <WordInfo word={wordData} />
+        <ContactButton />
+        <CommentsList />
+      </div>
     </div>
   )
 }

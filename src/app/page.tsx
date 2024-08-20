@@ -1,5 +1,6 @@
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
 
 export default function Home() {
-  return <main className='text-white'>SPACE D 🪐 메인</main>
+  return redirect('/home/dictionary')
 }

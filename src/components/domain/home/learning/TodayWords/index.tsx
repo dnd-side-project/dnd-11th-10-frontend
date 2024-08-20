@@ -8,10 +8,7 @@ export default function TodayWords({
 }) {
   return (
     <>
-      <HorizontalScrollArea
-        title="오늘의 실무 용어 🔭"
-        scrollDivisor={2}
-      >
+      <HorizontalScrollArea title="오늘의 실무 용어 🔭" scrollDivisor={2}>
         {wordsList.map(({ id, name, meaning, category }, idx) => (
           <WordItem
             key={id}

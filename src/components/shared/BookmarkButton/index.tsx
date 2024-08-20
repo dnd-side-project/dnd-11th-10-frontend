@@ -12,8 +12,9 @@ export default function BookmarkButton({
   isMarked,
   markCount,
 }: BookmarkButtonProps) {
-  const handleClick = () => {
-    alert(`${wordId} bookmark`)
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    alert(`${wordId} 북마크`)
   }
   return (
     <button>

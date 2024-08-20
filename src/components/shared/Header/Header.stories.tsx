@@ -21,10 +21,6 @@ const meta: Meta<typeof Header> = {
     title: {
       description: '헤더 중앙에 표기할 텍스트를 작성합니다.',
     },
-    path: {
-      description:
-        'previous 버튼 클릭 시 이동하고 싶은 특정 경로를 작성합니다.전달하는 `path` string이 없는 경우 router.back()을 통해 이전 히스토리 단계로 이동합니다.',
-    },
     rightItem: {
       description: '헤더 맨 우측에 표기할 요소를 작성합니다.',
     },

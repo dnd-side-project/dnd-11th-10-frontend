@@ -16,7 +16,6 @@ export default function WordDetailPage({
     <div className=" text-onSurface-300">
       <Header
         title="실무 영어"
-        path="/home/dictionary"
         rightItem={
           <BookmarkButton
             isMarked={false}

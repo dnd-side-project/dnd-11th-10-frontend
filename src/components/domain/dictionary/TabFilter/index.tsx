@@ -27,7 +27,7 @@ export default function TabFilter({
   )
 
   const handleSelect = () => {
-    router.push(pathname + '?' + createQueryString('category', filter))
+    router.replace(pathname + '?' + createQueryString('category', filter))
   }
 
   return (

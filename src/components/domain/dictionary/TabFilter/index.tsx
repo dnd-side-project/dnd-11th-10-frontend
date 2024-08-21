@@ -32,7 +32,7 @@ export default function TabFilter({
 
   return (
     <button
-      className={cn('w-fit px-3 py-[7px] rounded-full ', {
+      className={cn('w-fit px-3 py-[7px] rounded-full', {
         'bg-primary-400 text-background': isSelected,
         'bg-none text-onSurface-300 outline outline-outline': !isSelected,
       })}

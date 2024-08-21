@@ -24,11 +24,9 @@ export default function WordDetailPage({
           />
         }
       />
-      <div className="mt-[90px]">
-        <WordInfo word={wordData} />
-        <ContactButton />
-        <CommentsList />
-      </div>
+      <WordInfo word={wordData} />
+      <ContactButton />
+      <CommentsList />
     </div>
   )
 }

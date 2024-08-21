@@ -10,7 +10,7 @@ type HeaderProps = {
 export default function Header({ title, rightItem }: HeaderProps) {
   const router = useRouter()
   return (
-    <header className="max-w-[430px] w-full h-[90px] fixed top-0 flex justify-between items-start pt-8 pb-4 px-4 z-50 bg-background text-onSurface-300">
+    <header className="w-full h-[90px] sticky top-0 flex justify-between items-start pt-8 pb-4 px-4 z-50 bg-background text-onSurface-300">
       <Image
         alt="back"
         src={'/icons/left_arrow.svg'}

@@ -17,9 +17,9 @@ export default function BookmarksPage() {
 
   return (
     <>
+      <Header title="별별 저장소" />
       <div className="relative overflow-y-auto bg-background text-onSurface-300">
-        <Header title="별별 저장소" />
-        <div className="flex gap-2 px-4 mt-[92px] mb-5">
+        <div className="flex gap-2 px-4 pt-1 mb-5">
           {filters.map((filter: FilterType, idx: number) => (
             <TabFilter
               isSelected={filter === category}

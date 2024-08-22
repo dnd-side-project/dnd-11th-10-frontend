@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image'
 import Button from '@/components/common/Button'
-import { signIn, useSession } from 'next-auth/react'
 
 interface SplashData {
   text1: string
@@ -27,41 +26,21 @@ const splashData: SplashData[] = [
   },
 ]
 
-const loginPath = {
-  google: `${process.env.NEXT_PUBLIC_API_URL}/login/google`,
-}
-
 export default function Home() {
-  const { data: session } = useSession()
   return (
     <div className="">
-      {session ? (
-        <Button type={'white'} isFullWidth={true} onClick={() => signIn()}>
-          <div className="flex justify-center">
-            <Image
-              src={'/icons/google.svg'}
-              alt={'google.svg'}
-              width={23}
-              height={23}
-              className="mr-3"
-            />
-            <p>Google로 시작하기</p>
-          </div>
-        </Button>
-      ) : (
-        <Button type={'white'} isFullWidth={true} onClick={() => signIn()}>
-          <div className="flex justify-center">
-            <Image
-              src={'/icons/google.svg'}
-              alt={'google.svg'}
-              width={23}
-              height={23}
-              className="mr-3"
-            />
-            <p>Google로 시작하기</p>
-          </div>
-        </Button>
-      )}
+      <Button type={'white'} isFullWidth={true}>
+        <div className="flex justify-center">
+          <Image
+            src={'/icons/google.svg'}
+            alt={'google.svg'}
+            width={23}
+            height={23}
+            className="mr-3"
+          />
+          <p>Google로 시작하기</p>
+        </div>
+      </Button>
       <div className="mt-[10px]">
         <Button type={'black'} isFullWidth={true}>
           비회원으로 시작하기

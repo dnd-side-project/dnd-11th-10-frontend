@@ -10,8 +10,14 @@ const meta: Meta<typeof HighlightText> = {
       description: 'target 단어를 포함한 `전체 문장 또는 단어`입니다.',
     },
     target: {
-      description:
-        '`#00946D`으로 highlight 하고싶은 `특정 단어`입니다.<br/>(대소문자 구분X)',
+      description: 'highlight 하고싶은 `특정 단어`입니다.<br/>(대소문자 구분X)',
+    },
+    variant: {
+      description: '카테고리 종류입니다.',
+      control: {
+        type: 'radio',
+      },
+      options: [null, '비즈니스', '디자인', '개발'],
     },
   },
 }

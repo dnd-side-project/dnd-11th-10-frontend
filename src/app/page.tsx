@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Button from '@/components/common/Button'
+import { loginWithGoogle } from '@/api/auth/[...nextauth]/route'
 
 interface SplashData {
   text1: string
@@ -29,7 +30,11 @@ const splashData: SplashData[] = [
 export default function Home() {
   return (
     <div className="">
-      <Button type={'white'} isFullWidth={true}>
+      <Button
+        type={'white'}
+        isFullWidth={true}
+        onClick={() => loginWithGoogle('google')}
+      >
         <div className="flex justify-center">
           <Image
             src={'/icons/google.svg'}

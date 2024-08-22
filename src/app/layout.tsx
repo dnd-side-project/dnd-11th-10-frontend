@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import localFont from 'next/font/local'
 import { Noto_Sans_KR } from 'next/font/google'
+import AuthContext from '@/context/AuthContext'
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -32,9 +33,11 @@ export default function RootLayout({
       <body
         className={`flex justify-center min-h-dvh ${pretendard.variable} font-pretendard ${notoSansKr.variable}`}
       >
-        <div className="p-4 w-full max-w-[430px] bg-black whitespace-pre-wrap">
-          {children}
-        </div>
+        <AuthContext>
+          <div className="p-4 w-full max-w-[430px] bg-black whitespace-pre-wrap">
+            {children}
+          </div>
+        </AuthContext>
       </body>
     </html>
   )

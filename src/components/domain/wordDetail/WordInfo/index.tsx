@@ -24,7 +24,7 @@ export default function WordInfo({ word }: { word: DetailWordType }) {
   return (
     <>
       {/* 용어 상세 기본 정보 */}
-      <div className="py-10 border-b-[1px] border-outline px-4">
+      <div className="py-7 border-b-[1px] border-outline px-4">
         <CategoryTag category={category} />
         <div className="flex flex-col gap-1 mt-3">
           <p className="text-h2">{name}</p>

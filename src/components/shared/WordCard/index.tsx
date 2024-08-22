@@ -4,18 +4,18 @@ import { CategoryType } from '@/types/word'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
-export type WordItemProps = {
+export type WordCardProps = {
   id: number
   name: string
   meaning: string
 } & CategoryType
 
-export default function WordItem({
+export default function WordCard({
   id,
   name,
   meaning,
   category,
-}: WordItemProps) {
+}: WordCardProps) {
   const anchorRef = useRef<HTMLDivElement>(null)
   const [width, setWidth] = useState<number>(180)
 
@@ -28,7 +28,7 @@ export default function WordItem({
 
   return (
     <Link
-      href={`/word/${id}`}
+      href={`/words/${id}`}
       className="w-min-[200px] w-max h-[140px] py-5 rounded-xl px-5 text-white bg-gray-800 bg-opacity-outline"
     >
       <div className="w-max flex flex-col gap-2">

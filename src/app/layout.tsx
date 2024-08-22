@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={`flex justify-center min-h-dvh ${pretendard.variable} font-pretendard ${notoSansKr.variable}`}
       >
-        <div className="w-full max-w-[430px] bg-black whitespace-pre-wrap">
+        <div className="w-full max-w-[430px] bg-background whitespace-pre-wrap">
           {children}
         </div>
       </body>

@@ -1,3 +1,4 @@
+import Button from '@/components/common/Button'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -31,13 +32,13 @@ export default function Bookmarks() {
               )}
             </p>
           </div>
-          <Image alt="image" src={'/images/logo.svg'} width={80} height={80} />
+          {/* <Image alt="image" src={'/images/logo.svg'} width={80} height={80} /> */}
+          <div className="w-[166px] h-[118px] bg-outline" />
         </div>
-        <Link
-          href={'/bookmarks'}
-          className="flex justify-center w-full py-[18px] font-medium bg-background text-onSurface-300 rounded-lg"
-        >
-          별별 저장소 가기
+        <Link href={'/bookmarks'}>
+          <Button type="black" isFullWidth>
+            별별 저장소 가기
+          </Button>
         </Link>
       </div>
     </div>

@@ -4,18 +4,18 @@ import { CategoryType } from '@/types/word'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
-export type WordItemProps = {
+export type WordCardProps = {
   id: number
   name: string
   meaning: string
 } & CategoryType
 
-export default function WordItem({
+export default function WordCard({
   id,
   name,
   meaning,
   category,
-}: WordItemProps) {
+}: WordCardProps) {
   const anchorRef = useRef<HTMLDivElement>(null)
   const [width, setWidth] = useState<number>(180)
 

@@ -1,6 +1,6 @@
-import { WordItemProps } from '../../../../shared/WordItem'
+import { WordCardProps } from '@/components/shared/WordCard'
 
-export const WordsList: WordItemProps[] = [
+export const WordsList: WordCardProps[] = [
   {
     id: 0,
     name: 'Agenda',

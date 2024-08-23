@@ -1,3 +1,4 @@
+import HighlightText from '@/components/common/HighlightText'
 import HorizontalScrollArea from '@/components/common/HorizontalScrollArea'
 import CategoryTag from '@/components/shared/CategoryTag'
 import { DetailWordType } from '@/types/word'
@@ -45,8 +46,8 @@ export default function WordInfo({ word }: { word: DetailWordType }) {
         <HorizontalScrollArea title="예문" titleSize="small" scrollDivisor={1}>
           {example.map((example, idx) => (
             <div key={idx} className="min-w-fit">
-              <div className="max-w-[calc(100%-9px)] relative bg-gray-200 h-fit py-6 px-5 rounded-2xl">
-                <p className="text-sub2 text-background break-keep">{`"${example.text}"`}</p>
+              <div className="max-w-[calc(100%-9px)] h-fit relative bg-gray-200 text-background text-sub2 py-6 px-5 rounded-2xl">
+                <HighlightText text={`"${example.text}"`} target={name} />
                 <Image
                   alt="bubble"
                   src={'/images/bubble_tail.svg'}

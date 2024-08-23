@@ -4,13 +4,13 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
-interface QuizType {
+interface QuizCategory {
   participantCount: number
   name: string
   color: string
 }
 
-const quizType: QuizType[] = [
+const quizCategory: QuizCategory[] = [
   {
     participantCount: 10,
     name: '전체 실무',
@@ -48,7 +48,7 @@ function QuizTypeChoice() {
       </div>
 
       <div className="mt-5 flex flex-wrap justify-between">
-        {quizType.map((quiz, index) => {
+        {quizCategory.map((quiz, index) => {
           const isSelected = selectedQuiz === quiz.name
           return (
             <div

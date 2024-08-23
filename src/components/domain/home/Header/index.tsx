@@ -17,12 +17,13 @@ export default function Header() {
             href={'/mypage'}
             className="relative w-[42px] h-[42px] rounded-full overflow-hidden"
           >
-            <Image
+            {/* <Image
               className="object-cover"
               fill
               src={'/images/logo.svg'}
               alt="마이페이지"
-            />
+            /> */}
+            <div className="w-[42px] h-[42px] rounded-full bg-gray-600" />
           </Link>
         ) : (
           <LoginButton />

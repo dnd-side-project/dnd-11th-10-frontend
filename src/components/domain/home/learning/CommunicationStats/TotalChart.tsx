@@ -26,8 +26,8 @@ export default function TotalChart({ topPercent, percent }: TotalChartProps) {
               isGradient
             />
           </div>
-          <div className="w-full absolute bottom-0 text-center">
-            <p className="text-caption mb-[2px]">전체</p>
+          <div className="w-full absolute -bottom-1 text-center">
+            <p className="text-caption">전체</p>
             <p className={'text-h1 text-primary-200'}>{Math.round(percent)}%</p>
           </div>
           <span className="absolute -top-[18px] -right-4 text-caption rounded py-1 px-2 bg-[#8C5EE4]">

@@ -29,7 +29,7 @@ export default function Home() {
       <Button
         type={'white'}
         isFullWidth={true}
-        onClick={() => loginWithGoogle('google')}
+        onClick={() => loginWithGoogle()}
       >
         <div className="flex justify-center">
           <Image

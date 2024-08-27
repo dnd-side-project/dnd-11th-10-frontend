@@ -12,7 +12,7 @@ export default function QuizResultCard({
   answerOptionDescription,
 }: ExplanationInfo) {
   return (
-    <div className="px-3 py-6 w-full bg-gray-800  rounded-xl" key={name}>
+    <div className="px-3 py-6 w-full bg-gray-800 rounded-xl" key={name}>
       <div className="mb-3 flex justify-between">
         <div className="flex">
           <Image
@@ -21,18 +21,20 @@ export default function QuizResultCard({
             width={20}
             height={20}
           />
-          <p className="ml-2 text-onSurface-300 font-medium">{name}</p>
+          <p className="ml-2 text-sub1 text-onSurface-300 font-medium">
+            {name}
+          </p>
         </div>
         <BookmarkButton wordId={wordId} isMarked={isMarked} />
       </div>
-      {isCorrect && (
-        <div className="line-through text-sm text-onSurface-100 font-normal">
-          <p>{selectedOptionDescription}</p>
-        </div>
+      {!isCorrect && (
+        <p className="line-through text-onSurface-100 text-body3 font-normal">
+          {selectedOptionDescription}
+        </p>
       )}
-      <div className="flex justify-start break-keep text-lg text-onSurface-200">
-        정답 :&nbsp;<p>{answerOptionDescription}</p>
-      </div>
+      <p className="break-keep text-body2 text-onSurface-200">
+        정답 : &nbsp;{answerOptionDescription}
+      </p>
     </div>
   )
 }

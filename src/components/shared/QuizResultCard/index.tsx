@@ -16,7 +16,7 @@ export default function QuizReultCard({
       className="p-6 w-full bg-gray-800 text-onSurface-200 rounded-xl"
       key={name}
     >
-      <div className="flex justify-between text-[18px]">
+      <div className="flex justify-between">
         <div className="flex">
           {isCorrect ? (
             <Image
@@ -38,11 +38,11 @@ export default function QuizReultCard({
         <BookmarkButton wordId={wordId} isMarked={isMarked} />
       </div>
       {isCorrect ? null : (
-        <div className="line-through">
+        <div className="line-through text-[14px] text-onSurface-100">
           <p>{selectedOptionDescription}</p>
         </div>
       )}
-      <div className="flex break-keep">
+      <div className="flex break-keep text-[18px]">
         정답 :&nbsp;<p>{answerOptionDescription}</p>
       </div>
     </div>

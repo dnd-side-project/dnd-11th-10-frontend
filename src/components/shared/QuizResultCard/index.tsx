@@ -42,7 +42,7 @@ export default function QuizReultCard({
           <p>{selectedOptionDescription}</p>
         </div>
       )}
-      <div className="flex">
+      <div className="flex break-keep">
         정답 :&nbsp;<p>{answerOptionDescription}</p>
       </div>
     </div>

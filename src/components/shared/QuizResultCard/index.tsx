@@ -26,11 +26,11 @@ export default function QuizResultCard({
         <BookmarkButton wordId={wordId} isMarked={isMarked} />
       </div>
       {isCorrect && (
-        <div className="line-through text-[14px] text-onSurface-100 font-normal">
+        <div className="line-through text-sm text-onSurface-100 font-normal">
           <p>{selectedOptionDescription}</p>
         </div>
       )}
-      <div className="flex break-keep text-[18px] text-onSurface-200">
+      <div className="flex justify-start break-keep text-lg text-onSurface-200">
         정답 :&nbsp;<p>{answerOptionDescription}</p>
       </div>
     </div>

@@ -21,14 +21,14 @@ export default function QuizResultCard({
             width={20}
             height={20}
           />
-          <p className="ml-2 text-sub1 text-onSurface-300 font-medium">
+          <p className="ml-2 text-sub1 text-onSurface-300">
             {name}
           </p>
         </div>
         <BookmarkButton wordId={wordId} isMarked={isMarked} />
       </div>
       {!isCorrect && (
-        <p className="line-through text-onSurface-100 text-body3 font-normal">
+        <p className="line-through text-onSurface-100 text-body3">
           {selectedOptionDescription}
         </p>
       )}

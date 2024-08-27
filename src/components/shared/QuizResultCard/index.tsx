@@ -18,26 +18,17 @@ export default function QuizResultCard({
     >
       <div className="flex justify-between">
         <div className="flex">
-          {isCorrect ? (
-            <Image
-              src={'/icons/correct.svg'}
-              alt={'correct.svg'}
-              width={20}
-              height={20}
-            />
-          ) : (
-            <Image
-              src={'/icons/wrong.svg'}
-              alt={'wrong.svg'}
-              width={20}
-              height={20}
-            />
-          )}
+          <Image
+            src={isCorrect ? '/icons/correct.svg' : '/icons/wrong.svg'}
+            alt={isCorrect ? 'correct.svg' : 'wrong.svg'}
+            width={20}
+            height={20}
+          />
           <p className="ml-2">{name}</p>
         </div>
         <BookmarkButton wordId={wordId} isMarked={isMarked} />
       </div>
-      {isCorrect ? null : (
+      {isCorrect && (
         <div className="line-through text-[14px] text-onSurface-100">
           <p>{selectedOptionDescription}</p>
         </div>

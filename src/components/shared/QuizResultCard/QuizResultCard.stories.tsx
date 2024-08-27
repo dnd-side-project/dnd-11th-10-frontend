@@ -27,6 +27,18 @@ export const Default: Story = {
           '완수해야 하는 실무 내용을 사전에 정리해 둔 항목들'
         }
       />
+      <QuizReultCard
+        wordId={7}
+        isCorrect={false}
+        isMarked={false}
+        name={'목 데이터(Mock Data)'}
+        selectedOptionDescription={
+          '완수해야 하는 실무 내용을 사전에 정리해 둔 항목들'
+        }
+        answerOptionDescription={
+          '실제 데이터를 대신하여 개발이나 테스트에 사용하는 가상의 데이터'
+        }
+      />
     </div>
   ),
 }

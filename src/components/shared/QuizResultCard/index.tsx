@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { ExplanationInfo } from '@/types/quizresult'
 import BookmarkButton from '../BookmarkButton'
 
-export default function QuizReultCard({
+export default function QuizResultCard({
   wordId,
   isCorrect,
   isMarked,

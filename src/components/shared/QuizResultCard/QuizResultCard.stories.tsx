@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import ExplanationInfo from '.'
-import QuizReultCard from '.'
+import QuizResultCard from '.'
 
 const meta: Meta<typeof ExplanationInfo> = {
   title: 'components/Quiz/QuizResultCard',
@@ -15,7 +15,7 @@ type Story = StoryObj<typeof ExplanationInfo>
 export const Default: Story = {
   render: () => (
     <div className="flex flex-col gap-2">
-      <QuizReultCard
+      <QuizResultCard
         wordId={1}
         isCorrect
         isMarked
@@ -23,7 +23,7 @@ export const Default: Story = {
         selectedOptionDescription="완수해야 하는 실무 내용을 사전에 정리해 둔 항목들"
         answerOptionDescription="완수해야 하는 실무 내용을 사전에 정리해 둔 항목들"
       />
-      <QuizReultCard
+      <QuizResultCard
         wordId={7}
         isCorrect={false}
         isMarked={false}

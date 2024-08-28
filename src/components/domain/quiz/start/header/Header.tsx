@@ -8,7 +8,7 @@ function Header() {
   const router = useRouter()
 
   return (
-    <div className="py-4 flex justify-start h-20">
+    <div className="px-4 flex justify-start h-20">
       <Image
         src={'/icons/back.svg'}
         alt="back.svg"

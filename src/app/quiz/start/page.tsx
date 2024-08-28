@@ -7,7 +7,7 @@ import Image from 'next/image'
 export default function QuizStart() {
   const router = useRouter()
   return (
-    <div className="flex flex-col justify-around h-full">
+    <div className="px-4 flex flex-col justify-between h-full">
       <p className="text-center text-onSurface-300 text-xl">
         업무 소통 능력을 상승하러 가볼까요?
       </p>

@@ -3,21 +3,20 @@
 import React from 'react'
 import Image from 'next/image'
 
-import Cross from '/public/icons/cross.svg'
 import { useRouter } from 'next/navigation'
 
 function Header() {
   const router = useRouter()
   return (
-    <div className="flex justify-start h-20 mb-14">
-      <div className="mt-3">
-        <Image
-          src={Cross}
-          alt="Back.svg"
-          onClick={() => router.push('/home/dictionary')}
-          className="cursor-pointer"
-        />
-      </div>
+    <div className="px-4 flex justify-start h-20">
+      <Image
+        src={'/icons/cross.svg'}
+        alt="cross.svg"
+        onClick={() => router.push('/home/dictionary')}
+        className="cursor-pointer"
+        width={24}
+        height={24}
+      />
     </div>
   )
 }

@@ -6,7 +6,7 @@ type LayoutProps = {
 }
 export default function QuizCategoryLayout({ children }: LayoutProps) {
   return (
-    <div className="p-4">
+    <div className="pb-4 h-full">
       <Header />
       <div className="h-[calc(100%-80px)]">{children}</div>
     </div>

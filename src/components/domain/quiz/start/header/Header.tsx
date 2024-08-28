@@ -2,20 +2,21 @@
 
 import React from 'react'
 import Image from 'next/image'
-
-import Back from '/public/icons/back.svg'
+import { useRouter } from 'next/navigation'
 
 function Header() {
+  const router = useRouter()
+
   return (
-    <div className="flex justify-start h-20 mb-14">
-      <div className="mt-3">
-        <Image
-          src={Back}
-          alt="Back.svg"
-          onClick={() => console.log('back logo clicked')}
-          className="cursor-pointer"
-        />
-      </div>
+    <div className="py-4 flex justify-start h-20">
+      <Image
+        src={'/icons/back.svg'}
+        alt="back.svg"
+        onClick={() => router.push('/home/dictionary')}
+        className="cursor-pointer"
+        width={24}
+        height={24}
+      />
     </div>
   )
 }

@@ -91,14 +91,14 @@ function QuizTypeChoice() {
       </div>
       <div className="flex justify-between">
         <button
-          className="px-4 py-6 w-[116px] bg-gray-700 rounded-md text-onSurface-300"
+          className="px-6 py-4 w-[116px] bg-gray-700 rounded-md text-onSurface-300"
           onClick={() => router.back()}
         >
           이전
         </button>
         <button
           disabled={!selectedQuiz}
-          className={`px-4 py-6 w-[270px] rounded-md ${
+          className={`px-6 py-4 w-[270px] rounded-md ${
             selectedQuiz
               ? 'bg-gradient-to-r from-gradient-201 to-gradient-202 to-95% text-background'
               : 'bg-gray-800 text-onSurface-100'

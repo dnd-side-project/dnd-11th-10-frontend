@@ -43,9 +43,9 @@ function QuizTypeChoice() {
 
   return (
     <div>
-      <div className="text-center text-onSurface-300 text-xl">
-        <p>어떤 분야를 학습하시겠어요?</p>
-      </div>
+      <p className="text-center text-onSurface-300 text-xl">
+        어떤 분야를 학습하시겠어요?
+      </p>
 
       <div className="mt-5 flex flex-wrap justify-between">
         {quizCategory.map((quiz, index) => {
@@ -66,7 +66,7 @@ function QuizTypeChoice() {
                 width={63}
                 height={63}
               />
-              <div className='mr-24'>
+              <div className="mr-24">
                 <div className="mt-2 flex text-xl">
                   <p className={`${quiz.color}`}>{quiz.name}&nbsp;</p>
                   <p>용어</p>
@@ -79,7 +79,7 @@ function QuizTypeChoice() {
               </div>
               <div className="py-4">
                 <Image
-                  alt="다음"
+                  alt="front.svg"
                   src={'/icons/front.svg'}
                   width={24}
                   height={24}
@@ -90,7 +90,10 @@ function QuizTypeChoice() {
         })}
       </div>
       <div className="mt-28 flex justify-between">
-        <button className="mt-5 px-6 w-[116px] h-14 bg-gray-700 rounded-md text-onSurface-300">
+        <button
+          className="mt-5 px-6 w-[116px] h-14 bg-gray-700 rounded-md text-onSurface-300"
+          onClick={() => router.back()}
+        >
           이전
         </button>
         <button

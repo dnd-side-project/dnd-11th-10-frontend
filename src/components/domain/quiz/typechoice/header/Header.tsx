@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 function Header() {
   const router = useRouter()
   return (
-    <div className="flex justify-start h-20">
+    <div className="flex justify-start h-20 mb-14">
       <div className="mt-3">
         <Image
           src={Cross}

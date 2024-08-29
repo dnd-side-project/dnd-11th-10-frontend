@@ -1,13 +1,20 @@
 import React from 'react'
 import Image from 'next/image'
+import { QuizCategory } from './data'
 
-function CategoryCard({ isSelected, quiz, handleClick, index }: any) {
+interface Props {
+  isSelected: boolean
+  quiz: QuizCategory
+  handleClick: (quizName: string) => void
+  index: number
+}
+
+function CategoryCard({ isSelected, quiz, handleClick, index }: Props) {
   return (
     <div
       className={`flex justify-between mt-4 p-4 w-[396px] h-[95px] bg-gray-800 text-onSurface-200 rounded-xl cursor-pointer ${
-        isSelected ? 'bg-primary-0 border-[1.5px] border-primary-400' : ''
+        isSelected && 'bg-primary-0 border-[1.5px] border-primary-400'
       }`}
-      key={quiz.name}
       onClick={() => handleClick(quiz.name)}
     >
       <Image

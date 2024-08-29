@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { ProfileChip } from '@/types/profileChip'
 
-export default function Chip({ id, name }: ProfileChip) {
+export default function Chip({ id, type, name }: ProfileChip) {
   const [selected, setSelected] = useState(false)
 
   const handleClick = () => {
     setSelected(!selected)
+    console.log(`${type}: ${name}`)
   }
 
   return (

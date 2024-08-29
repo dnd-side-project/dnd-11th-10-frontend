@@ -15,7 +15,7 @@ type Story = StoryObj<typeof ProfileChip>
 export const Default: Story = {
   render: () => (
     <div className="flex flex-col gap-2">
-      <Chip id={0} name={'비공개'} />
+      <Chip id={0} name="비공개" type="기업" />
     </div>
   ),
 }

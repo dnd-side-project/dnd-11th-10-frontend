@@ -4,7 +4,7 @@ import GoogleLoginButton from '@/components/shared/GoogleLoginButton'
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <GoogleLoginButton />
       <div className="mt-[10px]">
         <Button type={'black'} isFullWidth={true}>

@@ -23,17 +23,17 @@ type Story = StoryObj<typeof JobGroup>
 export const Develop: Story = {
   args: {
     id: 1,
-    name: '개발',
+    name: '개발자',
   },
-  render: () => <JobGroupCard id={1} name={'개발'} />,
+  render: () => <JobGroupCard id={1} name={'개발자'} />,
 }
 
 export const Design: Story = {
   args: {
     id: 2,
-    name: '디자인',
+    name: '디자이너',
   },
-  render: () => <JobGroupCard id={2} name={'디자인'} />,
+  render: () => <JobGroupCard id={2} name={'디자이너'} />,
 }
 
 export const Etcetera: Story = {

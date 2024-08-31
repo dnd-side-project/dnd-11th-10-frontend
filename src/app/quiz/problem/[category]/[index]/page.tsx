@@ -43,6 +43,17 @@ function Quiz() {
     }
   }
 
+  const handleBack = () => {
+    if (problemIndex > 0) {
+      const category = pathname.split('/').at(-2)
+      setProblemIndex(problemIndex - 1)
+      setCurrentProblem(currentProblem - 1)
+      router.push(`/quiz/problem/${category}/${currentProblem - 1}`)
+    } else {
+      alert('첫 번째 문제입니다.')
+    }
+  }
+
   if (!problem) {
     return <div>없는 문제입니다.</div>
   }
@@ -87,7 +98,7 @@ function Quiz() {
       <div className="flex justify-between">
         <button
           className="px-6 py-4 w-[116px] bg-gray-700 rounded-md text-onSurface-300"
-          onClick={() => router.back()}
+          onClick={handleBack}
         >
           이전
         </button>

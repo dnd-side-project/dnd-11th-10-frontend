@@ -8,7 +8,7 @@ interface QuizState {
 
   setProblemIndex: (index: number) => void
   setCurrentProblem: (problem: number) => void
-  setCurrentPercent: (percent: number) => void
+  setCurrentPercent: (index: number) => void
   addAnswer: (optionWordId: number) => void
   removeAnswer: () => void
 }
@@ -21,7 +21,8 @@ export const useQuizStore = create<QuizState>((set) => ({
 
   setProblemIndex: (index: number) => set({ problemIndex: index }),
   setCurrentProblem: (problem: number) => set({ currentProblem: problem }),
-  setCurrentPercent: (percent: number) => set({ currentPercent: percent }),
+  setCurrentPercent: () =>
+    set((index) => ({ currentPercent: index.currentProblem * 20 })),
   addAnswer: (optionWordId: number) =>
     set((state) => ({ answer: [...state.answer, optionWordId] })),
   removeAnswer: () => set((state) => ({ answer: state.answer.slice(0, -1) })),

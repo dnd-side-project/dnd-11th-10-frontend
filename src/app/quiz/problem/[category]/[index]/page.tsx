@@ -17,6 +17,7 @@ function Quiz() {
     setCurrentProblem,
     answer,
     addAnswer,
+    setCurrentPercent,
     removeAnswer,
   } = useQuizStore()
   const problem = quizData.problemInfo[problemIndex]
@@ -37,6 +38,7 @@ function Quiz() {
     if (problemIndex < quizData.problemInfo.length - 1) {
       setProblemIndex(problemIndex + 1)
       setCurrentProblem(currentProblem + 1)
+      setCurrentPercent(problemIndex);
       router.push(`/quiz/problem/${category}/${currentProblem + 1}`)
     } else {
       alert('마지막 문제입니다.')

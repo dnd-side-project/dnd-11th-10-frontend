@@ -10,10 +10,10 @@ interface QuizState {
   setCurrentProblem: (problem: number) => void
   setCurrentPercent: (percent: number) => void
   addAnswer: (optionWordId: number) => void
+  removeAnswer: () => void
 }
 
 export const useQuizStore = create<QuizState>((set) => ({
-
   problemIndex: 0,
   currentProblem: 1,
   currentPercent: 20,
@@ -24,4 +24,5 @@ export const useQuizStore = create<QuizState>((set) => ({
   setCurrentPercent: (percent: number) => set({ currentPercent: percent }),
   addAnswer: (optionWordId: number) =>
     set((state) => ({ answer: [...state.answer, optionWordId] })),
+  removeAnswer: () => set((state) => ({ answer: state.answer.slice(0, -1) })),
 }))

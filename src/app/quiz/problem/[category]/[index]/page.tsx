@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { quizData } from '@/components/domain/quiz/data'
-import CategoryTag from '@/components/shared/CategoryTag'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import { useQuizStore } from '@/lib/store'
 import { usePathname, useRouter } from 'next/navigation'
+import CategoryTag from '@/components/shared/CategoryTag'
+import { quizData } from '@/components/domain/quiz/data'
+import { useQuizStore } from '@/lib/store'
 
 function Quiz() {
   const router = useRouter()
@@ -17,9 +17,9 @@ function Quiz() {
     setCurrentProblem,
     answer,
     addAnswer,
+    removeAnswer,
   } = useQuizStore()
   const problem = quizData.problemInfo[problemIndex]
-
   const [selectedOptionId, setSelectedOptionId] = useState<number | null>(null)
 
   console.log(pathname)
@@ -45,9 +45,10 @@ function Quiz() {
 
   const handleBack = () => {
     if (problemIndex > 0) {
-      const category = pathname.split('/').at(-2)
       setProblemIndex(problemIndex - 1)
       setCurrentProblem(currentProblem - 1)
+      removeAnswer()
+      const category = pathname.split('/').at(-2)
       router.push(`/quiz/problem/${category}/${currentProblem - 1}`)
     } else {
       alert('첫 번째 문제입니다.')

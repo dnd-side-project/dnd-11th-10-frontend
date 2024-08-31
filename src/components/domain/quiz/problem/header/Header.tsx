@@ -25,7 +25,7 @@ function Header() {
       <div className="my-auto p-[0.05rem] w-72 h-3 bg-outline rounded-2xl">
         <div
           className="bg-gradient-to-tr from-gradient-201 to-gradient-202 to-70% h-2.5 rounded-2xl"
-          style={{ width: `20%` }}
+          style={{ width: `100%` }}
         />
       </div>
 

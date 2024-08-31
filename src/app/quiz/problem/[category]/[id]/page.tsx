@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { quizData } from '@/components/domain/quiz/data'
 import CategoryTag from '@/components/shared/CategoryTag'
+import Image from 'next/image'
 
 function Quiz() {
   const [problemIndex, setProblemIndex] = useState(0)
@@ -15,7 +16,11 @@ function Quiz() {
   }
 
   const handleNext = () => {
-    console.log('다음 버튼')
+    if (problemIndex < quizData.problemInfo.length - 1) {
+      setProblemIndex(problemIndex + 1)
+    } else {
+      alert('마지막 문제입니다.')
+    }
   }
 
   if (!problem) {
@@ -23,28 +28,34 @@ function Quiz() {
   }
 
   return (
-    <div className="mt-10">
-      <div className="m-10">
-        <div className="mx-[116px]">
+    <div className="px-4 flex flex-col justify-between h-full">
+      <div>
+        <div className="flex justify-center">
           <CategoryTag category={problem.category} />
         </div>
-        <div className="flex flex-wrap my-6 text-onSurface-300 text-xl text-center">
+        <p className="my-6 text-onSurface-300 text-xl text-center break-keep">
           아래 예문 속 ’{problem.name}’의 의미는 무엇일까요?
+        </p>
+
+        <div className="relative mx-auto px-[calc(8px+12.427px)] py-6 w-[calc(360px+12.427px)] bg-gray-200 rounded-xl text-background text-[18px] text-center break-keep">
+          <p>{`"${problem.question}"`}</p>
+          <Image
+            src={'/images/speach_bubble_tail.svg'}
+            alt="speach_bubble_tail.svg"
+            width={23}
+            height={23}
+            className="absolute -bottom-0 -left-[0.4rem]"
+          />
         </div>
       </div>
 
-      <div className="relative my-[60px] mx-auto px-[calc(8px+12.427px)] py-6 w-[calc(360px+12.427px)] h-24 bg-gray-200 rounded-xl text-background text-[18px] text-center break-keep">
-        <p>{`"${problem.question}"`}</p>
-        <div className="absolute -bottom-1 left-0 w-0 h-0 border-l-3 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-gray-200 transform rotate-45" />
-      </div>
       <ul>
         {problem.optionInfo.map((option) => (
           <li key={option.optionWordId} className="mb-3 text-onSurface-300">
             <div
               className={`p-5 bg-gray-800 rounded-xl text-center text-[1rem] break-keep ${
-                selectedOptionId === option.optionWordId
-                  ? 'bg-primary-0 border-[1px] border-primary-400'
-                  : ''
+                selectedOptionId === option.optionWordId &&
+                'bg-primary-0 border-[1px] border-primary-400'
               }`}
               onClick={() => handleClick(option.optionWordId)}
             >
@@ -54,15 +65,15 @@ function Quiz() {
         ))}
       </ul>
       <div className="flex justify-between">
-        <button className="mt-5 px-6 w-[116px] h-14 bg-outline rounded-md text-onSurface-300">
+        <button className="px-6 py-4 w-[116px] bg-gray-700 rounded-md text-onSurface-300">
           이전
         </button>
         <button
           disabled={!selectedOptionId}
-          className={`mt-5 px-6 w-[270px] h-14 rounded-md text-onSurface-300 ${
+          className={`px-6 py-4 w-[270px] rounded-md ${
             selectedOptionId
-              ? 'bg-gradient-to-br from-gradient-201 to-gradient-202 to-70% text-onSurface-100'
-              : 'bg-outline text-onSurface-100'
+              ? 'bg-gradient-to-r from-gradient-201 to-gradient-202 to-95% text-background'
+              : 'bg-gray-800 text-onSurface-100'
           }`}
           onClick={handleNext}
         >

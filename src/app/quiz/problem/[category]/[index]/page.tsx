@@ -1,23 +1,43 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { quizData } from '@/components/domain/quiz/data'
 import CategoryTag from '@/components/shared/CategoryTag'
 import Image from 'next/image'
+import { useQuizStore } from '@/lib/store'
+import { usePathname, useRouter } from 'next/navigation'
 
 function Quiz() {
-  const [problemIndex, setProblemIndex] = useState(0)
+  const router = useRouter()
+  const pathname = usePathname()
+  const {
+    problemIndex,
+    setProblemIndex,
+    currentProblem,
+    setCurrentProblem,
+    answer,
+    addAnswer,
+  } = useQuizStore()
   const problem = quizData.problemInfo[problemIndex]
 
   const [selectedOptionId, setSelectedOptionId] = useState<number | null>(null)
+
+  console.log(pathname)
+  console.log(answer)
 
   const handleClick = (optionWordId: number) => {
     setSelectedOptionId(optionWordId)
   }
 
   const handleNext = () => {
+    const category = pathname.split('/').at(-2)
+    if (selectedOptionId === null) return
+
+    addAnswer(selectedOptionId)
     if (problemIndex < quizData.problemInfo.length - 1) {
       setProblemIndex(problemIndex + 1)
+      setCurrentProblem(currentProblem + 1)
+      router.push(`/quiz/problem/${category}/${currentProblem + 1}`)
     } else {
       alert('마지막 문제입니다.')
     }
@@ -65,7 +85,10 @@ function Quiz() {
         ))}
       </ul>
       <div className="flex justify-between">
-        <button className="px-6 py-4 w-[116px] bg-gray-700 rounded-md text-onSurface-300">
+        <button
+          className="px-6 py-4 w-[116px] bg-gray-700 rounded-md text-onSurface-300"
+          onClick={() => router.back()}
+        >
           이전
         </button>
         <button

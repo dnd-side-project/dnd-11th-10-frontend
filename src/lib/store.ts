@@ -1,27 +1,27 @@
-import create from 'zustand'
+import { create } from 'zustand'
 
-export interface CurrentProblemState {
+interface QuizState {
+  problemIndex: number
   currentProblem: number
-  setCurrentProblem: (index: number) => void
-  currentPercent: () => number
+  currentPercent: number
+  answer: number[]
+
+  setProblemIndex: (index: number) => void
+  setCurrentProblem: (problem: number) => void
+  setCurrentPercent: (percent: number) => void
+  addAnswer: (optionWordId: number) => void
 }
 
-export interface SelectQuizTypeState {
-  selectedQuiz: number | null
-  setSelectedQuiz: (quizType: number | null) => void
-}
+export const useQuizStore = create<QuizState>((set) => ({
 
-export const useQuizStore = create<CurrentProblemState>()((set, get) => ({
+  problemIndex: 0,
   currentProblem: 1,
-  setCurrentProblem: (index: number) => set(() => ({ currentProblem: index })),
-  currentPercent: () => {
-    const totalProblems = 5
-    return get().currentProblem / totalProblems
-  },
-}))
+  currentPercent: 20,
+  answer: [],
 
-export const useSelectQuizTypeStore = create<SelectQuizTypeState>()((set) => ({
-  selectedQuiz: null,
-  setSelectedQuiz: (quizType: number | null) =>
-    set(() => ({ selectedQuiz: quizType })),
+  setProblemIndex: (index: number) => set({ problemIndex: index }),
+  setCurrentProblem: (problem: number) => set({ currentProblem: problem }),
+  setCurrentPercent: (percent: number) => set({ currentPercent: percent }),
+  addAnswer: (optionWordId: number) =>
+    set((state) => ({ answer: [...state.answer, optionWordId] })),
 }))

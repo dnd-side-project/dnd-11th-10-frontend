@@ -41,6 +41,8 @@ function Quiz() {
       setCurrentPercent(problemIndex);
       router.push(`/quiz/problem/${category}/${currentProblem + 1}`)
     } else {
+      // 임시 alert지정
+      // TODO: 정답 배열 넘기기
       alert('마지막 문제입니다.')
     }
   }
@@ -49,6 +51,7 @@ function Quiz() {
     if (problemIndex > 0) {
       setProblemIndex(problemIndex - 1)
       setCurrentProblem(currentProblem - 1)
+      setCurrentPercent(problemIndex);
       removeAnswer()
       const category = pathname.split('/').at(-2)
       router.push(`/quiz/problem/${category}/${currentProblem - 1}`)

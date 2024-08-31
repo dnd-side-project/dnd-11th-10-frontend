@@ -20,7 +20,7 @@ export default function Tabs() {
       {tabList.map(({ label, path }, idx) => (
         <Link
           key={idx}
-          className={`w-1/2 text-center font-semibold text-xl border-b-4 pb-4 ${curPath === path ? 'text-[#47D3AD] border-b-[#47D3AD]' : 'text-white text-opacity-[0.87] border-b-[#fff] border-opacity-[0.15]'}`}
+          className={`w-1/2 text-center text-h2 border-b-4 pb-4 ${curPath === path ? 'text-[#47D3AD] border-b-[#47D3AD]' : 'text-white text-opacity-[0.87] border-b-[#fff] border-opacity-[0.15]'}`}
           href={`${path}`}
         >
           {label}

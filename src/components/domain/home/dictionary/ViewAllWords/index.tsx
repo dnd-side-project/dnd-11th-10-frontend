@@ -1,3 +1,4 @@
+import RightArrow from '@/components/common/Icons/RightArrow'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -5,28 +6,26 @@ export default function ViewAllWords() {
   return (
     <Link
       href={'/dictionary'}
-      className="flex justify-between items-center p-5 mx-4 rounded-2xl"
-      style={{
-        backgroundImage: 'linear-gradient(117deg, #1FD5BC 4.97%, #358BF2 54%)',
-      }}
+      className="flex justify-between items-center p-5 mx-4 rounded-2xl bg-btn-gradient"
     >
-      {/* 이미지 변경 필요 */}
-      <Image alt="image" src={'/images/logo.svg'} width={75} height={75} />
-      <div className="flex flex-col gap-1">
-        <p className="leading-5 text-onSurface-300">
-          지금까지 등록된 실무 용어{' '}
-          <span className="text-primary-200 font-semibold">100</span>개
-        </p>
-        <p className="text-xl font-semibold leading-6 text-onSurface-300">
-          전체 실무 용어 보러가기
-        </p>
+      <div className="flex gap-4 items-center">
+        <Image
+          alt="image"
+          src={'/images/planet_purple.svg'}
+          width={75}
+          height={75}
+        />
+        <div className="flex flex-col gap-1">
+          <p className="text-body2 text-background">
+            지금까지 등록된 실무 용어{' '}
+            <span className="text-secondary-300 text-h3">
+              100<span className="text-h3 text-background">개</span>
+            </span>
+          </p>
+          <p className="text-h2 text-background">전체 실무 용어 보러가기</p>
+        </div>
       </div>
-      <Image
-        alt="보러가기"
-        src={'/icons/right_arrow.svg'}
-        width={24}
-        height={24}
-      />
+      <RightArrow color="#0E121B" />
     </Link>
   )
 }

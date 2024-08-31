@@ -1,4 +1,4 @@
-import { CategoryProps } from '@/components/shared/CategoryTag'
+import { CategoryType } from './word'
 
 export interface SimpleCommentType {
   id: number
@@ -6,6 +6,16 @@ export interface SimpleCommentType {
   likeCount: number
   createdAt: string
   isLike: boolean
+  wordInfo: {
+    id: number
+    name: string
+    pronunciationInfo: {
+      korean: string
+    }
+  } & CategoryType
+}
+
+export type DetailCommentType = {
   writerInfo: {
     id: number
     nickname: string
@@ -14,13 +24,4 @@ export interface SimpleCommentType {
     jobGroup: string
     experience: string
   }
-  wordInfo: {
-    id: number
-    name: string
-    pronunciationInfo: {
-      korean: string
-    }
-  } & CategoryProps
-}
-
-export type CommentType = {}
+} & SimpleCommentType

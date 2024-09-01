@@ -12,7 +12,7 @@ export default function TodayQuiz({ todaySolvedCnt }: TodayQuizProps) {
     <div className="w-full px-4 text-onSurface-300 ">
       <p className="text-h2 text-onSurface-300 mb-3">
         <span className="text-primary-400">{getTodayDate() + ' '}</span>
-        실무 용어 퀴즈💫
+        용어 퀴즈💫
       </p>
       <div
         className="w-full flex justify-between p-5 rounded-2xl"
@@ -22,7 +22,7 @@ export default function TodayQuiz({ todaySolvedCnt }: TodayQuizProps) {
         }}
       >
         <div className="flex flex-col justify-between text-onSurface-300">
-          <p className="text-h1 mb-2">실무 용어 퀴즈</p>
+          <p className="text-h1 mb-2">용어 퀴즈</p>
           <p className="mb-5">
             오늘&nbsp;
             <span className="text-primary-100 text-h3">{todaySolvedCnt}</span>

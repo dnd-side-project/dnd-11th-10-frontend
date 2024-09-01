@@ -13,7 +13,7 @@ export default function CommunicationStats() {
           <div>
             <p className="text-h2 mb-3">나의 업무 소통 능력치 📊</p>
             <p className="text-onSurface-200">
-              실무 용어 퀴즈로 단어를 학습하고 <br />
+              용어 퀴즈로 단어를 학습하고 <br />
               소통 능력치를 높일 수 있어요.
             </p>
           </div>

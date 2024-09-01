@@ -49,7 +49,7 @@ export default function CommentTextarea({ wordId }: { wordId: string }) {
         placeholder={
           focused
             ? '주제와 무관한 내용 및 악플은 삭제될 수 있어요.'
-            : '실무 용어와 관련된 에피소드나 의견을 공유해 보세요.'
+            : '용어와 관련된 에피소드나 의견을 공유해 보세요.'
         }
         className={value ? 'pt-3 pb-8' : ''}
         value={value}

@@ -29,7 +29,7 @@ export default function WordCard({
   return (
     <Link
       href={`/words/${id}`}
-      className="w-min-[200px] w-max h-[140px] py-5 rounded-xl px-5 text-white bg-gray-800 bg-opacity-outline"
+      className="w-min-[200px] w-max h-[140px] py-5 rounded-xl px-5 text-white bg-gray-800 hover:bg-gray-700 bg-opacity-outline"
     >
       <div className="w-max flex flex-col gap-2">
         <CategoryTag category={category} />

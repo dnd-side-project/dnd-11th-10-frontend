@@ -35,7 +35,7 @@ export default function PopularCommentItem({
     <>
       <Link
         href={`/words/${wordId}`}
-        className="flex flex-col gap-3 justify-between py-6 px-5 bg-gray-800 rounded-2xl"
+        className="flex flex-col gap-3 justify-between py-6 px-5 bg-gray-800 hover:bg-gray-700 rounded-2xl"
       >
         <div className="flex justify-between">
           <div className="flex gap-2">

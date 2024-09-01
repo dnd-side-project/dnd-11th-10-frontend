@@ -44,7 +44,7 @@ export default function BookmarksPage() {
             >
               <p className="text-sub3">
                 <span className="text-primary-400">별 단어</span>라고 생각이
-                드는 실무 용어를 더 추가해보세요.
+                드는 용어를 더 추가해보세요.
               </p>
               <Image
                 alt="dictionary"

@@ -18,7 +18,7 @@ export default function DictionaryPage() {
         <SearchHeader disabled={true} />
         <div className="flex flex-col px-4 gap-5 mt-[90px]">
           <p className="text-h2">
-            등록된 실무 용어
+            등록된 용어
             <span className="text-primary-400 ml-2">{totalCnt}</span>
           </p>
           <div className="flex gap-2">

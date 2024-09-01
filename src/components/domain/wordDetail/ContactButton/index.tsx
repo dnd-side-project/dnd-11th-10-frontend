@@ -9,7 +9,7 @@ export default function ContactButton() {
     >
       <Image alt="image" src={''} width={50} height={50} />
       <div>
-        <p className="text-onSurface-200">실무 용어 관련 문의가 있으신가요?</p>
+        <p className="text-onSurface-200">용어 관련 문의가 있으신가요?</p>
         <p className="text-sub1">문의하러 가기</p>
       </div>
       <Image

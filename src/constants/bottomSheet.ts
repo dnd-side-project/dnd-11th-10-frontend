@@ -14,7 +14,7 @@ export const LOGIN_BOTTOMSHEET: {
   },
   bookmark: {
     title: '별별 저장소에 저장해 보세요!',
-    description: `로그인을 하면 즐겨찾기한 실무 용어를\n별별 저장소에서 만나볼 수 있어요.`,
+    description: `로그인을 하면 즐겨찾기한 용어를\n별별 저장소에서 만나볼 수 있어요.`,
   },
   loginBtn: {
     title:

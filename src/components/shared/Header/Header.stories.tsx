@@ -33,7 +33,7 @@ type Story = StoryObj<typeof Header>
 
 export const Default: Story = {
   args: {
-    title: '실무 용어',
+    title: 'title',
   },
 }
 
@@ -41,11 +41,11 @@ export const HeaderWithRightItem: Story = {
   render: () => (
     <>
       <Header
-        title="실무 용어"
+        title="용어 상세"
         rightItem={<BookmarkButton isMarked={false} markCount={8} wordId={2} />}
       />
       <Header
-        title="실무 용어"
+        title="용어 상세"
         rightItem={<BookmarkButton isMarked={true} markCount={34} wordId={1} />}
       />
     </>

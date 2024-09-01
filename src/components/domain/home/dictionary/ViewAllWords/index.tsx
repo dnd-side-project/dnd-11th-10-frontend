@@ -6,7 +6,7 @@ export default function ViewAllWords() {
   return (
     <Link
       href={'/dictionary'}
-      className="flex justify-between items-center p-5 mx-4 rounded-2xl bg-btn-gradient"
+      className="flex justify-between items-center p-5 mx-4 rounded-2xl box-gradient"
     >
       <div className="flex gap-4 items-center">
         <Image

@@ -1,5 +1,9 @@
-import Image from 'next/image'
+import GoogleLoginButton from '@/components/shared/GoogleLoginButton'
 
 export default function Home() {
-  return <main className='text-white'>SPACE D 🪐 메인</main>
+  return (
+    <main className="text-white">
+      <GoogleLoginButton />
+    </main>
+  )
 }

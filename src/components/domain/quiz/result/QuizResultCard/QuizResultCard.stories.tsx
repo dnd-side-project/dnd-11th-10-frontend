@@ -19,7 +19,7 @@ export const Default: Story = {
         wordId={1}
         isCorrect
         isMarked
-        name={'아젠다(Agenda)'}
+        name="아젠다(Agenda)"
         selectedOptionDescription="완수해야 하는 실무 내용을 사전에 정리해 둔 항목들"
         answerOptionDescription="완수해야 하는 실무 내용을 사전에 정리해 둔 항목들"
       />

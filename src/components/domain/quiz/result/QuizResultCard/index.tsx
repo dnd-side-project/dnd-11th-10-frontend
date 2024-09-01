@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { ExplanationInfo } from '@/types/quizresult'
-import BookmarkButton from '../BookmarkButton'
+import BookmarkButton from '@/components/shared/BookmarkButton'
 
 export default function QuizResultCard({
   wordId,
@@ -21,9 +21,7 @@ export default function QuizResultCard({
             width={20}
             height={20}
           />
-          <p className="ml-2 text-sub1 text-onSurface-300">
-            {name}
-          </p>
+          <p className="ml-2 text-sub1 text-onSurface-300">{name}</p>
         </div>
         <BookmarkButton wordId={wordId} isMarked={isMarked} />
       </div>

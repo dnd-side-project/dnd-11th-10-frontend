@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
+import QuizResultCard from '@/components/domain/quiz/result/QuizResultCard/QuizResultCard'
 
 interface ResultData {
   id: number
@@ -28,6 +29,48 @@ function QuizResult() {
       result: '혜성처럼 나타난 업무 소통 능력자 ☄️',
     },
   ]
+  const quizCardResultData = [
+    {
+      wordId: 1,
+      isCorrect: false,
+      isMarked: false,
+      name: '',
+      selectedOptionDescription: '',
+      answerOptionDescription: '',
+    },
+    {
+      wordId: 17,
+      isCorrect: false,
+      isMarked: false,
+      name: '',
+      selectedOptionDescription: '',
+      answerOptionDescription: '',
+    },
+    {
+      wordId: 24,
+      isCorrect: false,
+      isMarked: false,
+      name: '',
+      selectedOptionDescription: '',
+      answerOptionDescription: '',
+    },
+    {
+      wordId: 32,
+      isCorrect: false,
+      isMarked: false,
+      name: '',
+      selectedOptionDescription: '',
+      answerOptionDescription: '',
+    },
+    {
+      wordId: 41,
+      isCorrect: false,
+      isMarked: false,
+      name: '',
+      selectedOptionDescription: '',
+      answerOptionDescription: '',
+    },
+  ]
   return (
     <div className="px-4 flex flex-col items-center justify-between h-full">
       <Image
@@ -41,6 +84,19 @@ function QuizResult() {
         <p className="text-primary-400">{correctAnswer}</p>
         <p className="text-onSurface-300">개 정답!</p>
       </div>
+      {quizCardResultData.map((card, index) => {
+        return (
+          <QuizResultCard
+            key={index}
+            wordId={card.wordId}
+            isCorrect={card.isCorrect}
+            isMarked={card.isMarked}
+            name={card.name}
+            selectedOptionDescription={card.selectedOptionDescription}
+            answerOptionDescription={card.answerOptionDescription}
+          />
+        )
+      })}
     </div>
   )
 }

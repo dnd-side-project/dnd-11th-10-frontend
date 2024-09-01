@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ExplanationInfo from '.'
-import QuizResultCard from '.'
+import ExplanationInfo from './QuizResultCard'
+import QuizResultCard from './QuizResultCard'
 
 const meta: Meta<typeof ExplanationInfo> = {
   title: 'components/Quiz/QuizResultCard',

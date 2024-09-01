@@ -9,17 +9,17 @@ export const EMPTY_LAYOUT: {
   }
 } = {
   likeComments: {
-    image: 'logo.svg',
+    image: 'like_comment.svg',
     title: '좋아요 한 댓글이 없어요.',
     btnText: '용어 탐색하기',
   },
   myComments: {
-    image: 'logo.svg',
+    image: 'comment.svg',
     title: '작성한 댓글이 없어요.',
     btnText: '용어 탐색하기',
   },
   bookmarks: {
-    image: 'logo.svg',
+    image: 'star.svg',
     title: '저장소가 비어있어요.',
     description: [
       '별 단어가 다 있다고 생각이 드는\n용어를 별별 저장소에 등록해보세요.',
@@ -28,7 +28,7 @@ export const EMPTY_LAYOUT: {
     btnText: '등록하러 가기',
   },
   searchResults: {
-    image: 'logo.svg',
+    image: 'telescope.svg',
     title: '검색된 용어가 없어요.',
   },
 }

@@ -7,7 +7,7 @@ export default function ContactButton() {
       href={'#'}
       className="flex justify-between gap-6 bg-gray-800 rounded-2xl py-5 px-7 mx-4"
     >
-      <Image alt="image" src={''} width={50} height={50} />
+      <Image alt="image" src={'/images/contact.svg'} width={50} height={50} />
       <div>
         <p className="text-onSurface-200">용어 관련 문의가 있으신가요?</p>
         <p className="text-sub1">문의하러 가기</p>

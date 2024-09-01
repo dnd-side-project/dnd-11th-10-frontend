@@ -21,7 +21,9 @@ export default function Bookmarks() {
               {isLoggedIn ? (
                 <>
                   <span className="text-primary-200">별 단어</span>가 다 있다고
-                  생각이 드는 생소한 용어를 등록하고 학습해보세요.
+                  생각이 드는 생소한 용어를
+                  <br />
+                  등록하고 학습해보세요.
                 </>
               ) : (
                 <>
@@ -32,8 +34,12 @@ export default function Bookmarks() {
               )}
             </p>
           </div>
-          {/* <Image alt="image" src={'/images/logo.svg'} width={80} height={80} /> */}
-          <div className="w-[166px] h-[118px] bg-outline" />
+          <Image
+            alt="image"
+            src={'/images/star_ring.svg'}
+            width={166}
+            height={118}
+          />
         </div>
         <Link href={'/bookmarks'}>
           <Button type="black" isFullWidth>

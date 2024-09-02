@@ -38,7 +38,7 @@ export default function Home() {
       setCurrentSlide((prevSlide) =>
         prevSlide === splashData.length - 1 ? 0 : prevSlide + 1,
       )
-    }, 3000)
+    }, 2500)
 
     return () => clearInterval(interval)
   }, [])

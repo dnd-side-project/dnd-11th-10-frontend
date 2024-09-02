@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import CategoryTag from '@/components/shared/CategoryTag'
 import { quizData } from '@/components/domain/quiz/data'
-import { useQuizStore } from '@/lib/store'
+import { useQuizStore } from '@/store/useQuizStore'
 
 function Quiz() {
   const router = useRouter()
@@ -38,7 +38,7 @@ function Quiz() {
     if (problemIndex < quizData.problemInfo.length - 1) {
       setProblemIndex(problemIndex + 1)
       setCurrentProblem(currentProblem + 1)
-      setCurrentPercent(problemIndex);
+      setCurrentPercent(problemIndex)
       router.push(`/quiz/problem/${category}/${currentProblem + 1}`)
     } else {
       // 임시 alert지정
@@ -51,7 +51,7 @@ function Quiz() {
     if (problemIndex > 0) {
       setProblemIndex(problemIndex - 1)
       setCurrentProblem(currentProblem - 1)
-      setCurrentPercent(problemIndex);
+      setCurrentPercent(problemIndex)
       removeAnswer()
       const category = pathname.split('/').at(-2)
       router.push(`/quiz/problem/${category}/${currentProblem - 1}`)

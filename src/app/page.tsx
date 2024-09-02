@@ -44,8 +44,8 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="flex flex-col justify-between">
-      <div className="relative w-full overflow-hidden">
+    <div className="h-full flex flex-col justify-between">
+      <div className="m-auto relative w-full overflow-hidden">
         <div
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -55,17 +55,19 @@ export default function Home() {
               key={slide.id}
               className="w-full flex-shrink-0 flex flex-col items-center justify-center"
             >
+              <p className="text-onSurface-300 text-center text-h1">
+                {slide.text}
+              </p>
               <Image
                 src={slide.img}
                 alt={slide.text}
                 width={398}
                 height={320}
               />
-              <p className="text-white text-center">{slide.text}</p>
             </div>
           ))}
         </div>
-        <div className="absolute bottom-4 flex justify-center w-full">
+        <div className="flex justify-center w-full">
           {splashData.map((_, index) => (
             <Image
               src={`${currentSlide === index ? `/icons/splash_dot.fill.svg` : `/icons/splash_dot_empty.svg`}`}
@@ -78,13 +80,15 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <Link href={`${process.env.NEXT_PUBLIC_BASE_URL}/login/google`}>
-        <GoogleLoginButton />
-      </Link>
-      <div className="mt-[10px]">
-        <Button type={'black'} isFullWidth={true}>
-          비회원으로 시작하기
-        </Button>
+      <div>
+        <Link href={`${process.env.NEXT_PUBLIC_BASE_URL}/login/google`}>
+          <GoogleLoginButton />
+        </Link>
+        <div className="mt-[10px]">
+          <Button type={'black'} isFullWidth={true}>
+            비회원으로 시작하기
+          </Button>
+        </div>
       </div>
     </div>
   )

@@ -34,7 +34,7 @@ export default function GoogleLoginButton() {
 
   return (
     <button
-      className="w-full py-4 px-6 rounded-lg flex justify-center bg-white hover:bg-onSurface-300 cursor-pointer"
+      className="w-full py-4 px-6 rounded-lg flex justify-center bg-white"
       onClick={() => handleLogin()}
     >
       <div className="flex gap-3">

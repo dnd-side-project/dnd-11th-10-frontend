@@ -3,7 +3,7 @@ import { cn } from '@/lib/core'
 
 export type ButtonProps = {
   children: React.ReactNode
-  type: 'default' | 'gradient' | 'black' | 'disabled' | 'light' | 'white'
+  type: 'default' | 'gradient' | 'black' | 'disabled' | 'light'
   width?: number
   isFullWidth?: boolean
   onClick?: React.MouseEventHandler<HTMLButtonElement>
@@ -28,7 +28,6 @@ export default function Button({
             type === 'black',
           'bg-gray-800 text-onSurface-100': type === 'disabled',
           'bg-gray-600 hover:bg-gray-500': type === 'light',
-          'bg-white text-black': type === 'white',
           'w-full': isFullWidth,
         },
       )}

@@ -8,24 +8,24 @@ export function getQuizResult(correctCount: number) {
   switch (correctCount) {
     case 1:
     case 2:
-      imageSrc = '/images/quiz_result_01.svg'
-      altText = 'quiz_result_02.svg'
+      imageSrc = resultData[1].img!
+      altText = resultData[1].altText!
       resultText = resultData[1].result
       break
     case 3:
     case 4:
-      imageSrc = '/images/quiz_result_02.svg'
-      altText = 'quiz_result_03.svg'
+      imageSrc = resultData[2].img!
+      altText = resultData[2].altText!
       resultText = resultData[2].result
       break
     case 5:
-      imageSrc = '/images/quiz_result_03.svg'
-      altText = 'quiz_result_03.svg'
-      resultText = resultData[2].result
+      imageSrc = resultData[3].img!
+      altText = resultData[3].altText!
+      resultText = resultData[3].result
       break
     default:
-      imageSrc = '/images/quiz_result_00.svg'
-      altText = 'quiz_result_01.svg'
+      imageSrc = resultData[0].img!
+      altText = resultData[0].altText!
       resultText = resultData[0].result
       break
   }

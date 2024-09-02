@@ -3,24 +3,34 @@ import { ExplanationInfo, QuizResult } from '@/types/quizresult'
 export interface ResultData {
   id: number
   result: string
+  img: string
+  altText: string
 }
 
 export const resultData: ResultData[] = [
   {
     id: 0,
     result: '아직은 외계어 같은 용어들 👽',
+    img: '/images/quiz_result_00.svg',
+    altText: 'quiz_result_00.svg',
   },
   {
     id: 1,
     result: '업무 소통계의 떠오르는 샛별 ✨',
+    img: '/images/quiz_result_01.svg',
+    altText: 'quiz_result_01.svg',
   },
   {
     id: 2,
     result: '업무 소통 역량 로켓 상승 중 🚀',
+    img: '/images/quiz_result_02.svg',
+    altText: 'quiz_result_02.svg',
   },
   {
     id: 3,
     result: '혜성처럼 나타난 업무 소통 능력자 ☄️',
+    img: '/images/quiz_result_03.svg',
+    altText: 'quiz_result_03.svg',
   },
 ]
 

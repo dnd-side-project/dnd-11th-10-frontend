@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import QuizResultCard from '@/components/domain/quiz/result/QuizResultCard/QuizResultCard'
+import { QuizResultCard } from '@/components/domain/quiz/result'
 import { quizCardResultData } from '@/constants/resultData'
 import { getQuizResult } from '@/utils/getQuizResult'
 

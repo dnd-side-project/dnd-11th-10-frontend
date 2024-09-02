@@ -5,3 +5,19 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* 홈 사전탭 용어 목록 보러가기 컴포넌트를 위한 style 코드 */
+.box-gradient {
+  background-image: linear-gradient(
+    to right,
+    #00ffbb 0%,
+    #21b8da 52%,
+    #00ffbb 100%
+  );
+  transition: 0.5s ease-in-out;
+  background-size: 300% auto;
+}
+
+.box-gradient:hover {
+  background-position: -60% 0%;
+}

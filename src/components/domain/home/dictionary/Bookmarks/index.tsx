@@ -1,3 +1,4 @@
+import Button from '@/components/common/Button'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -20,24 +21,30 @@ export default function Bookmarks() {
               {isLoggedIn ? (
                 <>
                   <span className="text-primary-200">별 단어</span>가 다 있다고
-                  생각이 드는 생소한 실무 용어를 등록하고 학습해보세요.
+                  생각이 드는 생소한 용어를
+                  <br />
+                  등록하고 학습해보세요.
                 </>
               ) : (
                 <>
-                  로그인을 하면 즐겨찾기 한 실무 용어를{' '}
+                  로그인을 하면 즐겨찾기 한 용어를{' '}
                   <span className="text-primary-200">별별 저장소</span>에서
                   만나볼 수 있어요!
                 </>
               )}
             </p>
           </div>
-          <Image alt="image" src={'/images/logo.svg'} width={80} height={80} />
+          <Image
+            alt="image"
+            src={'/images/star_ring.svg'}
+            width={166}
+            height={118}
+          />
         </div>
-        <Link
-          href={'/bookmarks'}
-          className="flex justify-center w-full py-[18px] font-medium bg-background text-onSurface-300 rounded-lg"
-        >
-          별별 저장소 가기
+        <Link href={'/bookmarks'}>
+          <Button type="black" isFullWidth>
+            별별 저장소 가기
+          </Button>
         </Link>
       </div>
     </div>

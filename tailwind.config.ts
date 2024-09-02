@@ -16,7 +16,7 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'btn-gradient': 'linear-gradient(103deg, #00FFBB 0%, #3D7DF3 148.93%)',
         'btn-gradient-hover':
-          'linear-gradient(103deg, rgba(0, 255, 187, 0.80) 0%, rgba(61, 125, 243, 0.80) 148.93%)',
+          'linear-gradient(103deg, rgba(0, 255, 187, 0.90) 0%, rgba(61, 125, 243, 0.90) 148.93%)',
       },
       colors,
       fontFamily: {

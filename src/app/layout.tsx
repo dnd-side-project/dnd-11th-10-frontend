@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import localFont from 'next/font/local'
 import { Noto_Sans_KR } from 'next/font/google'
+import QueryProvider from '@/provider/QueryProvider'
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -33,7 +34,7 @@ export default function RootLayout({
         className={`flex justify-center min-h-dvh ${pretendard.variable} font-pretendard ${notoSansKr.variable}`}
       >
         <div className="p-4 w-full max-w-[430px] bg-background whitespace-pre-wrap">
-          {children}
+          <QueryProvider>{children}</QueryProvider>
         </div>
       </body>
     </html>

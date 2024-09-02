@@ -2,8 +2,8 @@
 import TabFilter from '@/components/domain/dictionary/TabFilter'
 import WordsList from '@/components/domain/dictionary/WordsList'
 import SearchHeader from '@/components/shared/SearchHeader'
+import TopButton from '@/components/shared/TopButton'
 import { FilterType } from '@/types/word'
-import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 
 export default function DictionaryPage() {
@@ -18,7 +18,7 @@ export default function DictionaryPage() {
         <SearchHeader disabled={true} />
         <div className="flex flex-col px-4 gap-5 mt-[90px]">
           <p className="text-h2">
-            등록된 실무 용어
+            등록된 용어
             <span className="text-primary-400 ml-2">{totalCnt}</span>
           </p>
           <div className="flex gap-2">
@@ -33,13 +33,7 @@ export default function DictionaryPage() {
         </div>
         <WordsList category={category} />
       </div>
-      {/* floating button */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-10 right-4 w-14 h-14 p-4 rounded-full bg-gray-800"
-      >
-        <Image alt="up" src={'/icons/arrow_up.svg'} width={24} height={24} />
-      </button>
+      <TopButton />
     </>
   )
 }

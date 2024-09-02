@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <div className="h-full flex flex-col justify-between">
-      <div className="m-auto relative w-full overflow-hidden">
+      <div className="flex flex-col gap-20 m-auto w-full overflow-hidden">
         <div
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -53,7 +53,7 @@ export default function Home() {
           {splashData.map((slide) => (
             <div
               key={slide.id}
-              className="w-full flex-shrink-0 flex flex-col items-center justify-center"
+              className="w-full flex-shrink-0 flex flex-col gap-20 items-center justify-center"
             >
               <p className="text-onSurface-300 text-center text-h1">
                 {slide.text}

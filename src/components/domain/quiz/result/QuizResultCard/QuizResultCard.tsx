@@ -12,7 +12,7 @@ function QuizResultCard({
   answerOptionDescription,
 }: ExplanationInfo) {
   return (
-    <div className="px-3 py-6 w-full bg-gray-800 rounded-xl" key={name}>
+    <div className="mt-3 px-3 py-6 w-full bg-gray-800 rounded-xl" key={name}>
       <div className="mb-3 flex justify-between">
         <div className="flex">
           <Image

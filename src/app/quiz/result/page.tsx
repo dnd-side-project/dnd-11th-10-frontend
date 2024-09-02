@@ -3,25 +3,22 @@
 import React from 'react'
 import Image from 'next/image'
 import QuizResultCard from '@/components/domain/quiz/result/QuizResultCard/QuizResultCard'
-import { quizCardResultData, resultData } from '@/constants/resultData'
+import { quizCardResultData } from '@/constants/resultData'
+import { getQuizResult } from '@/utils/getQuizResult'
 
 function QuizResult() {
-  const correctAnswer = 0
+  const correctCount = quizCardResultData.correctCount
+  const { imageSrc, altText, resultText } = getQuizResult(correctCount)
 
   return (
     <div className="px-4 flex flex-col items-center justify-between h-full">
-      <Image
-        src={`/images/quiz_result_01.svg`}
-        alt={`quiz_result_01.svg`}
-        width={180}
-        height={180}
-      />
-      <p className="text-body1 text-onSurface-300">{resultData[0].result}</p>
+      <Image src={imageSrc} alt={altText} width={180} height={180} />
+      <p className="text-body1 text-onSurface-300">{resultText}</p>
       <div className="flex text-h1">
-        <p className="text-primary-400">{correctAnswer}</p>
+        <p className="text-primary-400">{quizCardResultData.correctCount}</p>
         <p className="text-onSurface-300">개 정답!</p>
       </div>
-      {quizCardResultData.map((card, index) => {
+      {quizCardResultData.explanationInfo.map((card, index) => {
         return (
           <QuizResultCard
             key={index}

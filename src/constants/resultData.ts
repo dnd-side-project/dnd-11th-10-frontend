@@ -1,4 +1,4 @@
-import { ExplanationInfo } from '@/types/quizresult'
+import { ExplanationInfo, QuizResult } from '@/types/quizresult'
 
 export interface ResultData {
   id: number
@@ -24,53 +24,58 @@ export const resultData: ResultData[] = [
   },
 ]
 
-export const quizCardResultData: ExplanationInfo[] = [
-  {
-    wordId: 1,
-    isCorrect: true,
-    isMarked: true,
-    name: '아젠다(Agenda)',
-    selectedOptionDescription:
-      '완수해야 하는 실무 내용을 사전에 정리해 둔 항목들',
-    answerOptionDescription:
-      '완수해야 하는 실무 내용을 사전에 정리해 둔 항목들',
-  },
-  {
-    wordId: 7,
-    isCorrect: true,
-    isMarked: true,
-    name: '목 데이터(Mock Data)',
-    selectedOptionDescription:
-      '실제 데이터를 대신하여 개발이나 테스트에 사용하는 가상의 데이터',
-    answerOptionDescription:
-      '실제 데이터를 대신하여 개발이나 테스트에 사용하는 가상의 데이터',
-  },
-  {
-    wordId: 10,
-    isCorrect: true,
-    isMarked: true,
-    name: '스크럼(Scrum)',
-    selectedOptionDescription:
-      '애자일 방법론 중 하나로, 일정 기간 동안 작은 단위의 작업을 반복하여 진행',
-    answerOptionDescription:
-      '애자일 방법론 중 하나로, 일정 기간 동안 작은 단위의 작업을 반복하여 진행',
-  },
-  {
-    wordId: 13,
-    isCorrect: false,
-    isMarked: false,
-    name: '넛지(Nudge)',
-    selectedOptionDescription:
-      '사용자의 행동을 유도, 관찰된 동작에 대한 간접적인 힌트 제공으로 사용자 경험을 개선하는 개념',
-    answerOptionDescription:
-      '사용자의 행동을 유도, 관찰된 동작에 대한 간접적인 힌트 제공으로 사용자 경험을 개선하는 개념',
-  },
-  {
-    wordId: 18,
-    isCorrect: true,
-    isMarked: true,
-    name: '가시화(Visualization)',
-    selectedOptionDescription: '데이터나 정보를 그래프 등의 시각적 형태로 표현',
-    answerOptionDescription: '데이터나 정보를 그래프 등의 시각적 형태로 표현',
-  },
-]
+export const quizCardResultData: QuizResult = {
+  id: 1,
+  correctCount: 5,
+  explanationInfo: [
+    {
+      wordId: 1,
+      isCorrect: true,
+      isMarked: true,
+      name: '아젠다(Agenda)',
+      selectedOptionDescription:
+        '완수해야 하는 실무 내용을 사전에 정리해 둔 항목들',
+      answerOptionDescription:
+        '완수해야 하는 실무 내용을 사전에 정리해 둔 항목들',
+    },
+    {
+      wordId: 7,
+      isCorrect: true,
+      isMarked: true,
+      name: '목 데이터(Mock Data)',
+      selectedOptionDescription:
+        '실제 데이터를 대신하여 개발이나 테스트에 사용하는 가상의 데이터',
+      answerOptionDescription:
+        '실제 데이터를 대신하여 개발이나 테스트에 사용하는 가상의 데이터',
+    },
+    {
+      wordId: 10,
+      isCorrect: true,
+      isMarked: true,
+      name: '스크럼(Scrum)',
+      selectedOptionDescription:
+        '애자일 방법론 중 하나로, 일정 기간 동안 작은 단위의 작업을 반복하여 진행',
+      answerOptionDescription:
+        '애자일 방법론 중 하나로, 일정 기간 동안 작은 단위의 작업을 반복하여 진행',
+    },
+    {
+      wordId: 13,
+      isCorrect: true,
+      isMarked: true,
+      name: '넛지(Nudge)',
+      selectedOptionDescription:
+        '사용자의 행동을 유도, 관찰된 동작에 대한 간접적인 힌트 제공으로 사용자 경험을 개선하는 개념',
+      answerOptionDescription:
+        '사용자의 행동을 유도, 관찰된 동작에 대한 간접적인 힌트 제공으로 사용자 경험을 개선하는 개념',
+    },
+    {
+      wordId: 18,
+      isCorrect: true,
+      isMarked: true,
+      name: '가시화(Visualization)',
+      selectedOptionDescription:
+        '데이터나 정보를 그래프 등의 시각적 형태로 표현',
+      answerOptionDescription: '데이터나 정보를 그래프 등의 시각적 형태로 표현',
+    },
+  ],
+}

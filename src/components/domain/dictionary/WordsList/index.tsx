@@ -8,9 +8,10 @@ type WordsListProps = {
 export default function WordsList({ words }: WordsListProps) {
   return (
     <>
-      {words.map((word: SimpleWordType, idx: number) => (
-        <WordListItem key={word.id} word={word} />
-      ))}
+      {words &&
+        words.map((word: SimpleWordType, idx: number) => (
+          <WordListItem key={word.id} word={word} />
+        ))}
     </>
   )
 }

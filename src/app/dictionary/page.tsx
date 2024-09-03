@@ -1,18 +1,17 @@
-import { getAllWords } from '@/api/words'
+'use client'
 import TabFilter from '@/components/domain/dictionary/TabFilter'
 import WordsList from '@/components/domain/dictionary/WordsList'
 import SearchHeader from '@/components/shared/SearchHeader'
 import TopButton from '@/components/shared/TopButton'
+import { useGetAllWords } from '@/hooks/word/useGetAllWords'
 import { FilterType, SimpleWordType } from '@/types/word'
+import { useSearchParams } from 'next/navigation'
 
-type Props = {
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export default async function DictionaryPage({ searchParams }: Props) {
+export default function DictionaryPage() {
+  const searchParams = useSearchParams()
+  const category: any = searchParams.get('category') ?? '전체'
   const filters: FilterType[] = ['전체', '개발', '디자인', '비즈니스']
-  const { category = '전체' } = searchParams
-  const words = await getAllWords(category as FilterType)
+  const { words } = useGetAllWords(category as FilterType)
 
   return (
     <>
@@ -21,7 +20,9 @@ export default async function DictionaryPage({ searchParams }: Props) {
         <div className="flex flex-col px-4 gap-5 mt-[90px]">
           <p className="text-h2">
             등록된 용어
-            <span className="text-primary-400 ml-2">{words.length}</span>
+            <span className="text-primary-400 ml-2">
+              {words && words.length}
+            </span>
           </p>
           <div className="flex gap-2">
             {filters.map((filter: FilterType, idx: number) => (

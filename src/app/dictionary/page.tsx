@@ -11,7 +11,7 @@ type Props = {
 
 export default async function DictionaryPage({ searchParams }: Props) {
   const filters: FilterType[] = ['전체', '개발', '디자인', '비즈니스']
-  const { category } = searchParams
+  const { category = '전체' } = searchParams
   const words = await getAllWords(category as FilterType)
 
   return (

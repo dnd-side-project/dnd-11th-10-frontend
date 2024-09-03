@@ -4,6 +4,8 @@ export type CategoryType = {
 
 export type FilterType = '전체' | CategoryType['category']
 
+export type WordSortType = 'name' | 'viewCount'
+
 export type SimpleWordType = {
   id: number
   name: string

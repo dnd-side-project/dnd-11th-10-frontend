@@ -1,14 +1,16 @@
+'use client'
 import Image from 'next/image'
+import { MouseEventHandler } from 'react'
 
 type SortButtonProps = {
-  text: string
-  onClick: () => void
+  sortBy: string
+  onClick: MouseEventHandler<HTMLDivElement>
 }
 
-export default function SortButton({ text, onClick }: SortButtonProps) {
+export default function SortButton({ sortBy, onClick }: SortButtonProps) {
   return (
     <div className="flex items-center cursor-pointer" onClick={onClick}>
-      <p className="text-body3">{text}</p>
+      <p className="text-body3">{sortBy}</p>
       <Image alt="open" src={'/icons/arrow_down.svg'} width={24} height={24} />
     </div>
   )

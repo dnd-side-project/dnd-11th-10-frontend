@@ -1,6 +1,6 @@
 export type SuccessResponse<T> = {
   code: string
-  data: T
+  [key: string]: T | string
 }
 
 export type FailResponse<T> = {

@@ -11,7 +11,7 @@ type WordListItemProps = {
 }
 
 export default function WordListItem({
-  word: { id, category, name, meaning, viewCnt, commentCnt },
+  word: { id, category, name, meaning, viewCount, commentCount },
   showBookmarkBtn = false,
   isMarked,
 }: WordListItemProps) {
@@ -38,7 +38,7 @@ export default function WordListItem({
         <div className="flex gap-6 text-onSurface-200 mt-3 text-body3">
           <div className="flex gap-1">
             <Image alt="view" src={'/icons/view.svg'} width={16} height={16} />
-            <p>{viewCnt}</p>
+            <p>{viewCount}</p>
           </div>
           <div className="flex gap-1">
             <Image
@@ -47,7 +47,7 @@ export default function WordListItem({
               width={16}
               height={16}
             />
-            <p>{commentCnt}</p>
+            <p>{commentCount}</p>
           </div>
         </div>
       </Link>

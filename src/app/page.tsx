@@ -22,7 +22,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="h-full flex flex-col justify-between">
+    <div className="p-4 h-full flex flex-col justify-between">
       <div className="flex flex-col gap-20 m-auto w-full overflow-hidden">
         <div
           className="flex transition-transform duration-700 ease-in-out"

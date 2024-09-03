@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Button from '@/components/common/Button'
 import GoogleLoginButton from '@/components/shared/GoogleLoginButton'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -64,13 +63,12 @@ export default function Home() {
           <GoogleLoginButton />
         </Link>
         <div className="mt-[10px]">
-          <Button
-            type={'black'}
-            isFullWidth={true}
+          <button
+            className="w-full py-4 px-6 text-onSurface-300 rounded-lg font-medium leading-6 hover:bg-gray-800"
             onClick={() => router.push('/home/dictionary')}
           >
             비회원으로 시작하기
-          </Button>
+          </button>
         </div>
       </div>
     </div>

@@ -1,12 +1,11 @@
 import WordListItem from '@/components/shared/WordListItem'
-import { words } from '@/components/shared/WordListItem/data'
-import { FilterType, SimpleWordType } from '@/types/word'
+import { SimpleWordType } from '@/types/word'
 
 type WordsListProps = {
-  category: FilterType
+  words: SimpleWordType[]
 }
 
-export default function WordsList({ category }: WordsListProps) {
+export default function WordsList({ words }: WordsListProps) {
   return (
     <>
       {words.map((word: SimpleWordType, idx: number) => (

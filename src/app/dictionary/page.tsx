@@ -1,16 +1,18 @@
-'use client'
+import { getAllWords } from '@/api/words'
 import TabFilter from '@/components/domain/dictionary/TabFilter'
 import WordsList from '@/components/domain/dictionary/WordsList'
 import SearchHeader from '@/components/shared/SearchHeader'
 import TopButton from '@/components/shared/TopButton'
-import { FilterType } from '@/types/word'
-import { useSearchParams } from 'next/navigation'
+import { FilterType, SimpleWordType } from '@/types/word'
 
-export default function DictionaryPage() {
-  const searchParams = useSearchParams()
-  const totalCnt = 100
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export default async function DictionaryPage({ searchParams }: Props) {
   const filters: FilterType[] = ['전체', '개발', '디자인', '비즈니스']
-  const category: any = searchParams.get('category') ?? '전체'
+  const { category } = searchParams
+  const words = await getAllWords(category as FilterType)
 
   return (
     <>
@@ -19,7 +21,7 @@ export default function DictionaryPage() {
         <div className="flex flex-col px-4 gap-5 mt-[90px]">
           <p className="text-h2">
             등록된 용어
-            <span className="text-primary-400 ml-2">{totalCnt}</span>
+            <span className="text-primary-400 ml-2">{words.length}</span>
           </p>
           <div className="flex gap-2">
             {filters.map((filter: FilterType, idx: number) => (
@@ -31,7 +33,7 @@ export default function DictionaryPage() {
             ))}
           </div>
         </div>
-        <WordsList category={category} />
+        <WordsList words={words as SimpleWordType[]} />
       </div>
       <TopButton />
     </>

@@ -1,6 +1,6 @@
 import { get } from '@/lib/axios'
 import { SuccessResponse } from '@/types/response'
-import { FilterType, SimpleWordType } from '@/types/word'
+import { DetailWordType, FilterType, SimpleWordType } from '@/types/word'
 
 export async function getAllWords(
   category: FilterType,
@@ -10,4 +10,9 @@ export async function getAllWords(
     `/words?category=${category}&sortBy=${sortBy}`,
   )
   return res.words
+}
+
+export async function getWordDetailById(wordId: number) {
+  const res = await get<DetailWordType>(`/words/${wordId}`)
+  return res
 }

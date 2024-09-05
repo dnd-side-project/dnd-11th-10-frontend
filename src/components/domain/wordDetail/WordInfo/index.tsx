@@ -1,21 +1,23 @@
+'use client'
 import HighlightText from '@/components/common/HighlightText'
 import HorizontalScrollArea from '@/components/common/HorizontalScrollArea'
 import CategoryTag from '@/components/shared/CategoryTag'
-import { DetailWordType } from '@/types/word'
+import { useGetWordDetail } from '@/hooks/word/useGetWordDetail'
 import { getFormattedDate } from '@/utils/date'
 import Image from 'next/image'
 
-export default function WordInfo({ word }: { word: DetailWordType }) {
+export default function WordInfo({ wordId }: { wordId: number }) {
+  const { word, viewCount } = useGetWordDetail(wordId)
+
+  if (!word) return
   const {
-    id,
     name,
     pronunciationInfo,
     meaning,
     category,
-    viewCount,
     commentCount,
     isMarked,
-    markedCount,
+    bookmarkCount,
     example,
     source,
     createdAt,
@@ -24,7 +26,7 @@ export default function WordInfo({ word }: { word: DetailWordType }) {
 
   return (
     <>
-      {/* 용어 상세 기본 정보 */}
+      {/* 용어 상세 기본 정보*/}
       <div className="py-7 border-b-[1px] border-outline px-4">
         <CategoryTag category={category} />
         <div className="flex flex-col gap-1 mt-3">
@@ -36,14 +38,14 @@ export default function WordInfo({ word }: { word: DetailWordType }) {
           지금까지 <span className="text-primary-400">{viewCount}</span>명이
           조회했어요.
         </p>
-        <div className="flex justify-between text-caption text-onSurface-200 mt-5">
+        {/* <div className="flex justify-between text-caption text-onSurface-200 mt-5">
           <p>{`출처: ${source}`}</p>
           <p>{`등록: ${getFormattedDate(createdAt.toString())}`}</p>
-        </div>
+        </div> */}
       </div>
       {/* 용어 예문 */}
       <div className="w-full py-10">
-        <HorizontalScrollArea title="예문" titleSize="small" scrollDivisor={1}>
+        {/* <HorizontalScrollArea title="예문" titleSize="small" scrollDivisor={1}>
           {example.map((example, idx) => (
             <div key={idx} className="min-w-fit">
               <div className="max-w-[calc(100%-9px)] h-fit relative bg-gray-200 text-background text-sub2 py-6 px-5 rounded-2xl">
@@ -62,7 +64,7 @@ export default function WordInfo({ word }: { word: DetailWordType }) {
               </div>
             </div>
           ))}
-        </HorizontalScrollArea>
+        </HorizontalScrollArea> */}
       </div>
     </>
   )

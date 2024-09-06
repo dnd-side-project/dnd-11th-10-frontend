@@ -2,7 +2,6 @@
 
 import GoogleLoginButton from '@/components/shared/GoogleLoginButton'
 import Image from 'next/image'
-import Link from 'next/link'
 import { splashData } from '@/constants/splashData'
 import { useRouter } from 'next/navigation'
 import useSlide from '@/hooks/useSlide'
@@ -49,9 +48,7 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <Link href={`${process.env.NEXT_PUBLIC_BASE_URL}/login/google`}>
-          <GoogleLoginButton />
-        </Link>
+        <GoogleLoginButton />
         <div className="mt-[10px]">
           <button
             className="w-full py-4 px-6 text-onSurface-300 rounded-lg font-medium leading-6 hover:bg-gray-800"

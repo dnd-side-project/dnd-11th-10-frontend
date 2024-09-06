@@ -1,25 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import GoogleLoginButton from '@/components/shared/GoogleLoginButton'
 import Image from 'next/image'
 import Link from 'next/link'
 import { splashData } from '@/constants/splashData'
 import { useRouter } from 'next/navigation'
+import useSlide from '@/hooks/useSlide'
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0)
   const router = useRouter()
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) =>
-        prevSlide === splashData.length - 1 ? 0 : prevSlide + 1,
-      )
-    }, 2500)
-
-    return () => clearInterval(interval)
-  }, [])
+  const { currentSlide } = useSlide()
 
   return (
     <div className="p-4 h-full flex flex-col justify-between">

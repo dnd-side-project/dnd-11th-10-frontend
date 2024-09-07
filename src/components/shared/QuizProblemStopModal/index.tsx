@@ -28,7 +28,9 @@ export default function QuizProblemStopModal({
       </div>
 
       <div className="flex justify-between">
-        <Button type={'light'}>계속할게요</Button>
+        <Button type={'light'} onClick={() => !isModalOpen}>
+          계속할게요
+        </Button>
         <Button type={'gradient'}>그만할게요</Button>
       </div>
     </Modal>

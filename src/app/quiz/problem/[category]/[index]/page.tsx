@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import CategoryTag from '@/components/shared/CategoryTag'
 import { quizData } from '@/components/domain/quiz/data'
 import { useQuizStore } from '@/store/useQuizStore'
+import HighlightText from '@/components/common/HighlightText'
 
 function Quiz() {
   const router = useRouter()
@@ -75,7 +76,11 @@ function Quiz() {
         </p>
 
         <div className="relative mx-auto px-[calc(8px+12.427px)] py-6 w-[calc(360px+12.427px)] bg-gray-200 rounded-xl text-background text-[18px] text-center break-keep">
-          <p>{`"${problem.question}"`}</p>
+          <HighlightText
+            text={`"${problem.question}"`}
+            target={problem.name}
+            variant={problem.category}
+          />
           <Image
             src={'/images/speach_bubble_tail.svg'}
             alt="speach_bubble_tail.svg"

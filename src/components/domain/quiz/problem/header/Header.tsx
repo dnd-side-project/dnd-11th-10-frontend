@@ -16,6 +16,7 @@ function Header() {
       <Image
         src={'/icons/cross.svg'}
         alt="cross.svg"
+        // TODO: modal 창 추가
         onClick={() => router.push('/home/dictionary')}
         className="cursor-pointer"
         width={24}

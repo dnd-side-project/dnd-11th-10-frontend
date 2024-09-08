@@ -3,6 +3,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import Button from '@/components/common/Button'
 
 export default function QuizStart() {
   const router = useRouter()
@@ -17,12 +18,13 @@ export default function QuizStart() {
         width={430}
         height={380}
       />
-      <button
-        className="px-6 w-full h-14 bg-gradient-to-r from-gradient-201 to-gradient-202 to-95% rounded-md text-background hover:opacity-80"
+      <Button
+        type="gradient"
+        isFullWidth
         onClick={() => router.push('/quiz/categorychoice')}
       >
         시작하기
-      </button>
+      </Button>
     </div>
   )
 }

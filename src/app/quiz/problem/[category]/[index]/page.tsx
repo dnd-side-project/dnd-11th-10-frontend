@@ -7,6 +7,7 @@ import CategoryTag from '@/components/shared/CategoryTag'
 import { quizData } from '@/components/domain/quiz/data'
 import { useQuizStore } from '@/store/useQuizStore'
 import HighlightText from '@/components/common/HighlightText'
+import Button from '@/components/common/Button'
 
 function Quiz() {
   const router = useRouter()
@@ -107,23 +108,17 @@ function Quiz() {
         ))}
       </ul>
       <div className="flex justify-between">
-        <button
-          className="px-6 py-4 w-[116px] bg-gray-700 rounded-md text-onSurface-300"
-          onClick={handleBack}
-        >
+        <Button isFullWidth width={116} type="default" onClick={handleBack}>
           이전
-        </button>
-        <button
-          disabled={!selectedOptionId}
-          className={`px-6 py-4 w-[270px] rounded-md ${
-            selectedOptionId
-              ? 'bg-gradient-to-r from-gradient-201 to-gradient-202 to-95% text-background'
-              : 'bg-gray-800 text-onSurface-100'
-          }`}
+        </Button>
+        <Button
+          isFullWidth
+          width={270}
+          type={selectedOptionId ? 'gradient' : 'disabled'}
           onClick={handleNext}
         >
           다음
-        </button>
+        </Button>
       </div>
     </div>
   )

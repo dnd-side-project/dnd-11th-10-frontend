@@ -16,7 +16,7 @@ export default function QuizProblemStopModal({
 
   return (
     <Modal>
-      <div className="flex flex-col text-center">
+      <div className="flex flex-col text-center gap-1">
         <p className="text-h2">퀴즈를 그만두시겠어요?</p>
         <div className="flex m-auto text-h2">
           <p className="text-primary-400">{totalProblem - currentProblem}</p>
@@ -27,11 +27,13 @@ export default function QuizProblemStopModal({
         </p>
       </div>
 
-      <div className="flex justify-between">
-        <Button type={'light'} onClick={() => !isModalOpen}>
+      <div className="mt-5 flex justify-between">
+        <Button width={152} type={'light'} onClick={() => !isModalOpen}>
           계속할게요
         </Button>
-        <Button type={'gradient'}>그만할게요</Button>
+        <Button width={152} type={'gradient'}>
+          그만할게요
+        </Button>
       </div>
     </Modal>
   )

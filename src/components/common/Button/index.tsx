@@ -25,7 +25,7 @@ export default function Button({
           'bg-btn-gradient hover:bg-btn-gradient-hover text-background':
             type === 'gradient',
           'bg-background': type === 'black',
-          'bg-gray-800 text-onSurface-100': type === 'disabled',
+          'bg-gray-800 text-onSurface-100 cursor-default': type === 'disabled',
           'bg-gray-600 hover:bg-gray-500': type === 'light',
           'w-full': isFullWidth,
         },

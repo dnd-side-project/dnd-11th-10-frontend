@@ -13,16 +13,16 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="w-full h-full bg-gray-100">
+    <div className="w-full h-full bg-gray-100 text-background">
       <nav className="flex gap-8 justify-around py-4 bg-white shadow-sm items-center">
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           <Image
             alt="logo.svg"
             src={'/images/logo.svg'}
             width={32}
             height={32}
           />
-          <p className="text-h1">Space D</p>
+          <p className="text-h2">Space D</p>
         </div>
         <div className="flex gap-8">
           {MENUS.map((menu, idx) => (

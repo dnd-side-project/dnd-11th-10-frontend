@@ -8,7 +8,7 @@ const MENUS = [
 export default function AdminMagePage() {
   return (
     <>
-      <div className="h-full flex flex-col gap-6 justify-center items-center mx-6">
+      <div className="w-full h-full flex flex-col gap-6 justify-center items-center mx-6">
         {MENUS.map((menu, idx) => (
           <Link
             key={idx}

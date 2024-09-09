@@ -72,11 +72,11 @@ function Quiz() {
         <div className="flex justify-center">
           <CategoryTag category={problem.category} />
         </div>
-        <p className="my-6 text-onSurface-300 text-xl text-center break-keep">
+        <p className="my-6 text-onSurface-300 text-h1 text-center break-keep">
           아래 예문 속 ’{problem.name}’의 의미는 무엇일까요?
         </p>
 
-        <div className="relative mx-auto px-[calc(8px+12.427px)] py-6 w-[calc(360px+12.427px)] bg-gray-200 rounded-xl text-background text-[18px] text-center break-keep">
+        <div className="relative mx-auto px-[calc(8px+12.427px)] py-6 w-[calc(360px+12.427px)] bg-gray-200 rounded-xl text-background text-sub1 text-center break-keep">
           <HighlightText
             text={`"${problem.question}"`}
             target={problem.name}
@@ -96,7 +96,7 @@ function Quiz() {
         {problem.optionInfo.map((option) => (
           <li key={option.optionWordId} className="mb-3 text-onSurface-300">
             <div
-              className={`p-5 bg-gray-800 rounded-xl text-center text-[1rem] break-keep ${
+              className={`p-5 bg-gray-800 rounded-xl text-center text-body2 break-keep ${
                 selectedOptionId === option.optionWordId &&
                 'bg-primary-0 border-[1px] border-primary-400'
               }`}

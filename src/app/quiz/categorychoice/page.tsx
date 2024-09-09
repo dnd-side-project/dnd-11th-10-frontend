@@ -16,7 +16,7 @@ function QuizTypeChoice() {
 
   return (
     <div className="px-4 flex flex-col justify-between h-full">
-      <p className="text-center text-onSurface-300 text-xl">
+      <p className="text-center text-onSurface-300 text-h1">
         어떤 분야를 학습하시겠어요?
       </p>
 

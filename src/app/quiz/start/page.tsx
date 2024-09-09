@@ -9,7 +9,7 @@ export default function QuizStart() {
   const router = useRouter()
   return (
     <div className="px-4 flex flex-col justify-between h-full">
-      <p className="text-center text-onSurface-300 text-xl">
+      <p className="text-center text-onSurface-300 text-h1">
         업무 소통 능력을 상승하러 가볼까요?
       </p>
       <Image

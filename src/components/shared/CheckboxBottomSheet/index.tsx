@@ -7,7 +7,7 @@ import Checkbox from '@/components/common/Checkbox'
 
 type BottomSheetProps = {
   isOpen: boolean
-  type: 'report'
+  type: 'commentReport'
   targetId?: number
 }
 
@@ -16,7 +16,7 @@ export default function CheckboxBottomSheet({
   type,
   targetId,
 }: BottomSheetProps) {
-  const { closeBottomSheet } = useUIStore()
+  const { closeBottomSheet, showSnackbar } = useUIStore()
   const [checked, setChecked] = useState(new Set<number>())
   const { title, description, options, btnText } = CHECKBOX_MENUS[type]
 
@@ -34,6 +34,7 @@ export default function CheckboxBottomSheet({
     console.log('checked list 전송', targetId, checked)
     setChecked(new Set()) // checked 리스트 초기화
     closeBottomSheet()
+    showSnackbar(type)
   }
 
   if (!isOpen) return null

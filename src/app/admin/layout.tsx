@@ -4,7 +4,7 @@ import Link from 'next/link'
 const MENUS = [
   { name: '용어 목록', path: '/admin/words' },
   { name: '용어 등록', path: '/admin/words/add' },
-  { name: '신고 댓글 관리', path: '/admin/reports' },
+  { name: '신고 댓글', path: '/admin/reports' },
 ]
 
 export default function AdminLayout({
@@ -14,8 +14,8 @@ export default function AdminLayout({
 }) {
   return (
     <div className="w-full h-full bg-gray-100 text-background">
-      <nav className="flex gap-8 justify-around py-4 bg-white shadow-sm items-center">
-        <div className="flex gap-2 items-center">
+      <nav className="flex gap-8 max-lg:gap-2 justify-around py-4 bg-white shadow-sm items-center shrink-0">
+        <div className="flex gap-2 items-center max-lg:hidden">
           <Image
             alt="logo.svg"
             src={'/images/logo.svg'}
@@ -24,7 +24,7 @@ export default function AdminLayout({
           />
           <p className="text-h2">Space D</p>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 max-lg:gap-3">
           {MENUS.map((menu, idx) => (
             <Link key={idx} href={menu.path} className="hover:text-h3">
               {menu.name}

@@ -58,7 +58,7 @@ export default function AddWordPage() {
 
   return (
     <>
-      <div className="mx-72 mt-8">
+      <div className="mx-72 mt-8 max-lg:mx-4">
         <p className="text-h2 mb-6">용어 등록</p>
         <div className="flex flex-col gap-6">
           <label>

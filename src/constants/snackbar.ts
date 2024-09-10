@@ -1,4 +1,4 @@
-type SNACKBAR_TYPE =
+export type SNACKBAR_TYPE =
   | 'commentAdd'
   | 'commentEdit'
   | 'commentDelete'

@@ -3,17 +3,8 @@ import Button from '@/components/common/Button'
 import Input from '@/components/common/Input'
 import RadioButton from '@/components/common/RadioButton'
 import Textarea from '@/components/common/Textarea'
+import { AddWordType } from '@/types/word'
 import { useState } from 'react'
-
-type AdminWordType = {
-  name: string
-  meaning: string
-  pronunciation: {
-    english: string
-  }
-  category: string
-  example: string
-}
 
 const CATEGORY = [
   { id: 0, name: '비즈니스' },
@@ -22,11 +13,11 @@ const CATEGORY = [
 ]
 
 export default function AddWordPage() {
-  const [word, setWord] = useState<AdminWordType>({
+  const [word, setWord] = useState<AddWordType>({
     name: '',
     meaning: '',
-    pronunciation: { english: '' },
-    category: '',
+    pronunciationInfo: { english: '' },
+    category: '비즈니스',
     example: '',
   })
   const handleChange = (
@@ -36,7 +27,7 @@ export default function AddWordPage() {
     if (type === 'radio') {
       const category = CATEGORY.find((item) => item.id === parseInt(value))
       const categoryName = category ? category.name : ''
-      setWord((prev) => ({
+      setWord((prev: any) => ({
         ...prev,
         category: categoryName,
       }))
@@ -48,12 +39,11 @@ export default function AddWordPage() {
     console.log(word)
   }
   function hasEmptyField() {
-    const { name, meaning, pronunciation, category, example } = word
+    const { name, meaning, pronunciationInfo, category, example } = word
     return (
       name === '' ||
       meaning === '' ||
-      pronunciation.english === '' ||
-      category === '' ||
+      pronunciationInfo.english === '' ||
       example === ''
     )
   }
@@ -93,7 +83,7 @@ export default function AddWordPage() {
             예문{' '}
             <Textarea
               name="example"
-              value={word.example ?? ''}
+              value={(word.example as string) ?? ''}
               onChange={handleChange}
               className="bg-white"
             />
@@ -103,7 +93,7 @@ export default function AddWordPage() {
             발음
             <Input
               name="pronunciation"
-              value={word.pronunciation.english ?? ''}
+              value={word.pronunciationInfo.english ?? ''}
               onChange={handleChange}
             />
           </label>

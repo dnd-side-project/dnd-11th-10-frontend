@@ -31,15 +31,15 @@ export default function AddWordPage() {
         ...prev,
         category: categoryName,
       }))
-    } else if (name === 'pronunciation') {
-      setWord((prev) => ({ ...prev, pronunciation: { english: value } }))
+    } else if (name === 'pronunciationInfo') {
+      setWord((prev) => ({ ...prev, pronunciationInfo: { english: value } }))
     } else {
       setWord((prev) => ({ ...prev, [name]: value }))
     }
     console.log(word)
   }
   function hasEmptyField() {
-    const { name, meaning, pronunciationInfo, category, example } = word
+    const { name, meaning, pronunciationInfo, example } = word
     return (
       name === '' ||
       meaning === '' ||
@@ -92,7 +92,7 @@ export default function AddWordPage() {
           <label>
             발음
             <Input
-              name="pronunciation"
+              name="pronunciationInfo"
               value={word.pronunciationInfo.english ?? ''}
               onChange={handleChange}
             />

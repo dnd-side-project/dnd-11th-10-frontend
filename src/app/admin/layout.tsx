@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const MENUS = [
   { name: '용어 목록', path: '/admin/words' },
-  { name: '용어 등록', path: '/admin/word/add' },
+  { name: '용어 등록', path: '/admin/words/add' },
   { name: '신고 댓글 관리', path: '/admin/reports' },
 ]
 

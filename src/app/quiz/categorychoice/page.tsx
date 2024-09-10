@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { CategoryCard } from '@/components/domain/quiz/typechoice'
 import { quizCategory } from '@/components/domain/quiz/typechoice/categoryCard/data'
+import Button from '@/components/common/Button'
 
 function QuizTypeChoice() {
   const router = useRouter()
@@ -15,7 +16,7 @@ function QuizTypeChoice() {
 
   return (
     <div className="px-4 flex flex-col justify-between h-full">
-      <p className="text-center text-onSurface-300 text-xl">
+      <p className="text-center text-onSurface-300 text-h1">
         어떤 분야를 학습하시겠어요?
       </p>
 
@@ -34,23 +35,22 @@ function QuizTypeChoice() {
         })}
       </div>
       <div className="flex justify-between">
-        <button
-          className="px-6 py-4 w-[116px] bg-gray-700 rounded-md text-onSurface-300"
+        <Button
+          isFullWidth
+          width={116}
+          type="default"
           onClick={() => router.back()}
         >
           이전
-        </button>
-        <button
-          disabled={!selectedQuiz}
-          className={`px-6 py-4 w-[270px] rounded-md ${
-            selectedQuiz
-              ? 'bg-gradient-to-r from-gradient-201 to-gradient-202 to-95% text-background'
-              : 'bg-gray-800 text-onSurface-100'
-          }`}
+        </Button>
+        <Button
+          isFullWidth
+          width={270}
+          type={selectedQuiz ? 'gradient' : 'disabled'}
           onClick={() => router.push(`/quiz/problem/${selectedQuiz}/1`)}
         >
           다음
-        </button>
+        </Button>
       </div>
     </div>
   )

@@ -24,11 +24,11 @@ function CategoryCard({ isSelected, quiz, handleClick, index }: Props) {
         height={63}
       />
       <div className="mr-24">
-        <div className="mt-2 flex text-xl">
+        <div className="mt-2 flex text-h2">
           <p className={`${quiz.color}`}>{quiz.name}&nbsp;</p>
           <p>용어</p>
         </div>
-        <div className="flex">
+        <div className="flex text-body2">
           오늘&nbsp;
           <p className={`${quiz.color}`}>{quiz.participantCount}</p>
           명이 참여 중

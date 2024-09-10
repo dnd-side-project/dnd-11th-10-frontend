@@ -1,9 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
 import { ExplanationInfo } from '@/types/quizresult'
-import BookmarkButton from '../BookmarkButton'
+import BookmarkButton from '@/components/shared/BookmarkButton'
 
-export default function QuizResultCard({
+function QuizResultCard({
   wordId,
   isCorrect,
   isMarked,
@@ -12,7 +12,7 @@ export default function QuizResultCard({
   answerOptionDescription,
 }: ExplanationInfo) {
   return (
-    <div className="px-3 py-6 w-full bg-gray-800 rounded-xl" key={name}>
+    <div className="mt-3 px-3 py-6 w-full bg-gray-800 rounded-xl" key={name}>
       <div className="mb-3 flex justify-between">
         <div className="flex">
           <Image
@@ -21,9 +21,7 @@ export default function QuizResultCard({
             width={20}
             height={20}
           />
-          <p className="ml-2 text-sub1 text-onSurface-300">
-            {name}
-          </p>
+          <p className="ml-2 text-sub1 text-onSurface-300">{name}</p>
         </div>
         <BookmarkButton wordId={wordId} isMarked={isMarked} />
       </div>
@@ -38,3 +36,5 @@ export default function QuizResultCard({
     </div>
   )
 }
+
+export default QuizResultCard

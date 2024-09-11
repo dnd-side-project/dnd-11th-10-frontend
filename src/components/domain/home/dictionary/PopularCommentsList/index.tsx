@@ -39,7 +39,7 @@ export default function PopularCommentsList({
       />
       <CheckboxBottomSheet
         isOpen={bottomSheetType === 'checkbox'}
-        type="report"
+        type="commentReport"
         targetId={targetId as number}
       />
     </>

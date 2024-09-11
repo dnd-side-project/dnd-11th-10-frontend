@@ -4,11 +4,12 @@ import useUIStore from '@/store/useUIStore'
 
 // CommentBottom 각 목록마다 다른 액션 처리하기 위한 커스텀 훅
 export default function useBottomSheetAction() {
-  const { openBottomSheet, closeBottomSheet } = useUIStore()
+  const { openBottomSheet, closeBottomSheet, showSnackbar } = useUIStore()
   const editComment = () => {
     // 댓글 수정 UI 상태 조작 필요
     alert('댓글 수정')
     closeBottomSheet()
+    showSnackbar('commentEdit')
   }
 
   const deleteComment = () => {

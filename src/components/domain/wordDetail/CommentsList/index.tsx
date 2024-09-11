@@ -10,6 +10,7 @@ import CommentBottomSheet from '@/components/shared/CommentBottomSheet'
 import CommentInput from '../CommentTextarea'
 import { usePathname } from 'next/navigation'
 import CheckboxBottomSheet from '@/components/shared/CheckboxBottomSheet'
+import Snackbar from '@/components/shared/Snackbar'
 
 export default function CommentsList() {
   const pathname = usePathname()
@@ -41,7 +42,7 @@ export default function CommentsList() {
             />
           </div>
           <SortButton
-            text={sortType}
+            sortBy={sortType}
             onClick={() => openBottomSheet('filter')}
           />
         </div>
@@ -76,7 +77,6 @@ export default function CommentsList() {
       <FilterBottomSheet
         isOpen={bottomSheetType === 'filter'}
         selected={sortType}
-        setSelected={(menu) => setSortType(menu)}
         target="comments"
       />
       <CommentBottomSheet
@@ -87,9 +87,10 @@ export default function CommentsList() {
       />
       <CheckboxBottomSheet
         isOpen={bottomSheetType === 'checkbox'}
-        type="report"
+        type="commentReport"
         targetId={targetId as number}
       />
+      <Snackbar />
     </>
   )
 }

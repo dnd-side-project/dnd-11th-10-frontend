@@ -12,19 +12,9 @@ export const wordData: DetailWordType = {
   viewCount: 23,
   commentCount: 9,
   isMarked: true,
-  markedCount: 11,
-  example: [
-    {
-      text: '(1)우리는 애자일(Agile)한 조직으로 변모하기 위해 노력해왔습니다. 1년 동안 모두가 힘써주신 덕분에 높은 성과를 낼 수 있었어요.',
-      source: '잡플래닛1',
-      createdAt: new Date('2024-08-15T12:12:12'),
-    },
-    {
-      text: '(2)우리는 애자일(Agile)한 조직으로 변모하기 위해 노력해왔습니다. 1년 동안 모두가 힘써주신 덕분에 높은 성과를 낼 수 있었어요.',
-      source: '잡플래닛2',
-      createdAt: new Date('2024-08-15T12:12:12'),
-    },
-  ],
+  bookmarkCount: 11,
+  example:
+    '우리는 애자일(Agile)한 조직으로 변모하기 위해 노력해왔습니다. 1년 동안 모두가 힘써주신 덕분에 높은 성과를 낼 수 있었어요.',
   source: '잡플래닛',
   createdAt: new Date('2024-08-15T12:12:12'),
   updatedAt: new Date('2024-08-16T12:12:12'),

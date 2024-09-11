@@ -21,7 +21,7 @@ export default function PopularCommentItem({
     isLike,
     likeCount,
     createdAt,
-    wordInfo: { id: wordId, name, category, pronunciationInfo },
+    wordInfo: { id: wordId, name, category },
   } = comment
   const { openBottomSheet } = useUIStore()
 
@@ -40,7 +40,6 @@ export default function PopularCommentItem({
         <div className="flex justify-between">
           <div className="flex gap-2">
             <WordTag text={name} />
-            <WordTag text={pronunciationInfo.korean} />
             <CategoryTag category={category} />
           </div>
           <Image

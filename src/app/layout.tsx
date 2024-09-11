@@ -3,6 +3,7 @@ import './globals.css'
 import localFont from 'next/font/local'
 import { Noto_Sans_KR } from 'next/font/google'
 import QueryProvider from '@/provider/QueryProvider'
+import { headers } from 'next/headers'
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -28,12 +29,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const heads = headers()
+  const pathname = heads.get('x-current-path')
+  const isAdminPage = pathname?.startsWith('/admin')
+
   return (
     <html lang="en">
       <body
         className={`flex justify-center min-h-dvh ${pretendard.variable} font-pretendard ${notoSansKr.variable}`}
       >
-        <div className="p-4 w-full max-w-[430px] bg-background whitespace-pre-wrap">
+        <div
+          className={`w-full ${isAdminPage ? '' : 'max-w-[430px]'} bg-black whitespace-pre-wrap`}
+        >
           <QueryProvider>{children}</QueryProvider>
         </div>
       </body>

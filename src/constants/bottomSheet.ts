@@ -38,7 +38,7 @@ export const COMMENT_MENUS = {
 
 // CheckboxBottomSheet에서 표기할 메뉴 목록
 export const CHECKBOX_MENUS = {
-  report: {
+  commentReport: {
     title: '신고하기',
     description: '중복 선택 가능',
     options: [

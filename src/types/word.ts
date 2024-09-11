@@ -20,8 +20,17 @@ export type DetailWordType = {
   }
   isMarked: boolean
   bookmarkCount: number
-  example: { text: string; source: string; createdAt: Date }[]
+  example: string
   source: string
   createdAt: Date
   updatedAt: Date
 } & SimpleWordType
+
+// 관리자 용어 조회
+export type AdminWordType = Pick<
+  DetailWordType,
+  'id' | 'name' | 'pronunciationInfo' | 'meaning' | 'category' | 'example'
+>
+
+// 관리자 용어 등록 폼 타입
+export type AddWordType = Omit<AdminWordType, 'id'>

@@ -1,6 +1,5 @@
 'use client'
 import HighlightText from '@/components/common/HighlightText'
-import HorizontalScrollArea from '@/components/common/HorizontalScrollArea'
 import CategoryTag from '@/components/shared/CategoryTag'
 import { useGetWordDetail } from '@/hooks/word/useGetWordDetail'
 import { getFormattedDate } from '@/utils/date'
@@ -15,9 +14,6 @@ export default function WordInfo({ wordId }: { wordId: number }) {
     pronunciationInfo,
     meaning,
     category,
-    commentCount,
-    isMarked,
-    bookmarkCount,
     example,
     source,
     createdAt,
@@ -35,36 +31,31 @@ export default function WordInfo({ wordId }: { wordId: number }) {
           <p>{meaning}</p>
         </div>
         <p className="text-caption text-onSurface-200 mt-3">
-          지금까지 <span className="text-primary-400">{viewCount}</span>명이
-          조회했어요.
+          지금까지 <span className="text-primary-400">{viewCount}</span>번
+          조회됐어요.
         </p>
-        {/* <div className="flex justify-between text-caption text-onSurface-200 mt-5">
+        <div className="flex justify-between text-caption text-onSurface-200 mt-5">
           <p>{`출처: ${source}`}</p>
           <p>{`등록: ${getFormattedDate(createdAt.toString())}`}</p>
-        </div> */}
+        </div>
       </div>
       {/* 용어 예문 */}
-      <div className="w-full py-10">
-        {/* <HorizontalScrollArea title="예문" titleSize="small" scrollDivisor={1}>
-          {example.map((example, idx) => (
-            <div key={idx} className="min-w-fit">
-              <div className="max-w-[calc(100%-9px)] h-fit relative bg-gray-200 text-background text-sub2 py-6 px-5 rounded-2xl">
-                <HighlightText text={`"${example.text}"`} target={name} />
-                <Image
-                  alt="bubble"
-                  src={'/images/bubble_tail.svg'}
-                  width={18}
-                  height={18}
-                  className="absolute -right-[5.6px] bottom-0"
-                />
-              </div>
-              <div className="flex justify-between text-caption text-onSurface-200 mt-5">
-                <p>{`출처: ${example.source}`}</p>
-                <p>{`등록: ${getFormattedDate(example.createdAt.toString())}`}</p>
-              </div>
-            </div>
-          ))}
-        </HorizontalScrollArea> */}
+      <div className="w-full py-7 px-4">
+        <p className="text-h3 mb-5">예문</p>
+        <div className="max-w-[calc(100%-9px)] h-fit relative bg-gray-200 text-background text-sub2 py-6 px-5 rounded-2xl">
+          <HighlightText
+            text={`"${example}"`}
+            target={name}
+            variant={category}
+          />
+          <Image
+            alt="bubble"
+            src={'/images/bubble_tail.svg'}
+            width={18}
+            height={18}
+            className="absolute -right-[5.6px] bottom-0"
+          />
+        </div>
       </div>
     </>
   )

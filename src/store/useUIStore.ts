@@ -1,3 +1,4 @@
+import { SNACKBAR_TYPE } from '@/constants/snackbar'
 import { create } from 'zustand'
 
 type BottomSheetType = {
@@ -11,9 +12,9 @@ type UIStoreType = {
   isModalOpen: boolean
   openModal: () => void
   closeModal: () => void
-  toastMessage: string | null
-  showToast: (message: string) => void
-  hideToast: () => void
+  snackbarType: SNACKBAR_TYPE | null
+  showSnackbar: (type: SNACKBAR_TYPE | null) => void
+  hideSnackbar: () => void
 }
 
 const useUIStore = create<UIStoreType>((set) => ({
@@ -28,10 +29,10 @@ const useUIStore = create<UIStoreType>((set) => ({
   openModal: () => set({ isModalOpen: true }),
   closeModal: () => set({ isModalOpen: false }),
 
-  // Toast state
-  toastMessage: null,
-  showToast: (message: string) => set({ toastMessage: message }),
-  hideToast: () => set({ toastMessage: null }),
+  // Snackbar state
+  snackbarType: null,
+  showSnackbar: (type: SNACKBAR_TYPE | null) => set({ snackbarType: type }),
+  hideSnackbar: () => set({ snackbarType: null }),
 }))
 
 export default useUIStore

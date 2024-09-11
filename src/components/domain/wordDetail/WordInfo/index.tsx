@@ -29,8 +29,8 @@ export default function WordInfo({ word }: { word: DetailWordType }) {
           <p>{meaning}</p>
         </div>
         <p className="text-caption text-onSurface-200 mt-3">
-          지금까지 <span className="text-primary-400">{viewCount}</span>명이
-          조회했어요.
+          지금까지 <span className="text-primary-400">{viewCount}</span>번
+          조회됐어요.
         </p>
         <div className="flex justify-between text-caption text-onSurface-200 mt-5">
           <p>{`출처: ${source}`}</p>

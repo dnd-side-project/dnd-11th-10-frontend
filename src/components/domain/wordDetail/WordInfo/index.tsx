@@ -41,7 +41,11 @@ export default function WordInfo({ word }: { word: DetailWordType }) {
       <div className="w-full py-7 px-4">
         <p className="text-h3 mb-5">예문</p>
         <div className="max-w-[calc(100%-9px)] h-fit relative bg-gray-200 text-background text-sub2 py-6 px-5 rounded-2xl">
-          <HighlightText text={`"${example}"`} target={name} />
+          <HighlightText
+            text={`"${example}"`}
+            target={name}
+            variant={category}
+          />
           <Image
             alt="bubble"
             src={'/images/bubble_tail.svg'}

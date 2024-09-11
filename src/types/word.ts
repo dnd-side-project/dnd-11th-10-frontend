@@ -20,7 +20,7 @@ export type DetailWordType = {
   }
   isMarked: boolean
   bookmarkCount: number
-  example: { text: string; source: string; createdAt: Date }[] | string
+  example: string
   source: string
   createdAt: Date
   updatedAt: Date

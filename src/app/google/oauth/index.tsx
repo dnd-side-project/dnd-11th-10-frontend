@@ -39,12 +39,7 @@ const Page = () => {
     })
   }, [router, searchParams])
 
-  return (
-    <>
-      <div>loading .... </div>
-      <Home />
-    </>
-  )
+  return <div>loading .... </div>
 }
 
 export default Page

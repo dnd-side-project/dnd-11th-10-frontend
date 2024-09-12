@@ -10,7 +10,7 @@ export default function GoogleLoginButton() {
   return (
     <button
       className="w-full py-4 px-6 rounded-lg flex justify-center bg-white"
-      onClick={() => handleLogin()}
+      onClick={handleLogin}
     >
       <div className="flex gap-3">
         <Image alt="google" src={'/icons/google.svg'} width={20} height={20} />

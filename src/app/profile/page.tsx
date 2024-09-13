@@ -26,13 +26,13 @@ function Profile() {
   const isAnyCategorySelected = isCategorySelect.some((selected) => selected)
 
   return (
-    <div className="px-4 flex flex-col justify-between h-full text-slate-100">
-      <div>
+    <div className="px-4 flex flex-col gap-[351] justify-between h-full text-slate-100">
+      <div className="mt-[90px] flex flex-col gap-[72px]">
         <p className="text-h1 text-onSurface-300">
           반가워요! <br />
           어떤 직군이신가요?
         </p>
-        <div className="mt-4 gap-4">
+        <div className="mt-4 flex flex-col gap-4">
           {jobGroupData.map((job, idx) => (
             <JobGroupCard
               key={idx}

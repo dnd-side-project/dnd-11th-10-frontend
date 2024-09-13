@@ -1,21 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import { JobGroup } from '@/types/profile'
 
-export default function JobGroupCard({ id, name }: JobGroup) {
-  const [selected, setSelected] = useState(false)
+interface JobGroupCardProps {
+  id: number
+  name: string
+  selected: boolean
+  onClick: () => void
+}
 
-  const handleClick = () => {
-    setSelected(!selected)
-  }
-
+export default function JobGroupCard({
+  id,
+  name,
+  selected,
+  onClick,
+}: JobGroupCardProps) {
   return (
     <div
-      className={`flex p-4 bg-gray-800 rounded-2xl text-onSurface-300 ${
+      className={`flex p-4 bg-gray-800 rounded-2xl text-onSurface-300 cursor-pointer ${
         selected &&
         'bg-primary-0 text-background border-solid border-[1.5px] border-primary-400'
       }`}
-      onClick={handleClick}
+      onClick={onClick}
     >
       <Image
         src={`/icons/job_group_0${id}.svg`}

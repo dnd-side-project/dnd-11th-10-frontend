@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { useQuizStore } from '@/lib/store'
+import { useQuizStore } from '@/store/useQuizStore'
 import { useRouter } from 'next/navigation'
 
 function Header() {

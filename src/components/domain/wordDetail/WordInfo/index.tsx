@@ -15,7 +15,7 @@ export default function WordInfo({ wordId }: { wordId: number }) {
     meaning,
     category,
     example,
-    source,
+    resource,
     createdAt,
     updatedAt,
   } = word
@@ -35,7 +35,7 @@ export default function WordInfo({ wordId }: { wordId: number }) {
           조회됐어요.
         </p>
         <div className="flex justify-between text-caption text-onSurface-200 mt-5">
-          <p>{`출처: ${source}`}</p>
+          <p>{`출처: ${resource}`}</p>
           <p>{`등록: ${getFormattedDate(createdAt.toString())}`}</p>
         </div>
       </div>

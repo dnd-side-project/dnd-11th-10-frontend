@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
 import { ProfileChip } from '@/types/profileChip'
 
-function Chip({ id, type, name }: ProfileChip) {
-  const [selected, setSelected] = useState(false)
+interface ChipProps extends ProfileChip {
+  selected: boolean
+  onClick: () => void
+}
 
-  const handleClick = () => {
-    setSelected(!selected)
-    console.log(`${type}: ${name}`)
-  }
-
+function Chip({ id, name, selected, onClick }: ChipProps) {
   return (
     <div
       className={`px-5 py-2 rounded-[0.25rem] hover:cursor-pointer ${
@@ -17,10 +14,11 @@ function Chip({ id, type, name }: ProfileChip) {
           : 'border-solid border-[1.5px] border-outline text-onSurface-300'
       }`}
       key={id}
-      onClick={handleClick}
+      onClick={onClick}
     >
       {name}
     </div>
   )
 }
+
 export default Chip

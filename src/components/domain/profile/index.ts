@@ -1,4 +1,3 @@
-export * from './step/company'
-export * from './step/experience'
+export * from './step/companyAndExperience'
 export * from './step/jobGroup'
 export * from './header'

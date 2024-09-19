@@ -19,6 +19,7 @@ export default function AddWordPage() {
     pronunciationInfo: { english: '' },
     category: '비즈니스',
     example: '',
+    resource: '',
   })
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -36,15 +37,15 @@ export default function AddWordPage() {
     } else {
       setWord((prev) => ({ ...prev, [name]: value }))
     }
-    console.log(word)
   }
   function hasEmptyField() {
-    const { name, meaning, pronunciationInfo, example } = word
+    const { name, meaning, pronunciationInfo, example, resource } = word
     return (
       name === '' ||
       meaning === '' ||
       pronunciationInfo.english === '' ||
-      example === ''
+      example === '' ||
+      resource === ''
     )
   }
 
@@ -69,7 +70,6 @@ export default function AddWordPage() {
               onChange={handleChange}
             />
           </label>
-
           <label>
             용어 뜻{' '}
             <Textarea
@@ -88,12 +88,19 @@ export default function AddWordPage() {
               className="bg-white"
             />
           </label>
-
           <label>
             발음
             <Input
               name="pronunciationInfo"
               value={word.pronunciationInfo.english ?? ''}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            출처
+            <Input
+              name="resource"
+              value={word.resource ?? ''}
               onChange={handleChange}
             />
           </label>

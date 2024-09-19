@@ -7,6 +7,10 @@ const categoryColor = {
   개발: 'bg-devBlue-0 text-devBlue-50',
 }
 
-export default function CategoryTag({ category }: CategoryType) {
+type CategoryTagProps = {
+  category: CategoryType['category']
+}
+
+export default function CategoryTag({ category }: CategoryTagProps) {
   return <Tag text={`${category} 용어`} color={categoryColor[category]} />
 }

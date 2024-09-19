@@ -21,7 +21,7 @@ export type DetailWordType = {
   isMarked: boolean
   bookmarkCount: number
   example: string
-  source: string
+  resource: string
   createdAt: Date
   updatedAt: Date
 } & SimpleWordType

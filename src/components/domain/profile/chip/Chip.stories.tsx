@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import ProfileChip from '.'
-import Chip from '.'
+import { useState } from 'react'
 
 const meta: Meta<typeof ProfileChip> = {
   title: 'components/Profile/Chip',
@@ -13,9 +13,22 @@ export default meta
 type Story = StoryObj<typeof ProfileChip>
 
 export const Default: Story = {
-  render: () => (
-    <div className="flex flex-col gap-2">
-      <Chip id={0} name="비공개" type="기업" />
-    </div>
-  ),
+  render: () => {
+    const [isSelected, setIsSelected] = useState(false)
+
+    const toggleChipSelection = () => {
+      setIsSelected((prev) => !prev)
+    }
+
+    return (
+      <div className="flex flex-col gap-2">
+        <ProfileChip
+          id={0}
+          name="비공개"
+          selected={isSelected}
+          onClick={toggleChipSelection}
+        />
+      </div>
+    )
+  },
 }

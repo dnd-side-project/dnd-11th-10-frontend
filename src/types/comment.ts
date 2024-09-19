@@ -5,17 +5,18 @@ export interface SimpleCommentType {
   content: string
   likeCount: number
   createdAt: string
+  updatedAt: string
   isLike: boolean
   wordInfo: {
     id: number
     name: string
-    pronunciationInfo: {
-      korean: string
-    }
-  } & CategoryType
+    categoryName: CategoryType['category']
+  }
 }
 
 export type DetailCommentType = {
+  commentId: number
+  wordId: number
   writerInfo: {
     id: number
     nickname: string
@@ -24,4 +25,4 @@ export type DetailCommentType = {
     jobGroup: string
     experience: string
   }
-} & SimpleCommentType
+} & Omit<SimpleCommentType, 'wordInfo'>

@@ -1,25 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import GoogleLoginButton from '@/components/shared/GoogleLoginButton'
 import Image from 'next/image'
-import Link from 'next/link'
 import { splashData } from '@/constants/splashData'
 import { useRouter } from 'next/navigation'
+import useSlide from '@/hooks/useSlide'
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0)
   const router = useRouter()
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) =>
-        prevSlide === splashData.length - 1 ? 0 : prevSlide + 1,
-      )
-    }, 2500)
-
-    return () => clearInterval(interval)
-  }, [])
+  const { currentSlide } = useSlide()
 
   return (
     <div className="p-4 h-full flex flex-col justify-between">
@@ -59,9 +48,7 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <Link href={`${process.env.NEXT_PUBLIC_BASE_URL}/login/google`}>
-          <GoogleLoginButton />
-        </Link>
+        <GoogleLoginButton />
         <div className="mt-[10px]">
           <button
             className="w-full py-4 px-6 text-onSurface-300 rounded-lg font-medium leading-6 hover:bg-gray-800"

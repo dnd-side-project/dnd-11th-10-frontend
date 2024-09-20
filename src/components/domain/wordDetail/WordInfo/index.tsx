@@ -1,26 +1,28 @@
+'use client'
 import HighlightText from '@/components/common/HighlightText'
 import CategoryTag from '@/components/shared/CategoryTag'
-import { DetailWordType } from '@/types/word'
+import { useGetWordDetail } from '@/hooks/word/useGetWordDetail'
 import { getFormattedDate } from '@/utils/date'
 import Image from 'next/image'
 
-export default function WordInfo({ word }: { word: DetailWordType }) {
+export default function WordInfo({ wordId }: { wordId: number }) {
+  const { word, viewCount } = useGetWordDetail(wordId)
+
+  if (!word) return
   const {
-    id,
     name,
     pronunciationInfo,
     meaning,
     category,
-    viewCount,
     example,
-    source,
+    resource,
     createdAt,
     updatedAt,
   } = word
 
   return (
     <>
-      {/* 용어 상세 기본 정보 */}
+      {/* 용어 상세 기본 정보*/}
       <div className="py-7 border-b-[1px] border-outline px-4">
         <CategoryTag category={category} />
         <div className="flex flex-col gap-1 mt-3">
@@ -33,7 +35,7 @@ export default function WordInfo({ word }: { word: DetailWordType }) {
           조회됐어요.
         </p>
         <div className="flex justify-between text-caption text-onSurface-200 mt-5">
-          <p>{`출처: ${source}`}</p>
+          <p>{`출처: ${resource}`}</p>
           <p>{`등록: ${getFormattedDate(createdAt.toString())}`}</p>
         </div>
       </div>

@@ -21,7 +21,7 @@ export type DetailWordType = {
   isMarked: boolean
   bookmarkCount: number
   example: string
-  source: string
+  resource: string
   createdAt: Date
   updatedAt: Date
 } & SimpleWordType
@@ -29,7 +29,13 @@ export type DetailWordType = {
 // 관리자 용어 조회
 export type AdminWordType = Pick<
   DetailWordType,
-  'id' | 'name' | 'pronunciationInfo' | 'meaning' | 'category' | 'example'
+  | 'id'
+  | 'name'
+  | 'pronunciationInfo'
+  | 'meaning'
+  | 'category'
+  | 'example'
+  | 'resource'
 >
 
 // 관리자 용어 등록 폼 타입

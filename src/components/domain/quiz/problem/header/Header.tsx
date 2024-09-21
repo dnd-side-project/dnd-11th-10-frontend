@@ -4,23 +4,28 @@ import React from 'react'
 import Image from 'next/image'
 
 import { useQuizStore } from '@/store/useQuizStore'
-import { useRouter } from 'next/navigation'
+import useUIStore from '@/store/useUIStore'
+import QuizProblemStopModal from '../QuizProblemStopModal'
 
 function Header() {
-  const router = useRouter()
   const { currentProblem, currentPercent } = useQuizStore()
   const problems = 5
+  const { isModalOpen, openModal, closeModal } = useUIStore()
 
   return (
     <div className="p-4 flex justify-between h-20">
       <Image
         src={'/icons/cross.svg'}
-        alt="cross.svg"
-        // TODO: modal 창 추가
-        onClick={() => router.push('/home/dictionary')}
-        className="cursor-pointer"
-        width={24}
-        height={24}
+        alt="corss.svg"
+        onClick={openModal}
+        width={20}
+        height={20}
+      />
+      <QuizProblemStopModal
+        isModalOpen={isModalOpen}
+        totalProblem={problems}
+        currentProblem={currentProblem}
+        closeModal={closeModal}
       />
 
       <div className="my-auto p-[0.05rem] w-72 h-3 bg-outline rounded-2xl">

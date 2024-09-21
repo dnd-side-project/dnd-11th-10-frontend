@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import QuizProblemStopModal from '@/components/shared/QuizProblemStopModal'
+import QuizProblemStopModal from '@/components/domain/quiz/problem/QuizProblemStopModal'
 import Modal from '.'
 import Image from 'next/image'
 import Button from '../Button'

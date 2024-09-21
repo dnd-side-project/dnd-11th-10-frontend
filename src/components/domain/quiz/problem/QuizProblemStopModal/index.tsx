@@ -1,6 +1,7 @@
 import { Dialog } from '@ark-ui/react'
 import Button from '@/components/common/Button'
 import Modal from '@/components/common/Modal'
+import { useRouter } from 'next/navigation'
 
 interface QuizProblemStopModalProps {
   isModalOpen: boolean
@@ -15,6 +16,7 @@ export default function QuizProblemStopModal({
   totalProblem,
   currentProblem,
 }: QuizProblemStopModalProps) {
+  const router = useRouter()
   return (
     <Dialog.Root open={isModalOpen} onOpenChange={closeModal}>
       <Dialog.Content>
@@ -36,7 +38,11 @@ export default function QuizProblemStopModal({
             <Button isFullWidth type="light" onClick={closeModal}>
               계속할게요
             </Button>
-            <Button isFullWidth type="gradient">
+            <Button
+              isFullWidth
+              type="gradient"
+              onClick={() => router.push('/home/dictionary')}
+            >
               그만할게요
             </Button>
           </div>

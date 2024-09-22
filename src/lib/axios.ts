@@ -1,6 +1,6 @@
 import { env } from '@/constants/env'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-
+import { useAuthStore } from '@/store/useAuthStore'
 const axiosInstance = axios.create({
   baseURL: env.BASE_URL,
   timeout: 10000,
@@ -10,6 +10,12 @@ const axiosInstance = axios.create({
 // 요청 인터셉터
 axiosInstance.interceptors.request.use(
   (config) => {
+    const { accessToken } = useAuthStore.getState()
+
+    if (accessToken && config.headers) {
+      config.headers.set('Authorization', `Bearer ${accessToken}`)
+    }
+
     return config
   },
   (error) => {

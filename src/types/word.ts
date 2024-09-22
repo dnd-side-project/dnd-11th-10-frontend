@@ -29,14 +29,8 @@ export type DetailWordType = {
 // 관리자 용어 조회
 export type AdminWordType = Pick<
   DetailWordType,
-  | 'id'
-  | 'name'
-  | 'pronunciationInfo'
-  | 'meaning'
-  | 'category'
-  | 'example'
-  | 'resource'
->
+  'id' | 'name' | 'meaning' | 'category' | 'example' | 'resource'
+> & { pronunciation: { english: string } }
 
 // 관리자 용어 등록 폼 타입
 export type AddWordType = Omit<AdminWordType, 'id'>

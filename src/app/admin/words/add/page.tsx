@@ -1,4 +1,5 @@
 'use client'
+import { addNewWord } from '@/api/admin/words'
 import Button from '@/components/common/Button'
 import Input from '@/components/common/Input'
 import RadioButton from '@/components/common/RadioButton'
@@ -16,7 +17,7 @@ export default function AddWordPage() {
   const [word, setWord] = useState<AddWordType>({
     name: '',
     meaning: '',
-    pronunciationInfo: { english: '' },
+    pronunciation: { english: '' },
     category: '비즈니스',
     example: '',
     resource: '',
@@ -32,29 +33,38 @@ export default function AddWordPage() {
         ...prev,
         category: categoryName,
       }))
-    } else if (name === 'pronunciationInfo') {
-      setWord((prev) => ({ ...prev, pronunciationInfo: { english: value } }))
+    } else if (name === 'pronunciation') {
+      setWord((prev) => ({ ...prev, pronunciation: { english: value } }))
     } else {
       setWord((prev) => ({ ...prev, [name]: value }))
     }
   }
   function hasEmptyField() {
-    const { name, meaning, pronunciationInfo, example, resource } = word
+    const { name, meaning, pronunciation, example, resource } = word
     return (
       name === '' ||
       meaning === '' ||
-      pronunciationInfo.english === '' ||
+      pronunciation.english === '' ||
       example === '' ||
       resource === ''
     )
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (hasEmptyField()) {
       alert('모두 입력해주세요')
       return
     }
-    alert(`${word.name} 용어 등록 완료`)
+    await addNewWord(word)
+    alert('용어 등록 완료')
+    setWord({
+      name: '',
+      meaning: '',
+      pronunciation: { english: '' },
+      category: '비즈니스',
+      example: '',
+      resource: '',
+    })
   }
 
   return (
@@ -91,8 +101,8 @@ export default function AddWordPage() {
           <label>
             발음
             <Input
-              name="pronunciationInfo"
-              value={word.pronunciationInfo.english ?? ''}
+              name="pronunciation"
+              value={word.pronunciation.english ?? ''}
               onChange={handleChange}
             />
           </label>

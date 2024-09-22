@@ -29,7 +29,7 @@ export default async function WordDetailPage({
         <WordInfo wordId={wordId} />
       </HydrationBoundary>
       <ContactButton />
-      <CommentsList />
+      <CommentsList wordId={wordId} />
     </div>
   )
 }

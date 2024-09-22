@@ -1,4 +1,4 @@
-import { get, post } from '@/lib/axios'
+import { get, post, put } from '@/lib/axios'
 import { AddWordType, AdminWordType } from '@/types/word'
 
 export async function getWordDetailById(wordId: number) {
@@ -13,5 +13,11 @@ export async function addNewWord(word: AddWordType) {
 
 export async function getAllWords() {
   const res = await get<AdminWordType[]>(`/admin/allwords`)
+  return res
+}
+
+// 용어 정보 수정
+export async function editWord(wordId: number, word: AddWordType) {
+  const res = await put(`/admin/words/${wordId}`, word)
   return res
 }

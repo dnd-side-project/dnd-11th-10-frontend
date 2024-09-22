@@ -1,10 +1,5 @@
 import { getWordDetailById } from '@/api/admin/words'
-import WordDetail from '@/components/domain/admin/WordDetail'
-import {
-  HydrationBoundary,
-  QueryClient,
-  dehydrate,
-} from '@tanstack/react-query'
+import AdminWordForm from '@/components/domain/admin/WordForm'
 
 export default async function WordDetailPage({
   params,
@@ -12,16 +7,11 @@ export default async function WordDetailPage({
   params: { slug: string }
 }) {
   const wordId = parseInt(params.slug.split('/').at(-1) ?? '')
-  const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery({
-    queryKey: ['words', 'admin', wordId],
-    queryFn: () => getWordDetailById(wordId),
-  })
-
+  const res = await getWordDetailById(wordId)
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <WordDetail wordId={wordId} />
-    </HydrationBoundary>
+    <div className="mx-72 mt-8 max-lg:mx-4">
+      <p className="text-h2 mb-6">용어 상세</p>
+      <AdminWordForm initWord={res} />
+    </div>
   )
 }

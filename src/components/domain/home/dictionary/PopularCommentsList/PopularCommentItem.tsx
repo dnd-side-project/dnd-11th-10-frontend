@@ -21,7 +21,7 @@ export default function PopularCommentItem({
     isLike,
     likeCount,
     createdAt,
-    wordInfo: { id: wordId, name, category },
+    wordInfo: { id: wordId, name, categoryName },
   } = comment
   const { openBottomSheet } = useUIStore()
 
@@ -40,7 +40,7 @@ export default function PopularCommentItem({
         <div className="flex justify-between">
           <div className="flex gap-2">
             <WordTag text={name} />
-            <CategoryTag category={category} />
+            <CategoryTag category={categoryName} />
           </div>
           <Image
             alt="menu"

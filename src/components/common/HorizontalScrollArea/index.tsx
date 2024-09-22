@@ -43,8 +43,8 @@ export default function HorizontalScrollArea({
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
 
-      setIsStart(scrollLeft <= 2)
-      setIsEnd(scrollLeft + clientWidth >= scrollWidth)
+      setIsStart(scrollLeft <= 1)
+      setIsEnd(scrollLeft + clientWidth >= scrollWidth - 1)
     }
   }
 

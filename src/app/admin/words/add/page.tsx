@@ -1,4 +1,5 @@
 'use client'
+import { addNewWord } from '@/api/admin/words'
 import Button from '@/components/common/Button'
 import Input from '@/components/common/Input'
 import RadioButton from '@/components/common/RadioButton'
@@ -49,12 +50,21 @@ export default function AddWordPage() {
     )
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (hasEmptyField()) {
       alert('모두 입력해주세요')
       return
     }
-    alert(`${word.name} 용어 등록 완료`)
+    await addNewWord(word)
+    alert('용어 등록 완료')
+    setWord({
+      name: '',
+      meaning: '',
+      pronunciation: { english: '' },
+      category: '비즈니스',
+      example: '',
+      resource: '',
+    })
   }
 
   return (

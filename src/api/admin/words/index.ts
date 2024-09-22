@@ -1,4 +1,4 @@
-import { get, post, put } from '@/lib/axios'
+import { del, get, post, put } from '@/lib/axios'
 import { AddWordType, AdminWordType } from '@/types/word'
 
 // 용어 id로 용어 상세 정보 조회
@@ -22,5 +22,11 @@ export async function getAllWords() {
 // 용어 정보 수정
 export async function editWord(wordId: number, word: AddWordType) {
   const res = await put(`/admin/words/${wordId}`, word)
+  return res
+}
+
+// 용어 삭제
+export async function removeWord(wordId: number) {
+  const res = await del(`/admin/words/${wordId}`)
   return res
 }

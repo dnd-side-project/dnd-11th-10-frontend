@@ -13,7 +13,7 @@ export default function CommentItem({
   setTargetId,
 }: CommentItemProps) {
   const {
-    id,
+    commentId,
     content,
     isLike,
     likeCount,
@@ -53,7 +53,7 @@ export default function CommentItem({
             width={24}
             height={24}
             onClick={() => {
-              setTargetId(id)
+              setTargetId(commentId)
               openBottomSheet('comment')
             }}
             className="cursor-pointer"

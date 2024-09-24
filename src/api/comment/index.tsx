@@ -9,9 +9,12 @@ export async function getPopularComments() {
 }
 
 // 용어 상세 페이지 댓글 목록 조회
-export async function getCommentsByWordId(wordId: number) {
+export async function getCommentsByWordId(
+  wordId: number,
+  sortBy: string | null,
+) {
   const res = await get<SuccessResponse<DetailCommentType[]>>(
-    `/words/${wordId}/comments`,
+    `/words/${wordId}/comments?sortBy=${sortBy}`,
   )
   return res.comments as DetailCommentType[]
 }

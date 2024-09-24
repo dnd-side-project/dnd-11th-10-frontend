@@ -26,7 +26,7 @@ export const LOGIN_BOTTOMSHEET: {
 
 // FilterBottomSheet에 표기할 페이지별 메뉴 목록
 export const FILTER_MENUS = {
-  comments: ['좋아요순', '최신순', '오래된순'],
+  comments: ['likeCount', 'createdAt'],
   words: ['사전순', '조회순'],
 }
 

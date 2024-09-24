@@ -12,10 +12,13 @@ import Snackbar from '@/components/shared/Snackbar'
 import { useGetComments } from '@/hooks/comment/useGetComments'
 
 export default function CommentsList({ wordId }: { wordId: number }) {
-  const [sortType, setSortType] = useState('좋아요순')
+  const [sortType, setSortType] = useState('likeCount')
   const [targetId, setTargetId] = useState<number>()
   const { bottomSheetType, openBottomSheet } = useUIStore()
-  const { comments, isFetching, isLoading, refetch } = useGetComments(wordId)
+  const { comments, isFetching, isLoading, refetch } = useGetComments(
+    wordId,
+    sortType,
+  )
   const commentsLength = comments?.length as number
 
   if (!comments && (!isFetching || !isLoading)) return
@@ -59,7 +62,7 @@ export default function CommentsList({ wordId }: { wordId: number }) {
           {commentsLength > 0 ? (
             comments?.map((comment, idx) => (
               <CommentItem
-                key={comment.id}
+                key={comment.commentId}
                 comment={comment}
                 setTargetId={setTargetId}
               />
@@ -83,6 +86,7 @@ export default function CommentsList({ wordId }: { wordId: number }) {
       <FilterBottomSheet
         isOpen={bottomSheetType === 'filter'}
         selected={sortType}
+        setSortType={setSortType}
         target="comments"
       />
       <CommentBottomSheet

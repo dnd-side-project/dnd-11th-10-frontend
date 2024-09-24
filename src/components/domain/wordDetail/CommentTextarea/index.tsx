@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const [smallHeight, largeHeight] = ['56px', '76px']
 
-export default function CommentTextarea({ wordId }: { wordId: string }) {
+export default function CommentTextarea({ wordId }: { wordId: number }) {
   const [value, setValue] = useState<string>('')
   const [focused, setFocused] = useState(false)
   const [height, setHeight] = useState<number | string>(smallHeight)

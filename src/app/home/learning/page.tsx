@@ -22,7 +22,7 @@ export default async function LearningTab() {
   return (
     <div className="w-full my-12 flex flex-col items-center gap-[60px]">
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <TodayQuiz todaySolvedCnt={50} />
+        <TodayQuiz />
         <TodayWords />
         <CommunicationStats />
       </HydrationBoundary>

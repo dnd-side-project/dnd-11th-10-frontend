@@ -1,13 +1,11 @@
+import { getTodayParticipants } from '@/api/quiz'
 import Button from '@/components/common/Button'
 import { getTodayDate } from '@/utils/date'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type TodayQuizProps = {
-  todaySolvedCnt: number
-}
-
-export default function TodayQuiz({ todaySolvedCnt }: TodayQuizProps) {
+export default async function TodayQuiz() {
+  const res = await getTodayParticipants()
   return (
     <div className="w-full px-4 text-onSurface-300 ">
       <p className="text-h2 text-onSurface-300 mb-3">
@@ -25,7 +23,7 @@ export default function TodayQuiz({ todaySolvedCnt }: TodayQuizProps) {
           <p className="text-h1 mb-2">용어 퀴즈</p>
           <p className="mb-5">
             오늘&nbsp;
-            <span className="text-primary-100 text-h3">{todaySolvedCnt}</span>
+            <span className="text-primary-100 text-h3">{res}</span>
             명이 퀴즈에
             <br />
             참여했어요.

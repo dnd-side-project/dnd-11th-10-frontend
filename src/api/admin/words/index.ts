@@ -30,3 +30,9 @@ export async function removeWord(wordId: number) {
   const res = await del(`/admin/words/${wordId}`)
   return res
 }
+
+// 전체 용어 개수 조회
+export async function getWordsCount() {
+  const res = await get<number>('/words/count')
+  return res
+}

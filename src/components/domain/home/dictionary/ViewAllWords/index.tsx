@@ -1,8 +1,10 @@
+import { getWordsCount } from '@/api/admin/words'
 import RightArrow from '@/components/common/Icons/RightArrow'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function ViewAllWords() {
+export default async function ViewAllWords() {
+  const count = await getWordsCount()
   return (
     <Link
       href={'/dictionary'}
@@ -19,7 +21,8 @@ export default function ViewAllWords() {
           <p className="text-body2 text-background">
             지금까지 등록된 용어{' '}
             <span className="text-secondary-300 text-h3">
-              100<span className="text-h3 text-background">개</span>
+              {count}
+              <span className="text-h3 text-background">개</span>
             </span>
           </p>
           <p className="text-h2 text-background">전체 용어 보러가기</p>

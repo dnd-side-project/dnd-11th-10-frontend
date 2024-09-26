@@ -1,10 +1,16 @@
 'use client'
 
 import useUIStore from '@/store/useUIStore'
+import useDeleteCommentMutation from './comment/useDeleteCommentMutation'
 
 // CommentBottom 각 목록마다 다른 액션 처리하기 위한 커스텀 훅
-export default function useBottomSheetAction() {
+export default function useBottomSheetAction(
+  commentId: number,
+  wordId?: number,
+) {
   const { openBottomSheet, closeBottomSheet, showSnackbar } = useUIStore()
+  const { delComment } = useDeleteCommentMutation(wordId!, commentId)
+
   const editComment = () => {
     // 댓글 수정 UI 상태 조작 필요
     alert('댓글 수정')
@@ -13,8 +19,7 @@ export default function useBottomSheetAction() {
   }
 
   const deleteComment = () => {
-    alert('댓글 삭제')
-    closeBottomSheet()
+    delComment()
   }
 
   const reportComment = (id: number) => {

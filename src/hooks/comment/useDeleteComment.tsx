@@ -2,14 +2,11 @@ import { deleteComment } from '@/api/comment'
 import useUIStore from '@/store/useUIStore'
 import { QueryClient, useMutation } from '@tanstack/react-query'
 
-export default function useDeleteCommentMutation(
-  wordId: number,
-  commentId: number,
-) {
+export default function useDeleteComment(wordId: number) {
   const { closeBottomSheet, showSnackbar } = useUIStore()
   const queryClient = new QueryClient()
-  const { mutate: delComment } = useMutation({
-    mutationFn: () => deleteComment(wordId, commentId),
+  const { mutate } = useMutation({
+    mutationFn: (commentId: number) => deleteComment(wordId, commentId),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ['words', 'comments', wordId],
@@ -19,5 +16,5 @@ export default function useDeleteCommentMutation(
       closeBottomSheet()
     },
   })
-  return { delComment }
+  return { mutate }
 }

@@ -11,6 +11,7 @@ export type CommentItemProps = {
 
 export default function CommentItem({ comment }: CommentItemProps) {
   const {
+    wordId,
     commentId,
     content,
     isLike,
@@ -80,6 +81,7 @@ export default function CommentItem({ comment }: CommentItemProps) {
       <CommentBottomSheet
         isOpen={bottomSheetType === 'comment'}
         targetId={commentId as number}
+        wordId={wordId as number}
         // 로그인 사용자와 writerInfo 사용자와 일치하면 mine 아니면 others
         target={isMyComment ? 'mine' : 'others'}
       />

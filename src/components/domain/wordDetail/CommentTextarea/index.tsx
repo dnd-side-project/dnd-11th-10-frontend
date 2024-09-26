@@ -1,4 +1,5 @@
 import TextArea from '@/components/common/Textarea'
+import useAddComment from '@/hooks/comment/useAddComment'
 import { useState } from 'react'
 
 const [smallHeight, largeHeight] = ['56px', '76px']
@@ -8,6 +9,7 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
   const [focused, setFocused] = useState(false)
   const [height, setHeight] = useState<number | string>(smallHeight)
   const maxLength = 100
+  const { mutate: addComment } = useAddComment(wordId && wordId)
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = e.target
@@ -26,8 +28,9 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
     }
   }
 
-  const handleSubmit = () => {
-    alert(`${wordId} comment 등록`)
+  const handleSubmit = async () => {
+    if (!value) return
+    addComment({ wordId, value })
     setValue('')
     resizeTextarea()
   }

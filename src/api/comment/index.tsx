@@ -1,4 +1,4 @@
-import { del, get } from '@/lib/axios'
+import { del, get, post } from '@/lib/axios'
 import { DetailCommentType, SimpleCommentType } from '@/types/comment'
 import { SuccessResponse } from '@/types/response'
 
@@ -17,6 +17,12 @@ export async function getCommentsByWordId(
     `/words/${wordId}/comments?sortBy=${sortBy}`,
   )
   return res.comments as DetailCommentType[]
+}
+
+// 댓글 등록
+export async function addComment(wordId: number, comment: string) {
+  const res = await post(`/words/${wordId}/comments`, { content: comment })
+  return res
 }
 
 // 댓글 삭제

@@ -1,3 +1,4 @@
+import { getUserPrecedence } from '@/api/auth/skill'
 import { getTodayWords } from '@/api/words'
 import { WordsList } from '@/components/domain/home/dictionary/RecentlyAddedWords/data'
 import CommunicationStats from '@/components/domain/home/learning/CommunicationStats'
@@ -16,6 +17,10 @@ export default async function LearningTab() {
     queryClient.prefetchQuery({
       queryKey: ['words', 'today'],
       queryFn: getTodayWords,
+    }),
+    queryClient.prefetchQuery({
+      queryKey: ['skill', 'precedence'],
+      queryFn: getUserPrecedence,
     }),
   ])
 

@@ -1,3 +1,5 @@
+'use client'
+import useGetPrecedence from '@/hooks/auth/useGetSkill'
 import CategoryChartItem from './CategoryChartItem'
 import TotalChart from './TotalChart'
 import { StatsInfo } from './data'
@@ -6,6 +8,7 @@ export type Category = 'develop' | 'design' | 'business'
 const categories: Category[] = ['develop', 'design', 'business']
 
 export default function CommunicationStats() {
+  const { precedence } = useGetPrecedence()
   return (
     <>
       <div className="w-full flex flex-col items-center text-onSurface-300 px-4">
@@ -18,7 +21,7 @@ export default function CommunicationStats() {
             </p>
           </div>
           <TotalChart
-            topPercent={StatsInfo.topPercent}
+            topPercent={(precedence as number) ?? 100}
             percent={StatsInfo.totalPercent}
           />
         </div>

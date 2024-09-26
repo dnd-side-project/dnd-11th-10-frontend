@@ -3,18 +3,20 @@ import { gotoCardData } from '@/constants/gotoCardData'
 
 function MyPage() {
   return (
-    <div className="px-4">
+    <div className="px-4 flex flex-col gap-5">
       <Information />
-      {gotoCardData.map((data, idx) => {
-        return (
-          <GotoCard
-            icon={data.icon}
-            text={data.text}
-            subText={data.subText}
-            key={idx}
-          />
-        )
-      })}
+      <div className="flex flex-col gap-5">
+        {gotoCardData.map((data, idx) => {
+          return (
+            <GotoCard
+              icon={data.icon}
+              text={data.text}
+              subText={data.subText}
+              key={idx}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

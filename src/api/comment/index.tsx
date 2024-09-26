@@ -1,4 +1,4 @@
-import { get } from '@/lib/axios'
+import { del, get } from '@/lib/axios'
 import { DetailCommentType, SimpleCommentType } from '@/types/comment'
 import { SuccessResponse } from '@/types/response'
 
@@ -17,4 +17,10 @@ export async function getCommentsByWordId(
     `/words/${wordId}/comments?sortBy=${sortBy}`,
   )
   return res.comments as DetailCommentType[]
+}
+
+// 댓글 삭제
+export async function deleteComment(wordId: number, commentId: number) {
+  const res = await del(`/words/${wordId}/comments/${commentId}`)
+  return res
 }

@@ -1,6 +1,5 @@
 import { getUserPrecedence } from '@/api/auth/skill'
 import { getTodayWords } from '@/api/words'
-import { WordsList } from '@/components/domain/home/dictionary/RecentlyAddedWords/data'
 import CommunicationStats from '@/components/domain/home/learning/CommunicationStats'
 import TodayQuiz from '@/components/domain/home/learning/TodayQuiz'
 import TodayWords from '@/components/domain/home/learning/TodayWords'

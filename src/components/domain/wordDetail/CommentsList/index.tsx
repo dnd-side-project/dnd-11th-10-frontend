@@ -94,6 +94,7 @@ export default function CommentsList({ wordId }: { wordId: number }) {
         targetId={targetId as number}
         // 로그인 사용자와 writerInfo 사용자와 일치하면 mine 아니면 others
         target="others"
+        wordId={wordId}
       />
       <CheckboxBottomSheet
         isOpen={bottomSheetType === 'checkbox'}

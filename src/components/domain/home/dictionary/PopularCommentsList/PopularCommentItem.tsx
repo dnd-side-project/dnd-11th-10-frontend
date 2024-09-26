@@ -9,11 +9,13 @@ import Link from 'next/link'
 export type CommentItemProps = {
   comment: SimpleCommentType
   setTargetId: (id: number) => void
+  setWordId: (id: number) => void
 }
 
 export default function PopularCommentItem({
   comment,
   setTargetId,
+  setWordId,
 }: CommentItemProps) {
   const {
     id,
@@ -29,6 +31,7 @@ export default function PopularCommentItem({
     e.preventDefault()
     openBottomSheet('comment')
     setTargetId(id)
+    setWordId(wordId)
   }
 
   return (

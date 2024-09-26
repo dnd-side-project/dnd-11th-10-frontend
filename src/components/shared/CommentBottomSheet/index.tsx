@@ -18,7 +18,6 @@ export default function CommentBottomSheet({
   const actions = useBottomSheetAction(targetId, wordId)
   if (!isOpen) return null
   const menuItems = COMMENT_MENUS[target]
-  console.log('targetId', targetId)
   return (
     <BottomSheet>
       {menuItems.map((menu, idx) => (

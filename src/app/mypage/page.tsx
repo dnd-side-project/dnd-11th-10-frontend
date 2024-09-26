@@ -13,6 +13,7 @@ function MyPage() {
               text={data.text}
               subText={data.subText}
               key={idx}
+              route={data.route}
             />
           )
         })}

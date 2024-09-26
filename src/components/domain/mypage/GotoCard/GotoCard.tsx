@@ -1,10 +1,5 @@
 import Image from 'next/image'
-
-interface GotoCardProps {
-  icon: string
-  text: string
-  subText?: string
-}
+import { GotoCardProps } from '@/constants/gotoCardData'
 
 function GotoCard({ icon, text, subText }: GotoCardProps) {
   return (

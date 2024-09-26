@@ -5,22 +5,18 @@ import { useState } from 'react'
 import useUIStore from '@/store/useUIStore'
 import FilterBottomSheet from '@/components/shared/FilterBottomSheet'
 import CommentItem from '@/components/shared/CommentItem'
-import CommentBottomSheet from '@/components/shared/CommentBottomSheet'
 import CommentInput from '../CommentTextarea'
-import CheckboxBottomSheet from '@/components/shared/CheckboxBottomSheet'
 import Snackbar from '@/components/shared/Snackbar'
 import { useGetComments } from '@/hooks/comment/useGetComments'
 
 export default function CommentsList({ wordId }: { wordId: number }) {
   const [sortType, setSortType] = useState('likeCount')
-  const [targetId, setTargetId] = useState<number>()
   const { bottomSheetType, openBottomSheet } = useUIStore()
   const { comments, isFetching, isLoading, refetch } = useGetComments(
     wordId,
     sortType,
   )
   const commentsLength = comments?.length as number
-
   if (!comments && (!isFetching || !isLoading)) return
   return (
     <>
@@ -61,11 +57,7 @@ export default function CommentsList({ wordId }: { wordId: number }) {
           {/* 댓글 리스트 */}
           {commentsLength > 0 ? (
             comments?.map((comment, idx) => (
-              <CommentItem
-                key={comment.commentId}
-                comment={comment}
-                setTargetId={setTargetId}
-              />
+              <CommentItem key={comment.commentId} comment={comment} />
             ))
           ) : (
             <div className="w-full flex flex-col gap-5 items-center py-10">
@@ -81,24 +73,12 @@ export default function CommentsList({ wordId }: { wordId: number }) {
           )}
         </div>
       )}
-
       {/* 정렬 bottomSheet */}
       <FilterBottomSheet
         isOpen={bottomSheetType === 'filter'}
         selected={sortType}
         setSortType={setSortType}
         target="comments"
-      />
-      <CommentBottomSheet
-        isOpen={bottomSheetType === 'comment'}
-        targetId={targetId as number}
-        // 로그인 사용자와 writerInfo 사용자와 일치하면 mine 아니면 others
-        target="others"
-      />
-      <CheckboxBottomSheet
-        isOpen={bottomSheetType === 'checkbox'}
-        type="commentReport"
-        targetId={targetId as number}
       />
       <Snackbar />
     </>

@@ -2,16 +2,14 @@ import { DetailCommentType } from '@/types/comment'
 import { getTimeAgo } from '@/utils/date'
 import Image from 'next/image'
 import useUIStore from '@/store/useUIStore'
+import CommentBottomSheet from '../CommentBottomSheet'
+import CheckboxBottomSheet from '../CheckboxBottomSheet'
 
 export type CommentItemProps = {
   comment: DetailCommentType
-  setTargetId: (id: number) => void
 }
 
-export default function CommentItem({
-  comment,
-  setTargetId,
-}: CommentItemProps) {
+export default function CommentItem({ comment }: CommentItemProps) {
   const {
     commentId,
     content,
@@ -27,7 +25,9 @@ export default function CommentItem({
       experience,
     },
   } = comment
-  const { openBottomSheet } = useUIStore()
+  const { bottomSheetType, openBottomSheet } = useUIStore()
+  // writerId와 현재 로그인한 사용자 비교
+  const isMyComment = true
   return (
     <>
       <div className="flex flex-col gap-3 justify-between py-8 px-4 border-b-[1.5px] border-outline">
@@ -53,7 +53,6 @@ export default function CommentItem({
             width={24}
             height={24}
             onClick={() => {
-              setTargetId(commentId)
               openBottomSheet('comment')
             }}
             className="cursor-pointer"
@@ -77,6 +76,18 @@ export default function CommentItem({
           </p>
         </div>
       </div>
+      {/* 댓글 메뉴 bottomSheet */}
+      <CommentBottomSheet
+        isOpen={bottomSheetType === 'comment'}
+        targetId={commentId as number}
+        // 로그인 사용자와 writerInfo 사용자와 일치하면 mine 아니면 others
+        target={isMyComment ? 'mine' : 'others'}
+      />
+      <CheckboxBottomSheet
+        isOpen={bottomSheetType === 'checkbox'}
+        type="commentReport"
+        targetId={commentId as number}
+      />
     </>
   )
 }

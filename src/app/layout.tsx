@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import { Noto_Sans_KR } from 'next/font/google'
 import QueryProvider from '@/provider/QueryProvider'
 import { headers } from 'next/headers'
+import Snackbar from '@/components/shared/Snackbar'
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -43,6 +44,7 @@ export default function RootLayout({
         >
           <QueryProvider>{children}</QueryProvider>
         </div>
+        <Snackbar />
       </body>
     </html>
   )

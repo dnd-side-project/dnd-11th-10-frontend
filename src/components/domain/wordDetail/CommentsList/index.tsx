@@ -100,7 +100,6 @@ export default function CommentsList({ wordId }: { wordId: number }) {
         type="commentReport"
         targetId={targetId as number}
       />
-      <Snackbar />
     </>
   )
 }

@@ -1,6 +1,4 @@
 import CategoryTag from '@/components/shared/CategoryTag'
-import CheckboxBottomSheet from '@/components/shared/CheckboxBottomSheet'
-import CommentBottomSheet from '@/components/shared/CommentBottomSheet'
 import WordTag from '@/components/shared/WordTag'
 import useUIStore from '@/store/useUIStore'
 import { SimpleCommentType } from '@/types/comment'
@@ -10,9 +8,13 @@ import Link from 'next/link'
 
 export type CommentItemProps = {
   comment: SimpleCommentType
+  setTargetId: (id: number) => void
 }
 
-export default function PopularCommentItem({ comment }: CommentItemProps) {
+export default function PopularCommentItem({
+  comment,
+  setTargetId,
+}: CommentItemProps) {
   const {
     id,
     content,
@@ -21,11 +23,12 @@ export default function PopularCommentItem({ comment }: CommentItemProps) {
     createdAt,
     wordInfo: { id: wordId, name, categoryName },
   } = comment
-  const { bottomSheetType, openBottomSheet } = useUIStore()
+  const { openBottomSheet } = useUIStore()
 
   const handleClickMenu = (e: React.MouseEvent) => {
     e.preventDefault()
     openBottomSheet('comment')
+    setTargetId(id)
   }
 
   return (
@@ -65,18 +68,6 @@ export default function PopularCommentItem({ comment }: CommentItemProps) {
           </p>
         </div>
       </Link>
-
-      <CommentBottomSheet
-        isOpen={bottomSheetType === 'comment'}
-        targetId={id as number}
-        target="others"
-        wordId={wordId}
-      />
-      <CheckboxBottomSheet
-        isOpen={bottomSheetType === 'checkbox'}
-        type="commentReport"
-        targetId={id as number}
-      />
     </>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useAuthStore } from '@/store/useAuthStore'
 
@@ -8,12 +8,10 @@ const LoginCallback = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const setAccessToken = useAuthStore((state) => state.setAccessToken)
-  const setRole = useAuthStore((state) => state.setRole)
+  const [role, setRole] = useState(searchParams.get('role'))
 
   const accessToken = searchParams.get('accessToken')
   const isSignUp = searchParams.get('isSignUp')
-  const role = searchParams.get('role')
-
   useEffect(() => {
     if (role && accessToken) {
       setAccessToken(accessToken)

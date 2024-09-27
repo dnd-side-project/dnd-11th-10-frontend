@@ -8,21 +8,30 @@ const LoginCallback = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const setAccessToken = useAuthStore((state) => state.setAccessToken)
+  const setRole = useAuthStore((state) => state.setRole)
 
   const accessToken = searchParams.get('accessToken')
   const isSignUp = searchParams.get('isSignUp')
+  const role = searchParams.get('role')
 
   useEffect(() => {
-    setAccessToken(accessToken)
-
-    if (accessToken && isSignUp) {
-      router.push('/profile')
+    if (role && accessToken) {
+      setAccessToken(accessToken)
+      setRole(role)
     }
 
-    if (accessToken && isSignUp === 'false') {
-      router.push('/home/dictionary')
+    if (accessToken) {
+      if (role === 'admin') {
+        router.push('/admin')
+      }
+
+      if (isSignUp === 'true') {
+        router.push('/profile')
+      } else if (isSignUp === 'false') {
+        router.push('/home/dictionary')
+      }
     }
-  }, [accessToken, isSignUp, router, setAccessToken])
+  }, [role, accessToken, isSignUp, router, setAccessToken, setRole])
 
   return <></>
 }

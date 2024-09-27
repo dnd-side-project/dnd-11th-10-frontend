@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useAuthStore } from '@/store/useAuthStore'
 
@@ -8,21 +8,28 @@ const LoginCallback = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const setAccessToken = useAuthStore((state) => state.setAccessToken)
+  const [role, setRole] = useState(searchParams.get('role'))
 
   const accessToken = searchParams.get('accessToken')
   const isSignUp = searchParams.get('isSignUp')
-
   useEffect(() => {
-    setAccessToken(accessToken)
-
-    if (accessToken && isSignUp) {
-      router.push('/profile')
+    if (role && accessToken) {
+      setAccessToken(accessToken)
+      setRole(role)
     }
 
-    if (accessToken && isSignUp === 'false') {
-      router.push('/home/dictionary')
+    if (accessToken) {
+      if (role === 'admin') {
+        router.push('/admin')
+      }
+
+      if (isSignUp === 'true') {
+        router.push('/profile')
+      } else if (isSignUp === 'false') {
+        router.push('/home/dictionary')
+      }
     }
-  }, [accessToken, isSignUp, router, setAccessToken])
+  }, [role, accessToken, isSignUp, router, setAccessToken, setRole])
 
   return <></>
 }

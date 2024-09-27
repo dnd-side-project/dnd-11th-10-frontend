@@ -1,38 +1,7 @@
 import Button from '@/components/common/Button'
+import { accountData } from '@/constants/account'
 import Image from 'next/image'
 import React from 'react'
-
-interface Account {
-  nickname: string
-  profileImage: string
-  careerInfo: {
-    jobGroup: string
-    company: string
-    experience: string
-  }
-  quizInfo: {
-    totalCategoryQuizCount: number
-    designQuizCount: number
-    businessQuizCount: number
-    developQuizCount: number
-  }
-}
-
-const accountData: Account = {
-  nickname: '상큼한화성009',
-  profileImage: '/images/profile.svg',
-  careerInfo: {
-    jobGroup: '개발자',
-    company: '비공개',
-    experience: '1년 차 미만',
-  },
-  quizInfo: {
-    totalCategoryQuizCount: 0,
-    designQuizCount: 0,
-    businessQuizCount: 0,
-    developQuizCount: 0,
-  },
-}
 
 function Information() {
   return (
@@ -52,13 +21,13 @@ function Information() {
             {accountData.careerInfo.jobGroup}
             <span className="px-1 py-3">
               <svg width="2" height="2" viewBox="0 0 2 2" fill="none">
-                <circle cx="1" cy="1" r="1" fill="white" fill-opacity="0.6" />
+                <circle cx="1" cy="1" r="1" fill="white" fillOpacity="0.6" />
               </svg>
             </span>
             {accountData.careerInfo.company}
             <span className="px-1 py-3">
               <svg width="2" height="2" viewBox="0 0 2 2" fill="none">
-                <circle cx="1" cy="1" r="1" fill="white" fill-opacity="0.6" />
+                <circle cx="1" cy="1" r="1" fill="white" fillOpacity="0.6" />
               </svg>
             </span>
             {accountData.careerInfo.experience}
@@ -68,7 +37,56 @@ function Information() {
       <Button isFullWidth type={'light'}>
         프로필 편집하기
       </Button>
-      <div></div>
+      <div className="flex justify-between">
+        <div className="flex flex-col">
+          <div className="flex">
+            <span className={'text-secondary-200'}>
+              <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+            </span>
+            <p className="text-onSurface-300">전체</p>
+          </div>
+          <p>{accountData.quizInfo.totalCategoryQuizCount}회</p>
+          <p>퀴즈 완료</p>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex">
+            <span className={'text-devBlue-200'}>
+              <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+            </span>
+            <p className="text-onSurface-300">개발</p>
+          </div>
+          <p>{accountData.quizInfo.developQuizCount}회</p>
+          <p>퀴즈 완료</p>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex">
+            <span className={'text-designPurple-200'}>
+              <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+            </span>
+            <p className="text-onSurface-300">디자인</p>
+          </div>
+          <p>{accountData.quizInfo.designQuizCount}회</p>
+          <p>퀴즈 완료</p>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex">
+            <span className={'text-primary-200'}>
+              <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+            </span>
+            <p className="text-onSurface-300">비즈니스</p>
+          </div>
+          <p>{accountData.quizInfo.businessQuizCount}회</p>
+          <p>퀴즈 완료</p>
+        </div>
+      </div>
     </div>
   )
 }

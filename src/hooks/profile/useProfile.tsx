@@ -1,7 +1,12 @@
+'use client'
+
 import { useState } from 'react'
 import { jobGroupData } from '@/constants/profileData'
+import { post } from '@/lib/axios'
+import { useRouter } from 'next/navigation'
 
 function useProfile() {
+  const router = useRouter()
   const [step, setStep] = useState<'직군' | '기업 및 경력'>('직군')
   const [profileData, setProfileData] = useState({
     jobGroup: null as string | null,
@@ -37,8 +42,18 @@ function useProfile() {
   const isAnyCompanySelected = profileData.company !== null
   const isAnyExperienceSelected = profileData.experience !== null
 
-  const handleSubmit = () => {
-    console.log('API 호출: ', profileData)
+  const handleSubmit = async () => {
+    try {
+      const response = await post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/profile`,
+        profileData,
+      )
+      console.log(response)
+
+      router.push('/skillcheck')
+    } catch (error) {
+      console.error('프로필 제출 중 오류 발생:', error)
+    }
   }
 
   return {

@@ -1,7 +1,7 @@
+import Image from 'next/image'
 import Button from '@/components/common/Button'
 import { accountData } from '@/constants/account'
-import Image from 'next/image'
-import React from 'react'
+import { QuizStatus } from '../QuizStatus'
 
 function Information() {
   return (
@@ -38,54 +38,26 @@ function Information() {
         프로필 편집하기
       </Button>
       <div className="flex justify-between">
-        <div className="flex flex-col">
-          <div className="flex">
-            <span className={'text-secondary-200'}>
-              <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
-                <circle cx="3" cy="3" r="3" />
-              </svg>
-            </span>
-            <p className="text-onSurface-300">전체</p>
-          </div>
-          <p>{accountData.quizInfo.totalCategoryQuizCount}회</p>
-          <p>퀴즈 완료</p>
-        </div>
-        <div className="flex flex-col">
-          <div className="flex">
-            <span className={'text-devBlue-200'}>
-              <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
-                <circle cx="3" cy="3" r="3" />
-              </svg>
-            </span>
-            <p className="text-onSurface-300">개발</p>
-          </div>
-          <p>{accountData.quizInfo.developQuizCount}회</p>
-          <p>퀴즈 완료</p>
-        </div>
-        <div className="flex flex-col">
-          <div className="flex">
-            <span className={'text-designPurple-200'}>
-              <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
-                <circle cx="3" cy="3" r="3" />
-              </svg>
-            </span>
-            <p className="text-onSurface-300">디자인</p>
-          </div>
-          <p>{accountData.quizInfo.designQuizCount}회</p>
-          <p>퀴즈 완료</p>
-        </div>
-        <div className="flex flex-col">
-          <div className="flex">
-            <span className={'text-primary-200'}>
-              <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
-                <circle cx="3" cy="3" r="3" />
-              </svg>
-            </span>
-            <p className="text-onSurface-300">비즈니스</p>
-          </div>
-          <p>{accountData.quizInfo.businessQuizCount}회</p>
-          <p>퀴즈 완료</p>
-        </div>
+        <QuizStatus
+          colorClass="text-secondary-200"
+          label="전체"
+          count={accountData.quizInfo.totalCategoryQuizCount}
+        />
+        <QuizStatus
+          colorClass="text-devBlue-200"
+          label="개발"
+          count={accountData.quizInfo.developQuizCount}
+        />
+        <QuizStatus
+          colorClass="text-designPurple-200"
+          label="디자인"
+          count={accountData.quizInfo.designQuizCount}
+        />
+        <QuizStatus
+          colorClass="text-primary-200"
+          label="비즈니스"
+          count={accountData.quizInfo.businessQuizCount}
+        />
       </div>
     </div>
   )

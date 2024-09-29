@@ -18,7 +18,7 @@ function GotoCard({ icon, text, subText, route }: GotoCardProps) {
   }
 
   return (
-    <div className="px-5 py-4 bg-gray-800 flex justify-between rounded-2xl">
+    <div className="px-5 py-4 bg-gray-800 flex justify-between gap-6 rounded-2xl">
       <Image src={`/icons/${icon}`} width={50} height={50} alt="goto.svg" />
       <div className="flex flex-col justify-center ">
         {subText && <p className="text-body3 text-onSurface-300">{subText}</p>}

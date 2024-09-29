@@ -13,19 +13,19 @@ function Information() {
           width={40}
           height={40}
         />
-        <div>
+        <div className='flex flex-col gap-1'>
           <p className="text-body2 text-onSurface-300">
             {accountData.nickname}
           </p>
-          <p className="flex text-onSurface-200">
+          <p className="flex text-onSurface-200 text-body3">
             {accountData.careerInfo.jobGroup}
-            <span className="px-1 py-3">
+            <span className="px-1 py-2">
               <svg width="2" height="2" viewBox="0 0 2 2" fill="none">
                 <circle cx="1" cy="1" r="1" fill="white" fillOpacity="0.6" />
               </svg>
             </span>
             {accountData.careerInfo.company}
-            <span className="px-1 py-3">
+            <span className="px-1 py-2">
               <svg width="2" height="2" viewBox="0 0 2 2" fill="none">
                 <circle cx="1" cy="1" r="1" fill="white" fillOpacity="0.6" />
               </svg>

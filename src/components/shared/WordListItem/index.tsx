@@ -3,10 +3,11 @@ import { SimpleWordType } from '@/types/word'
 import Image from 'next/image'
 import Link from 'next/link'
 import BookmarkButton from '../BookmarkButton'
+import { usePathname } from 'next/navigation'
 
 type WordListItemProps = {
   word: SimpleWordType
-  showBookmarkBtn?: boolean
+  showBookmarkBtn: boolean
   isMarked?: boolean
 }
 
@@ -15,6 +16,9 @@ export default function WordListItem({
   showBookmarkBtn = false,
   isMarked,
 }: WordListItemProps) {
+  const pathname = usePathname()
+  const isBookmarkPage = pathname.startsWith('/bookmarks')
+
   return (
     <>
       <Link
@@ -25,7 +29,10 @@ export default function WordListItem({
           <div className="flex justify-between">
             <CategoryTag category={category} />
             {showBookmarkBtn && (
-              <BookmarkButton isMarked={isMarked!} wordId={id} />
+              <BookmarkButton
+                isMarked={isMarked! || isBookmarkPage}
+                wordId={id}
+              />
             )}
           </div>
 

@@ -55,6 +55,8 @@ function EditPofile() {
           <input
             className="p-4 w-full bg-gray-800 text-onSurface-300 outline-none"
             defaultValue={'상큼한화성009'}
+            placeholder="닉네임을 입력하세요"
+            maxLength={10}
           />
         </div>
         <div className="flex flex-col gap-3">

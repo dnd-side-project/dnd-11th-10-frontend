@@ -19,12 +19,8 @@ export default function BookmarksPage() {
   return (
     <>
       <Header title="별별 저장소" />
-      {wordsCount === 0 ? (
-        <div className="h-[calc(100%-90px)]">
-          <EmptyLayout target="bookmarks" />
-        </div>
-      ) : (
-        <div className="relative overflow-y-auto bg-background text-onSurface-300">
+      {
+        <div className="relative overflow-y-auto h-[calc(100%-90px)] flex flex-col bg-background text-onSurface-300">
           <div className="flex gap-2 px-4 pt-1 mb-5">
             {filters.map((filter: FilterType, idx: number) => (
               <TabFilter
@@ -54,9 +50,15 @@ export default function BookmarksPage() {
               />
             </Link>
           </div>
-          <WordsList words={words as SimpleWordType[]} showBookmarkBtn />
+          {wordsCount === 0 ? (
+            <div className="flex-grow">
+              <EmptyLayout target="bookmarks" />
+            </div>
+          ) : (
+            <WordsList words={words as SimpleWordType[]} showBookmarkBtn />
+          )}
         </div>
-      )}
+      }
       <TopButton />
     </>
   )

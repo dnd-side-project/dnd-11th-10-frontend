@@ -25,19 +25,22 @@ function EditPofile() {
     setIsCompanyOpen(false)
   }
   const handleExperienceSubmit = () => {
-    console.log('선택된 값:', selectedCompanyValue)
+    console.log('선택된 값:', selectedExperienceValue)
     setIsExperienceOpen(false)
   }
   return (
-    <div className="px-4 flex flex-col justify-between">
+    <div className="px-4 flex flex-col justify-between gap-[5.375rem]">
       <div className="flex flex-col gap-10">
-        <div className="m-auto">
+        <div className="relative m-auto">
           <Image
             src={'images/profile.svg'}
             width={100}
             height={100}
             alt="profile.svg"
           />
+          <div className="absolute bottom-0 right-0 p-2 w-[30px] h-[30px] bg-gray-800 rounded-full">
+            <Image src={'icons/pen.svg'} alt="pen.svg" width={14} height={14} />
+          </div>
         </div>
         <div className="flex flex-col gap-3">
           <p className="text-sub2 text-onSurface-100">이메일</p>
@@ -110,14 +113,17 @@ function EditPofile() {
             />
           )}
         </div>
+      </div>
+
+      <div className="flex flex-col gap-4">
         <div className="flex justify-between">
           <p className="text-onSurface-100">회원정보를 삭제하시겠어요?</p>
           <p className="text-onSurface-200">회원탈퇴</p>
         </div>
+        <Button isFullWidth type="gradient">
+          수정 완료
+        </Button>
       </div>
-      <Button isFullWidth type="gradient">
-        수정 완료
-      </Button>
     </div>
   )
 }

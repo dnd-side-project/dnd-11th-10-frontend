@@ -1,5 +1,4 @@
 import Header from '@/components/shared/Header'
-import React from 'react'
 
 type LayoutProps = {
   children: React.ReactNode

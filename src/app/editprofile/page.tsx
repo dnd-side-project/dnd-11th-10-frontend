@@ -1,108 +1,24 @@
 'use client'
-
-import { useState } from 'react'
-import Image from 'next/image'
 import Button from '@/components/common/Button'
-import { RADIOBTN_MENUS } from '@/constants/bottomSheet'
+import {
+  Company,
+  Email,
+  Experience,
+  JobGroup,
+  NickName,
+  ProfileImg,
+} from '@/components/domain/editprofile'
 
 function EditPofile() {
-  const [isProfileImgOpen, setIsProfileImgOpen] = useState(false)
-  // API에서 받아오기(전역 상태 관리 필요)
-  const [selectedCompanyValue, setSelectedCompanyValue] = useState(0)
-  const [selectedExperienceValue, setSelectedExperienceValue] = useState(0)
-
-  // 초기값 API에서 받아오기
-  const [selected, setSelected] = useState('개발자')
-
-  const options = ['개발자', '디자이너', '기타']
-
-  const handleClick = (option: string) => {
-    setSelected(option)
-  }
-
   return (
     <div className="px-4 flex flex-col justify-between gap-[5.375rem]">
       <div className="flex flex-col gap-10">
-        <div className="relative m-auto">
-          <Image
-            src={'images/profile.svg'}
-            width={100}
-            height={100}
-            alt="profile.svg"
-          />
-          <div className="absolute bottom-0 right-0 p-2 w-[30px] h-[30px] bg-gray-800 rounded-full">
-            <Image
-              src={'icons/pen.svg'}
-              alt="pen.svg"
-              width={14}
-              height={14}
-              onClick={() => setIsProfileImgOpen((prev) => !prev)}
-            />
-          </div>
-        </div>
-        {isProfileImgOpen && <div></div>}
-        <div className="flex flex-col gap-3">
-          <p className="text-sub2 text-onSurface-100">이메일</p>
-          <input
-            readOnly
-            className="p-4 w-full bg-gray-800 text-onSurface-100 outline-none"
-            defaultValue={'dnwlsnw@gmail.com'}
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          <p className="text-sub2 text-onSurface-200">닉네임</p>
-          <input
-            className="p-4 w-full bg-gray-800 text-onSurface-300 outline-none"
-            defaultValue={'상큼한화성009'}
-            placeholder="닉네임을 입력하세요"
-            maxLength={10}
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          <p className="text-sub2 text-onSurface-200">직군</p>
-          <div className="w-full flex justify-between gap-3 text-center text-onSurface-300 text-sub1">
-            {options.map((option, idx) => (
-              <div
-                className={`w-full p-4 bg-gray-700 rounded-lg cursor-pointer ${selected === option ? 'bg-primary-0 border-solid border-[1px] border-primary-400' : 'bg-gray-700'}`}
-                key={idx}
-                // 우선은 수정 불가능 하도록
-                // onClick={() => handleClick(option)}
-              >
-                {option}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-3">
-          <p className="text-sub2 text-onSurface-200">기업</p>
-          <div className="p-4 flex justify-between bg-gray-700 rounded-lg">
-            <p className="text-onSurface-300 text-sub1">
-              {RADIOBTN_MENUS.company.options[selectedCompanyValue].item}
-            </p>
-            <Image
-              src={'/icons/arrow_down.svg'}
-              alt="arrow_down.svg"
-              width={24}
-              height={24}
-              onClick={() => console.log('회사 수정')}
-            />
-          </div>
-        </div>
-        <div className="flex flex-col gap-3">
-          <p className="text-sub2 text-onSurface-200">경력</p>
-          <div className="p-4 flex justify-between bg-gray-700 rounded-lg">
-            <p className="text-onSurface-300 text-sub1">
-              {RADIOBTN_MENUS.experience.options[selectedExperienceValue].item}
-            </p>
-            <Image
-              src={'/icons/arrow_down.svg'}
-              alt="arrow_down.svg"
-              width={24}
-              height={24}
-              onClick={() => console.log('경력 수정')}
-            />
-          </div>
-        </div>
+        <ProfileImg />
+        <Email />
+        <NickName />
+        <JobGroup />
+        <Company />
+        <Experience />
       </div>
 
       <div className="flex flex-col gap-4">

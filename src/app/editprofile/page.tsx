@@ -7,27 +7,11 @@ import RadioBtnBottomSheet from '@/components/shared/RadioBtnBottomSheet'
 import { RADIOBTN_MENUS } from '@/constants/bottomSheet'
 
 function EditPofile() {
-  const [isComanyOpen, setIsCompanyOpen] = useState(false)
-  const [isExperienceOpen, setIsExperienceOpen] = useState(false)
+  const [isProfileImgOpen, setIsProfileImgOpen] = useState(false)
+  // API에서 받아오기(전역 상태 관리 필요)
   const [selectedCompanyValue, setSelectedCompanyValue] = useState(0)
   const [selectedExperienceValue, setSelectedExperienceValue] = useState(0)
 
-  const handleCompanyChange = (id: number) => {
-    setSelectedCompanyValue(id)
-  }
-
-  const handleExperienceChange = (id: number) => {
-    setSelectedExperienceValue(id)
-  }
-
-  const handleCompanySubmit = () => {
-    console.log('선택된 값:', selectedCompanyValue)
-    setIsCompanyOpen(false)
-  }
-  const handleExperienceSubmit = () => {
-    console.log('선택된 값:', selectedExperienceValue)
-    setIsExperienceOpen(false)
-  }
   return (
     <div className="px-4 flex flex-col justify-between gap-[5.375rem]">
       <div className="flex flex-col gap-10">
@@ -39,9 +23,16 @@ function EditPofile() {
             alt="profile.svg"
           />
           <div className="absolute bottom-0 right-0 p-2 w-[30px] h-[30px] bg-gray-800 rounded-full">
-            <Image src={'icons/pen.svg'} alt="pen.svg" width={14} height={14} />
+            <Image
+              src={'icons/pen.svg'}
+              alt="pen.svg"
+              width={14}
+              height={14}
+              onClick={() => setIsProfileImgOpen((prev) => !prev)}
+            />
           </div>
         </div>
+        {isProfileImgOpen && <div></div>}
         <div className="flex flex-col gap-3">
           <p className="text-sub2 text-onSurface-100">이메일</p>
           <input
@@ -78,18 +69,9 @@ function EditPofile() {
               alt="arrow_down.svg"
               width={24}
               height={24}
-              onClick={() => setIsCompanyOpen((prev) => !prev)}
+              onClick={() => console.log('회사 수정')}
             />
           </div>
-          {isComanyOpen && (
-            <RadioBtnBottomSheet
-              isOpen={isComanyOpen}
-              type={'company'}
-              value={selectedCompanyValue}
-              onChange={handleCompanyChange}
-              onSubmit={handleCompanySubmit}
-            />
-          )}
         </div>
         <div className="flex flex-col gap-3">
           <p className="text-sub2 text-onSurface-200">경력</p>
@@ -102,18 +84,9 @@ function EditPofile() {
               alt="arrow_down.svg"
               width={24}
               height={24}
-              onClick={() => setIsExperienceOpen((prev) => !prev)}
+              onClick={() => console.log('경력 수정')}
             />
           </div>
-          {isExperienceOpen && (
-            <RadioBtnBottomSheet
-              isOpen={isExperienceOpen}
-              type="experience"
-              value={selectedExperienceValue}
-              onChange={handleExperienceChange}
-              onSubmit={handleExperienceSubmit}
-            />
-          )}
         </div>
       </div>
 

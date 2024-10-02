@@ -5,14 +5,17 @@ import { jobGroupData } from '@/constants/profileData'
 import { post } from '@/lib/axios'
 import { useRouter } from 'next/navigation'
 import { AxiosResponse } from 'axios'
+import { ProfileData } from '@/types/profile'
+import { useMutation } from '@tanstack/react-query'
+import { postProfileData } from '@/api/profile'
 
 function useProfile() {
   const router = useRouter()
   const [step, setStep] = useState<'직군' | '기업 및 경력'>('직군')
-  const [profileData, setProfileData] = useState({
-    jobGroup: null as string | null,
-    company: null as string | null,
-    experience: null as string | null,
+  const [profileData, setProfileData] = useState<ProfileData>({
+    jobGroup: null,
+    company: null,
+    experience: null,
   })
 
   const [companySelected, setCompanySelected] = useState<boolean>(false)
@@ -43,19 +46,20 @@ function useProfile() {
   const isAnyCompanySelected = profileData.company !== null
   const isAnyExperienceSelected = profileData.experience !== null
 
-  const handleSubmit = async () => {
-    try {
-      const response: AxiosResponse = await post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/profile`,
-        profileData,
-      )
+  const profileMutation = useMutation({
+    mutationFn: (profileData: ProfileData) => {
+      return postProfileData(profileData)
+    },
+    onSuccess: () => {
+      router.push('/skillcheck')
+    },
+    onError: (error) => {
+      console.error('Error adding todo:', error)
+    },
+  })
 
-      if (response.status === 204) {
-        router.push('/skillcheck')
-      }
-    } catch (error) {
-      console.error('프로필 제출 중 오류 발생:', error)
-    }
+  const handleSubmit = async () => {
+    profileMutation.mutate(profileData)
   }
 
   return {

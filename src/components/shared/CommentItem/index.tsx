@@ -2,6 +2,7 @@ import { DetailCommentType } from '@/types/comment'
 import { getTimeAgo } from '@/utils/date'
 import Image from 'next/image'
 import useUIStore from '@/store/useUIStore'
+import CommentLikeButton from '../CommentLikeButton'
 
 export type CommentItemProps = {
   comment: DetailCommentType
@@ -63,15 +64,11 @@ export default function CommentItem({
           {content}
         </p>
         <div className="flex justify-between">
-          <div className="flex gap-1">
-            <Image
-              alt="좋아요"
-              src={'/icons/heart_outline.svg'}
-              width={16}
-              height={16}
-            />
-            <p className="text-caption text-onSurface-200">{likeCount}</p>
-          </div>
+          <CommentLikeButton
+            commentId={commentId}
+            isLike={isLike}
+            likeCount={likeCount}
+          />
           <p className="text-caption text-onSurface-200">
             {getTimeAgo(createdAt)}
           </p>

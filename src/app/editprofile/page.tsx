@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Button from '@/components/common/Button'
-import RadioBtnBottomSheet from '@/components/shared/RadioBtnBottomSheet'
 import { RADIOBTN_MENUS } from '@/constants/bottomSheet'
 
 function EditPofile() {
@@ -11,6 +10,15 @@ function EditPofile() {
   // API에서 받아오기(전역 상태 관리 필요)
   const [selectedCompanyValue, setSelectedCompanyValue] = useState(0)
   const [selectedExperienceValue, setSelectedExperienceValue] = useState(0)
+
+  // 초기값 API에서 받아오기
+  const [selected, setSelected] = useState('개발자')
+
+  const options = ['개발자', '디자이너', '기타']
+
+  const handleClick = (option: string) => {
+    setSelected(option)
+  }
 
   return (
     <div className="px-4 flex flex-col justify-between gap-[5.375rem]">
@@ -53,9 +61,16 @@ function EditPofile() {
         <div className="flex flex-col gap-3">
           <p className="text-sub2 text-onSurface-200">직군</p>
           <div className="w-full flex justify-between gap-3 text-center text-onSurface-300 text-sub1">
-            <div className="w-full p-4 bg-gray-700 rounded-lg">개발자</div>
-            <div className="w-full p-4 bg-gray-700 rounded-lg">디자이너</div>
-            <div className="w-full p-4 bg-gray-700 rounded-lg">기타</div>
+            {options.map((option, idx) => (
+              <div
+                className={`w-full p-4 bg-gray-700 rounded-lg cursor-pointer ${selected === option ? 'bg-primary-0 border-solid border-[1px] border-primary-400' : 'bg-gray-700'}`}
+                key={idx}
+                // 우선은 수정 불가능 하도록
+                // onClick={() => handleClick(option)}
+              >
+                {option}
+              </div>
+            ))}
           </div>
         </div>
         <div className="flex flex-col gap-3">

@@ -2,7 +2,7 @@
 
 import { JobGroup } from '@/components/domain/profile'
 import { CompanyAndExperience } from '@/components/domain/profile'
-import useProfile from '@/hooks/profile/useProfile'
+import { useProfile } from '@/hooks/profile/useProfile'
 
 function Profile() {
   const {

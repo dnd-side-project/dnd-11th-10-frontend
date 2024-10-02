@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { jobGroupData } from '@/constants/profileData'
 import { post } from '@/lib/axios'
 import { useRouter } from 'next/navigation'
+import { AxiosResponse } from 'axios'
 
 function useProfile() {
   const router = useRouter()
@@ -44,13 +45,14 @@ function useProfile() {
 
   const handleSubmit = async () => {
     try {
-      const response = await post(
+      const response: AxiosResponse = await post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/profile`,
         profileData,
       )
-      console.log(response)
 
-      router.push('/skillcheck')
+      if (response.status === 204) {
+        router.push('/skillcheck')
+      }
     } catch (error) {
       console.error('프로필 제출 중 오류 발생:', error)
     }

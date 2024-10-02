@@ -13,7 +13,7 @@ axiosInstance.interceptors.request.use(
     const { accessToken } = useAuthStore.getState()
 
     if (accessToken && config.headers) {
-      config.headers.set('Authorization', `Bearer ${accessToken}`)
+      config.headers.set('Authorization', `${accessToken}`)
     }
 
     return config

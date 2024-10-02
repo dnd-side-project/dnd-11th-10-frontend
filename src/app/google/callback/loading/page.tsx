@@ -19,13 +19,13 @@ const LoginCallback = () => {
     }
 
     if (accessToken) {
-      if (role === 'admin') {
+      if (role === 'ROLE_ADMIN') {
         router.push('/admin')
       }
 
-      if (isSignUp === 'true') {
+      if (role === 'ROLE_USER' && isSignUp === 'true') {
         router.push('/profile')
-      } else if (isSignUp === 'false') {
+      } else if (role === 'ROLE_USER' && isSignUp === 'false') {
         router.push('/home/dictionary')
       }
     }

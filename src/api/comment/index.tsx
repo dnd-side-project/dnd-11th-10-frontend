@@ -30,3 +30,9 @@ export async function deleteComment(wordId: number, commentId: number) {
   const res = await del(`/words/${wordId}/comments/${commentId}`)
   return res
 }
+
+// 댓글 좋아요
+export async function toggleCommentLike(commentId: number) {
+  const res = await post(`/comments/${commentId}/like`)
+  return res
+}

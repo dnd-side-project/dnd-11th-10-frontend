@@ -25,6 +25,12 @@ function Header() {
     }
   }, [])
 
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      setIsActive(false)
+    }
+  }
+
   return (
     <div className="p-4 flex justify-between gap-4 h-20">
       <Image
@@ -48,6 +54,7 @@ function Header() {
         <input
           className="w-full bg-gray-800 focus:outline-none text-primary-400"
           onFocus={() => setIsActive(true)}
+          onKeyDown={handleKeyDown}
           placeholder="단어, 뜻, 예문, 발음으로 검색해보세요."
         />
       </div>

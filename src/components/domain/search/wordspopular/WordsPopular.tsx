@@ -17,7 +17,7 @@ function WordsPopular() {
           return (
             <div className="flex gap-7" key={idx}>
               <div
-                className={`py-[0.125rem] px-2 w-6 h-6 rounded  ${idx === 0 || idx === 1 || idx === 2 ? 'bg-primary-400 text-background' : 'bg-gray-800 text-onSurface-300'}`}
+                className={`w-6 h-6 rounded  ${idx === 0 || idx === 1 || idx === 2 ? 'bg-primary-400 text-background' : 'bg-gray-800 text-onSurface-300'} ${idx === 9 ? 'py-[0.125rem] px-1' : 'py-[0.125rem] px-2'}`}
               >
                 {idx + 1}
               </div>

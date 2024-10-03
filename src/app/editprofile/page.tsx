@@ -22,7 +22,7 @@ function EditPofile() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex justify-between">
+        <div className="flex justify-between text-sub3">
           <p className="text-onSurface-100">회원정보를 삭제하시겠어요?</p>
           <p className="text-onSurface-200">회원탈퇴</p>
         </div>

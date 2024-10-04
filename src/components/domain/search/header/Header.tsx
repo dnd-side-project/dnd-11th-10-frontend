@@ -3,11 +3,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useSearchStore } from '@/store/useSearchStore'
 
 function Header() {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
   const inputRef = useRef<HTMLDivElement | null>(null)
+  // const setKeyword = useSearchStore((state) => state.setKeyword)
+  // const { keyword } = useSearchStore()
+  const [keyword, setKeyword] = useState('')
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -25,10 +29,15 @@ function Header() {
     }
   }, [])
 
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       setIsActive(false)
     }
+  }
+
+  const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.target.value)
+    console.log(e.target.value)
   }
 
   return (
@@ -52,9 +61,11 @@ function Header() {
           height={24}
         />
         <input
-          className="w-full bg-gray-800 focus:outline-none text-primary-400"
+          className="w-full bg-gray-800 focus:outline-none caret-primary-400 text-onSurface-300"
           onFocus={() => setIsActive(true)}
           onKeyDown={handleKeyDown}
+          onChange={handleUserInput}
+          value={keyword}
           placeholder="단어, 뜻, 예문, 발음으로 검색해보세요."
         />
       </div>

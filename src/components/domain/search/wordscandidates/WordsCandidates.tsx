@@ -1,3 +1,5 @@
+'use client'
+
 import { useSearchDebounce } from '@/hooks/search/useSearchDebounce'
 import { get } from '@/lib/axios'
 import { useSearchStore } from '@/store/useSearchStore'
@@ -11,14 +13,16 @@ function WordsCandidates() {
   // 추천 검색어 요청해서 받아오기
   useEffect(() => {
     async function fetchRecommend() {
-      const res = await get(`?name=${debouncedQuery}`)
+      const res: any = await get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/words/candidates?name=${debouncedQuery}`,
+      )
       setRecommendList(res.data)
     }
 
     if (debouncedQuery) fetchRecommend()
   }, [debouncedQuery])
 
-  return <div>{recommendList}</div>
+  return <div className="text-onSurface-300">{recommendList}</div>
 }
 
 export default WordsCandidates

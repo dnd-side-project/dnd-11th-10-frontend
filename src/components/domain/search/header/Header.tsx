@@ -9,9 +9,7 @@ function Header() {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
   const inputRef = useRef<HTMLDivElement | null>(null)
-  // const setKeyword = useSearchStore((state) => state.setKeyword)
-  // const { keyword } = useSearchStore()
-  const [keyword, setKeyword] = useState('')
+  const { keyword, setKeyword } = useSearchStore()
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {

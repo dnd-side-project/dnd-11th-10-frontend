@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react'
 
-interface Props {
-  value: string
-  delay: number
-}
-
-export const useSearchDebounce = (keyword: string, p0: number, { value, delay }: Props) => {
+export const useSearchDebounce = (value: string, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value)
 
   useEffect(() => {

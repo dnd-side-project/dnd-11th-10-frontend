@@ -2,10 +2,10 @@ import { create } from 'zustand'
 
 interface SearchState {
   keyword: string
-  setKeyword: (e: React.ChangeEvent<HTMLInputElement>) => void
+  setKeyword: (newKeyword: string) => void
 }
 
 export const useSearchStore = create<SearchState>((set) => ({
   keyword: '',
-  setKeyword: (e) => set({ keyword: e.target.value }),
+  setKeyword: (newKeyword: string) => set({ keyword: newKeyword }),
 }))

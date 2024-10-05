@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useSearchStore } from '@/store/useSearchStore'
 
-function Header() {
+function SearchInput() {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
   const inputRef = useRef<HTMLDivElement | null>(null)
@@ -71,4 +71,4 @@ function Header() {
   )
 }
 
-export default Header
+export default SearchInput

@@ -1,6 +1,7 @@
 export interface Account {
   nickname: string
   profileImage: string
+  email: string
   careerInfo: {
     jobGroup: string
     company: string
@@ -16,7 +17,8 @@ export interface Account {
 
 export const accountData: Account = {
   nickname: '상큼한화성009',
-  profileImage: '/images/profile.svg',
+  email: 'dnwlsnw@gmail.com',
+  profileImage: '/images/profile_01.svg',
   careerInfo: {
     jobGroup: '개발자',
     company: '비공개',

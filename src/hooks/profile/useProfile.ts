@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { jobGroupData } from '@/constants/profileData'
 
-function useProfile() {
+export const useProfile = () => {
   const [step, setStep] = useState<'직군' | '기업 및 경력'>('직군')
   const [profileData, setProfileData] = useState({
     jobGroup: null as string | null,
@@ -56,5 +56,3 @@ function useProfile() {
     handleSubmit,
   }
 }
-
-export default useProfile

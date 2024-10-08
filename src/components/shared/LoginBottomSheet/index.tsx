@@ -12,6 +12,12 @@ export type BottomSheetProps = {
 
 export default function LoginBottomSheet({ isOpen, type }: BottomSheetProps) {
   const { closeBottomSheet } = useUIStore()
+  const handleSkipLogin = () => {
+    if (typeof window !== undefined) {
+      localStorage.setItem('skipLogin', 'true')
+      closeBottomSheet()
+    }
+  }
 
   if (!isOpen) return null
   const { title, description, imgSrc } = LOGIN_BOTTOMSHEET[type]
@@ -31,7 +37,7 @@ export default function LoginBottomSheet({ isOpen, type }: BottomSheetProps) {
       )}
       <GoogleLoginButton />
       <button
-        onClick={closeBottomSheet}
+        onClick={handleSkipLogin}
         className="w-full text-onSurface-200 mt-4"
       >
         다음에 할게요

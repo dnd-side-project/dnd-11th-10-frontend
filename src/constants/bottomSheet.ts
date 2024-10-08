@@ -3,9 +3,14 @@ import { BottomSheetProps } from '@/components/shared/LoginBottomSheet'
 // 로그인 유도 BottomSheet 내에 필요한 상수 데이터
 // quizExit- 퀴즈 종류 후 x 버튼 클릭 시
 // bookmark- 로그인하지 않은 상태에서 북마크 버튼 클릭 시
-// loginBtn- 헤더 또는 마이페이지의 '로그인' 버튼 클릭 시
+// loginBtn- 헤더 또는 마이페이지의 '로그인' 버튼 클릭 시, 용어 퀴즈 풀러가기 버튼 클릭 시
+// learningTab - 비회원 학습 탭(홈) 접속 시
 export const LOGIN_BOTTOMSHEET: {
-  [key in BottomSheetProps['type']]: { title: string; description: string }
+  [key in BottomSheetProps['type']]: {
+    title: string
+    description: string
+    imgSrc?: string
+  }
 } = {
   quizExit: {
     title: '나의 업무 소통 능력치를 알 수 있어요!',
@@ -21,6 +26,12 @@ export const LOGIN_BOTTOMSHEET: {
       '모르는 단어로 인해 소통이 힘드신가요?\n로그인하고 소통의 간격을 줄여보세요!',
     description:
       '별별 저장소, 업무 소통 능력치, 댓글 쓰기등\n다양한 기능을 이용하려면 로그인이 필요해요.',
+  },
+  learningTab: {
+    title: '나의 업무 소통 능력은 상위 몇 퍼센트일까요?',
+    description:
+      '회원가입을 하고 퀴즈를 풀면 나의 업무 소통 능력치가\n상위 몇 퍼센트인지 알 수 있어요.',
+    imgSrc: '/images/ability_chart.svg',
   },
 }
 

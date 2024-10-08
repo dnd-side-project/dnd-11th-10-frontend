@@ -15,18 +15,23 @@ export default function TodayQuiz() {
   const { bottomSheetType, openBottomSheet } = useUIStore()
   const router = useRouter()
   const [skipLogin, setSkipLogin] = useState<string | null>(null)
+  const [loginSheetType, setLoginSheetType] = useState<
+    'loginBtn' | 'learningTab'
+  >('loginBtn')
 
   useEffect(() => {
     if (typeof window === undefined) return
     setSkipLogin(localStorage.getItem('skipLogin'))
     if (!userId && skipLogin === 'false') {
       openBottomSheet('login')
+      setLoginSheetType('learningTab')
     }
-  }, [userId, openBottomSheet, skipLogin])
+  }, [skipLogin, openBottomSheet, userId])
 
   const handleClick = () => {
     if (!userId) {
       openBottomSheet('login')
+      setLoginSheetType('loginBtn')
       return
     }
     router.push('/') // quiz url로 변경
@@ -66,7 +71,10 @@ export default function TodayQuiz() {
           />
         </div>
       </div>
-      <LoginBottomSheet isOpen={bottomSheetType === 'login'} type="loginBtn" />
+      <LoginBottomSheet
+        isOpen={bottomSheetType === 'login'}
+        type={loginSheetType}
+      />
     </>
   )
 }

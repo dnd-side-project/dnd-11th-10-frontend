@@ -1,4 +1,5 @@
 import { getUserPrecedence } from '@/api/auth/skill'
+import { getTodayParticipants } from '@/api/quiz'
 import { getTodayWords } from '@/api/words'
 import CommunicationStats from '@/components/domain/home/learning/CommunicationStats'
 import TodayQuiz from '@/components/domain/home/learning/TodayQuiz'
@@ -13,6 +14,10 @@ export default async function LearningTab() {
   const queryClient = new QueryClient()
 
   await Promise.all([
+    queryClient.prefetchQuery({
+      queryKey: ['today', 'participants'],
+      queryFn: getTodayParticipants,
+    }),
     queryClient.prefetchQuery({
       queryKey: ['words', 'today'],
       queryFn: getTodayWords,

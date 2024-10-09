@@ -1,5 +1,5 @@
 'use client'
-import useGetPrecedence from '@/hooks/auth/useGetSkill'
+import { useGetPrecedence } from '@/hooks/auth/useGetSkill'
 import CategoryChartItem from './CategoryChartItem'
 import TotalChart from './TotalChart'
 import { StatsInfo } from './data'

@@ -3,6 +3,7 @@ import { getTimeAgo } from '@/utils/date'
 import Image from 'next/image'
 import useUIStore from '@/store/useUIStore'
 import CommentLikeButton from '../CommentLikeButton'
+import useCommentForm from '@/store/useCommentForm'
 
 export type CommentItemProps = {
   comment: DetailCommentType
@@ -31,6 +32,7 @@ export default function CommentItem({
     },
   } = comment
   const { openBottomSheet } = useUIStore()
+  const { setEditingText } = useCommentForm()
   return (
     <>
       <div className="flex flex-col gap-3 justify-between py-8 px-4 border-b-[1.5px] border-outline">
@@ -58,6 +60,7 @@ export default function CommentItem({
             onClick={() => {
               setTargetId(commentId)
               setWriterId(writerId)
+              setEditingText(content)
               openBottomSheet('comment')
             }}
             className="cursor-pointer"

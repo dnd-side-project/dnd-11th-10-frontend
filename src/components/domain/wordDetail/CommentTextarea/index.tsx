@@ -1,8 +1,9 @@
 import TextArea from '@/components/common/Textarea'
 import useAddComment from '@/hooks/comment/useAddComment'
 import { useAuthStore } from '@/store/useAuthStore'
+import useCommentForm from '@/store/useCommentForm'
 import useUIStore from '@/store/useUIStore'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const [smallHeight, largeHeight] = ['56px', '76px']
 const maxLength = 100
@@ -13,11 +14,17 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
   const [height, setHeight] = useState<number | string>(smallHeight)
   const { userId } = useAuthStore()
   const { openBottomSheet } = useUIStore()
+  const { isEditing, setIsEditing, editingText, setEditingText } =
+    useCommentForm()
   const { mutate: addComment } = useAddComment(wordId && wordId)
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = e.target
     resizeTextarea(textarea)
+    if (isEditing) {
+      setEditingText(textarea.value.slice(0, maxLength))
+      return
+    }
     setValue(textarea.value.slice(0, maxLength))
   }
 
@@ -38,14 +45,23 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
 
   const handleSubmit = async () => {
     if (!value) return
-    addComment({ wordId, value })
+    if (isEditing) {
+      // 댓글 수정
+      setIsEditing(false)
+      setEditingText(null)
+    } else {
+      addComment({ wordId, value })
+    }
     setValue('')
     resizeTextarea()
   }
 
   const resizeTextarea = (textarea?: EventTarget & HTMLTextAreaElement) => {
     if (textarea) {
-      textarea.style.height = `${textarea.scrollHeight}px`
+      textarea.style.height = 'auto'
+      if (textarea.clientHeight < textarea.scrollHeight) {
+        textarea.style.height = `${textarea.scrollHeight}px`
+      }
       if (textarea.value === '') {
         setHeight(largeHeight)
       }
@@ -53,6 +69,16 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
       setHeight(smallHeight)
     }
   }
+
+  useEffect(() => {
+    if (isEditing && editingText) {
+      setHeight(largeHeight)
+      setValue(editingText)
+    }
+    return () => {
+      setIsEditing(false)
+    }
+  }, [isEditing, setIsEditing, editingText])
 
   return (
     <div className="relative w-full">

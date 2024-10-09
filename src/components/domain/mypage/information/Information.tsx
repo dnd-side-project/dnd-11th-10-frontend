@@ -1,9 +1,13 @@
+'use client'
+
 import Image from 'next/image'
-import Button from '@/components/common/Button'
+import { useRouter } from 'next/navigation'
 import { accountData } from '@/constants/account'
 import { QuizStatus } from '../QuizStatus'
+import Button from '@/components/common/Button'
 
 function Information() {
+  const router = useRouter()
   return (
     <div className="flex flex-col gap-5 bg-gray-800 px-4 py-6 rounded-2xl">
       <div className="flex gap-2">
@@ -13,7 +17,7 @@ function Information() {
           width={40}
           height={40}
         />
-        <div className='flex flex-col gap-1'>
+        <div className="flex flex-col gap-1">
           <p className="text-body2 text-onSurface-300">
             {accountData.nickname}
           </p>
@@ -34,7 +38,11 @@ function Information() {
           </p>
         </div>
       </div>
-      <Button isFullWidth type={'light'}>
+      <Button
+        isFullWidth
+        type={'light'}
+        onClick={() => router.push('/editprofile')}
+      >
         프로필 편집하기
       </Button>
       <div className="flex justify-between">

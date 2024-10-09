@@ -1,24 +1,47 @@
+'use client'
 import BottomSheet from '@/components/common/BottomSheet'
 import { LOGIN_BOTTOMSHEET } from '@/constants/bottomSheet'
 import GoogleLoginButton from '../GoogleLoginButton'
+import Image from 'next/image'
+import useUIStore from '@/store/useUIStore'
 
 export type BottomSheetProps = {
   isOpen: boolean
-  type: 'quizExit' | 'bookmark' | 'loginBtn'
+  type: 'quizExit' | 'bookmark' | 'loginBtn' | 'learningTab'
 }
 
 export default function LoginBottomSheet({ isOpen, type }: BottomSheetProps) {
+  const { closeBottomSheet } = useUIStore()
+  const handleSkipLogin = () => {
+    if (typeof window !== undefined) {
+      localStorage.setItem('skipLogin', 'true')
+      closeBottomSheet()
+    }
+  }
+
   if (!isOpen) return null
+  const { title, description, imgSrc } = LOGIN_BOTTOMSHEET[type]
+
   return (
     <BottomSheet>
-      <p className="text-h2 text-onSurface-300 mb-2">
-        {LOGIN_BOTTOMSHEET[type].title}
-      </p>
-      <p className="text-body2 text-onSurface-200 mb-10">
-        {LOGIN_BOTTOMSHEET[type].description}
-      </p>
+      <p className="text-h2 text-onSurface-300 mb-2">{title}</p>
+      <p className="text-body2 text-onSurface-200 mb-7">{description}</p>
+      {imgSrc && (
+        <Image
+          alt={imgSrc!}
+          src={imgSrc!}
+          width={194}
+          height={198}
+          className="mx-auto mb-7"
+        />
+      )}
       <GoogleLoginButton />
-      <button className="w-full text-onSurface-200 mt-4">다음에 할게요</button>
+      <button
+        onClick={handleSkipLogin}
+        className="w-full text-onSurface-200 mt-4"
+      >
+        다음에 할게요
+      </button>
     </BottomSheet>
   )
 }

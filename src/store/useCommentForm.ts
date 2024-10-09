@@ -1,15 +1,15 @@
 import { create } from 'zustand'
 
 type CommentFormType = {
-  isEditing: boolean
-  setIsEditing: (isEditing: boolean) => void
+  editingId: number | null
+  setEditingId: (id: number | null) => void
   editingText: string | null
   setEditingText: (text: string | null) => void
 }
 
 const useCommentForm = create<CommentFormType>((set) => ({
-  isEditing: false,
-  setIsEditing: (isEditing: boolean) => set({ isEditing: isEditing }),
+  editingId: null,
+  setEditingId: (id: number | null) => set({ editingId: id }),
   editingText: null,
   setEditingText: (text: string | null) => set({ editingText: text }),
 }))

@@ -8,18 +8,20 @@ import CommentItem from '@/components/shared/CommentItem'
 import CommentBottomSheet from '@/components/shared/CommentBottomSheet'
 import CommentInput from '../CommentTextarea'
 import CheckboxBottomSheet from '@/components/shared/CheckboxBottomSheet'
-import Snackbar from '@/components/shared/Snackbar'
 import { useGetComments } from '@/hooks/comment/useGetComments'
+import { useAuthStore } from '@/store/useAuthStore'
 
 export default function CommentsList({ wordId }: { wordId: number }) {
   const [sortType, setSortType] = useState('likeCount')
   const [targetId, setTargetId] = useState<number>()
+  const [writerId, setWriterId] = useState<number>()
   const { bottomSheetType, openBottomSheet } = useUIStore()
   const { comments, isFetching, isLoading, refetch } = useGetComments(
     wordId,
     sortType,
   )
   const commentsLength = comments?.length as number
+  const { userId } = useAuthStore()
 
   if (!comments && (!isFetching || !isLoading)) return
   return (
@@ -65,6 +67,7 @@ export default function CommentsList({ wordId }: { wordId: number }) {
                 key={comment.commentId}
                 comment={comment}
                 setTargetId={setTargetId}
+                setWriterId={setWriterId}
               />
             ))
           ) : (
@@ -92,8 +95,7 @@ export default function CommentsList({ wordId }: { wordId: number }) {
       <CommentBottomSheet
         isOpen={bottomSheetType === 'comment'}
         targetId={targetId as number}
-        // 로그인 사용자와 writerInfo 사용자와 일치하면 mine 아니면 others
-        target="others"
+        target={userId === writerId ? 'mine' : 'others'}
         wordId={wordId}
       />
       <CheckboxBottomSheet

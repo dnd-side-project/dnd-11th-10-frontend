@@ -7,11 +7,13 @@ import CommentLikeButton from '../CommentLikeButton'
 export type CommentItemProps = {
   comment: DetailCommentType
   setTargetId: (id: number) => void
+  setWriterId: (id: number) => void
 }
 
 export default function CommentItem({
   comment,
   setTargetId,
+  setWriterId,
 }: CommentItemProps) {
   const {
     commentId,
@@ -55,6 +57,7 @@ export default function CommentItem({
             height={24}
             onClick={() => {
               setTargetId(commentId)
+              setWriterId(writerId)
               openBottomSheet('comment')
             }}
             className="cursor-pointer"

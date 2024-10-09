@@ -1,5 +1,6 @@
 import TextArea from '@/components/common/Textarea'
 import useAddComment from '@/hooks/comment/useAddComment'
+import { useEditComment } from '@/hooks/comment/useEditComment'
 import { useAuthStore } from '@/store/useAuthStore'
 import useCommentForm from '@/store/useCommentForm'
 import useUIStore from '@/store/useUIStore'
@@ -14,14 +15,16 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
   const [height, setHeight] = useState<number | string>(smallHeight)
   const { userId } = useAuthStore()
   const { openBottomSheet } = useUIStore()
-  const { isEditing, setIsEditing, editingText, setEditingText } =
+  const { editingId, setEditingId, editingText, setEditingText } =
     useCommentForm()
-  const { mutate: addComment } = useAddComment(wordId && wordId)
+  const { mutate: addComment } = useAddComment(wordId)
+  const { mutate: editComment } = useEditComment(wordId)
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = e.target
     resizeTextarea(textarea)
-    if (isEditing) {
+    if (editingId !== null) {
+      setValue(textarea.value.slice(0, maxLength))
       setEditingText(textarea.value.slice(0, maxLength))
       return
     }
@@ -29,7 +32,7 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
   }
 
   const handleFocus = () => {
-    if (!userId) {
+    if (userId === null) {
       openBottomSheet('login')
       return
     }
@@ -45,10 +48,9 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
 
   const handleSubmit = async () => {
     if (!value) return
-    if (isEditing) {
+    if (editingId !== null) {
       // 댓글 수정
-      setIsEditing(false)
-      setEditingText(null)
+      editComment({ editingId, value })
     } else {
       addComment({ wordId, value })
     }
@@ -71,14 +73,11 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
   }
 
   useEffect(() => {
-    if (isEditing && editingText) {
+    if (editingId && editingText) {
       setHeight(largeHeight)
       setValue(editingText)
     }
-    return () => {
-      setIsEditing(false)
-    }
-  }, [isEditing, setIsEditing, editingText])
+  }, [editingId, setEditingId, editingText])
 
   return (
     <div className="relative w-full">
@@ -95,6 +94,7 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
         onBlur={handleBlur}
         height={height}
         maxLength={100}
+        readOnly={userId === null}
       />
 
       {value || (focused && !value) ? (

@@ -9,11 +9,11 @@ export default function useBottomSheetAction(
   wordId?: number,
 ) {
   const { openBottomSheet, closeBottomSheet, showSnackbar } = useUIStore()
-  const { setIsEditing } = useCommentForm()
+  const { setEditingId } = useCommentForm()
   const { mutate: deleteComment } = useDeleteComment(wordId!)
 
   const editComment = () => {
-    setIsEditing(true)
+    setEditingId(commentId)
     closeBottomSheet()
   }
 

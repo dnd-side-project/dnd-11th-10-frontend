@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import SortButton from '@/components/common/SortButton'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useUIStore from '@/store/useUIStore'
 import FilterBottomSheet from '@/components/shared/FilterBottomSheet'
 import CommentItem from '@/components/shared/CommentItem'
@@ -11,18 +11,27 @@ import CheckboxBottomSheet from '@/components/shared/CheckboxBottomSheet'
 import { useGetComments } from '@/hooks/comment/useGetComments'
 import { useAuthStore } from '@/store/useAuthStore'
 import LoginBottomSheet from '@/components/shared/LoginBottomSheet'
+import useCommentForm from '@/store/useCommentForm'
 
 export default function CommentsList({ wordId }: { wordId: number }) {
   const [sortType, setSortType] = useState('likeCount')
   const [targetId, setTargetId] = useState<number>()
   const [writerId, setWriterId] = useState<number>()
   const { bottomSheetType, openBottomSheet } = useUIStore()
+  const { setEditingId, setEditingText } = useCommentForm()
   const { comments, isFetching, isLoading, refetch } = useGetComments(
     wordId,
     sortType,
   )
   const commentsLength = comments?.length as number
   const { userId } = useAuthStore()
+
+  useEffect(() => {
+    return () => {
+      setEditingText(null)
+      setEditingId(null)
+    }
+  }, [setEditingId, setEditingText])
 
   if (!comments && (!isFetching || !isLoading)) return
   return (

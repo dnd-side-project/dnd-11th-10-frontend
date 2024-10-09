@@ -1,14 +1,18 @@
 import TextArea from '@/components/common/Textarea'
 import useAddComment from '@/hooks/comment/useAddComment'
+import { useAuthStore } from '@/store/useAuthStore'
+import useUIStore from '@/store/useUIStore'
 import { useState } from 'react'
 
 const [smallHeight, largeHeight] = ['56px', '76px']
+const maxLength = 100
 
 export default function CommentTextarea({ wordId }: { wordId: number }) {
   const [value, setValue] = useState<string>('')
   const [focused, setFocused] = useState(false)
   const [height, setHeight] = useState<number | string>(smallHeight)
-  const maxLength = 100
+  const { userId } = useAuthStore()
+  const { openBottomSheet } = useUIStore()
   const { mutate: addComment } = useAddComment(wordId && wordId)
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -18,6 +22,10 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
   }
 
   const handleFocus = () => {
+    if (!userId) {
+      openBottomSheet('login')
+      return
+    }
     setFocused(true)
     setHeight('auto')
   }

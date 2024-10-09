@@ -1,4 +1,6 @@
 import useToggleCommentLike from '@/hooks/comment/useToggleCommentLike'
+import { useAuthStore } from '@/store/useAuthStore'
+import useUIStore from '@/store/useUIStore'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
@@ -16,9 +18,15 @@ export default function CommentLikeButton({
   const pathname = usePathname()
   const wordId = parseInt(pathname.split('/').at(-1)!)
   const { mutate: toggleCommentLike } = useToggleCommentLike(wordId)
+  const { userId } = useAuthStore()
+  const { openBottomSheet } = useUIStore()
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault()
+    if (!userId) {
+      openBottomSheet('login')
+      return
+    }
     toggleCommentLike({ commentId })
   }
   return (

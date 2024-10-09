@@ -10,6 +10,7 @@ import CommentInput from '../CommentTextarea'
 import CheckboxBottomSheet from '@/components/shared/CheckboxBottomSheet'
 import { useGetComments } from '@/hooks/comment/useGetComments'
 import { useAuthStore } from '@/store/useAuthStore'
+import LoginBottomSheet from '@/components/shared/LoginBottomSheet'
 
 export default function CommentsList({ wordId }: { wordId: number }) {
   const [sortType, setSortType] = useState('likeCount')
@@ -103,6 +104,7 @@ export default function CommentsList({ wordId }: { wordId: number }) {
         type="commentReport"
         targetId={targetId as number}
       />
+      <LoginBottomSheet isOpen={bottomSheetType === 'login'} type="loginBtn" />
     </>
   )
 }

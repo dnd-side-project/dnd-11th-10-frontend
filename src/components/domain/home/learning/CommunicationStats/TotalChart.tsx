@@ -1,7 +1,7 @@
 import ChartProgressBar from './ChartProgressBar'
 
 type TotalChartProps = {
-  topPercent: number
+  topPercent: number | '??'
   percent: number
 }
 

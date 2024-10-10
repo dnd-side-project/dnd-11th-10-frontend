@@ -24,3 +24,9 @@ export async function getRecentWords() {
   const res = await get<SuccessResponse<SimpleWordType[]>>('/words/recent')
   return res.words
 }
+
+// 오늘의 용어 3개 조회
+export async function getTodayWords() {
+  const res = await get<SuccessResponse<SimpleWordType[]>>('/words/todays')
+  return res.words
+}

@@ -1,6 +1,8 @@
 import { env } from '@/constants/env'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { useAuthStore } from '@/store/useAuthStore'
+import { refreshToken } from '@/utils/refreshToken'
+
 const axiosInstance = axios.create({
   baseURL: env.BASE_URL,
   timeout: 10000,
@@ -28,7 +30,26 @@ axiosInstance.interceptors.response.use(
   (response) => {
     return response
   },
-  (error) => {
+  async (error) => {
+    const originalRequest = error.config as AxiosRequestConfig & {
+      _retry?: boolean
+    }
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+
+      try {
+        const newAccessToken = await refreshToken()
+        if (originalRequest.headers) {
+          originalRequest.headers['Authorization'] = `${newAccessToken}`
+        }
+        return axiosInstance(originalRequest)
+      } catch (refreshError) {
+        useAuthStore.setState({ accessToken: null })
+        return Promise.reject(refreshError)
+      }
+    }
+
     return Promise.reject(error)
   },
 )

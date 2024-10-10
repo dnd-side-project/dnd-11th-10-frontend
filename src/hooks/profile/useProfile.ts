@@ -77,5 +77,3 @@ function useProfile() {
     handleSubmit,
   }
 }
-
-export default useProfile

@@ -7,8 +7,10 @@ import { useSearchStore } from '@/store/useSearchStore'
 
 function SearchInput({
   setShowWordsList,
+  setIsTyping,
 }: {
   setShowWordsList: (value: boolean) => void
+  setIsTyping: (value: boolean) => void
 }) {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
@@ -22,6 +24,7 @@ function SearchInput({
         !inputRef.current.contains(event.target as Node)
       ) {
         setIsActive(false)
+        setIsTyping(false)
       }
     }
 
@@ -29,17 +32,19 @@ function SearchInput({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [])
+  }, [setIsTyping])
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       setIsActive(false)
       setShowWordsList(true)
+      setIsTyping(false)
     }
   }
 
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value)
+    setIsTyping(true)
     console.log(e.target.value)
   }
 

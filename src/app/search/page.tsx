@@ -2,18 +2,29 @@
 import { useState } from 'react'
 import {
   SearchInput,
+  WordsCandidates,
   WordsPopular,
   WordsSearchResult,
 } from '@/components/domain/search'
 
 export default function SearchPage() {
   const [showWordsList, setShowWordsList] = useState<boolean>(false)
+  const [isTyping, setIsTyping] = useState<boolean>(false)
 
   return (
     <div>
-      <SearchInput setShowWordsList={setShowWordsList} />
+      <SearchInput
+        setShowWordsList={setShowWordsList}
+        setIsTyping={setIsTyping}
+      />
       <div className="px-4">
-        {showWordsList ? <WordsSearchResult /> : <WordsPopular />}
+        {isTyping ? (
+          <WordsCandidates />
+        ) : showWordsList ? (
+          <WordsSearchResult />
+        ) : (
+          <WordsPopular />
+        )}
       </div>
     </div>
   )

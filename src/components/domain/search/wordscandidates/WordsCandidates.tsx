@@ -1,6 +1,5 @@
 'use client'
 
-import { candidatesData } from '@/constants/candidatesData'
 import { useSearchDebounce } from '@/hooks/search/useSearchDebounce'
 import { get } from '@/lib/axios'
 import { useSearchStore } from '@/store/useSearchStore'
@@ -23,7 +22,7 @@ function WordsCandidates() {
     if (debouncedQuery) fetchRecommend()
   }, [debouncedQuery])
 
-  return <div className="text-onSurface-300">{recommendList}</div>
+  return <div className="text-onSurface-300">WordsCandidates</div>
 }
 
 export default WordsCandidates

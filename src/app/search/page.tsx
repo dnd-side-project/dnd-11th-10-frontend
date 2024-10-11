@@ -1,15 +1,19 @@
 'use client'
-import { SearchInput, WordsPopular } from '@/components/domain/search'
-import { WordsCandidates } from '@/components/domain/search/wordscandidates'
 import { useState } from 'react'
+import {
+  SearchInput,
+  WordsPopular,
+  WordsSearchResult,
+} from '@/components/domain/search'
 
 export default function SearchPage() {
-  const [enterKeyword, setEnterKeyword] = useState(false)
+  const [showWordsList, setShowWordsList] = useState<boolean>(false)
+
   return (
     <div>
-      <SearchInput />
+      <SearchInput setShowWordsList={setShowWordsList} />
       <div className="px-4">
-        {enterKeyword ? <WordsPopular /> : <WordsCandidates />}
+        {showWordsList ? <WordsSearchResult /> : <WordsPopular />}
       </div>
     </div>
   )

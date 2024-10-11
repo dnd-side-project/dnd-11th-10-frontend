@@ -5,7 +5,11 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useSearchStore } from '@/store/useSearchStore'
 
-function SearchInput() {
+function SearchInput({
+  setShowWordsList,
+}: {
+  setShowWordsList: (value: boolean) => void
+}) {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
   const inputRef = useRef<HTMLDivElement | null>(null)
@@ -30,6 +34,7 @@ function SearchInput() {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       setIsActive(false)
+      setShowWordsList(true)
     }
   }
 

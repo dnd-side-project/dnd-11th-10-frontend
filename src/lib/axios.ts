@@ -31,25 +31,15 @@ axiosInstance.interceptors.response.use(
     return response
   },
   async (error) => {
-    const originalRequest = error.config as AxiosRequestConfig & {
-      _retry?: boolean
-    }
-
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true
-
+    if (error.response?.status === 401) {
       try {
-        const newAccessToken = await refreshToken()
-        if (originalRequest.headers) {
-          originalRequest.headers['Authorization'] = `${newAccessToken}`
-        }
-        return axiosInstance(originalRequest)
+        const accessToken = await refreshToken()
+        error.config.headers.Authorization = `Bearer ${accessToken}`
+        return axiosInstance(error.config)
       } catch (refreshError) {
-        useAuthStore.setState({ accessToken: null })
         return Promise.reject(refreshError)
       }
     }
-
     return Promise.reject(error)
   },
 )

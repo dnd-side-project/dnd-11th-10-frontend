@@ -8,9 +8,11 @@ import { useSearchStore } from '@/store/useSearchStore'
 function SearchInput({
   setShowWordsList,
   setIsTyping,
+  onSearch,
 }: {
   setShowWordsList: (value: boolean) => void
   setIsTyping: (value: boolean) => void
+  onSearch: (keyword: string) => void
 }) {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
@@ -39,13 +41,13 @@ function SearchInput({
       setIsActive(false)
       setShowWordsList(true)
       setIsTyping(false)
+      onSearch(keyword)
     }
   }
 
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value)
     setIsTyping(true)
-    console.log(e.target.value)
   }
 
   return (

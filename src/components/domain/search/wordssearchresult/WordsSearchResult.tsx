@@ -1,64 +1,49 @@
 'use client'
 
-import { get } from '@/lib/axios'
-import React, { useEffect, useState } from 'react'
-
-interface Word {
-  id: number
-  name: string
-  pronunciationInfo: {
-    english: string
-  }
-  meaning: string
-  category: string
-  viewCount: number
-}
+import { useEffect, useState } from 'react'
+import { getSearchWords } from '@/api/search'
+import { SearchWord } from '@/types/searchWords'
+import EmptyLayout from '@/components/shared/EmptyLayout'
+import WordListItem from '@/components/shared/WordListItem'
 
 function WordsSearchResult({ keyword }: { keyword: string }) {
-  const [words, setWords] = useState<Word[]>([])
+  const [words, setWords] = useState<SearchWord[]>([])
 
   useEffect(() => {
-    const fetchWords = async () => {
-      try {
-        const response = await get<{ words: Word[] }>('/words/search', {
-          params: {
-            name: keyword,
-            size: 15,
-            sortBy: 'name',
-            category: '전체 실무',
-          },
-        })
-        setWords(response.words || [])
-      } catch (error) {
-        console.error('Failed to fetch words', error)
-        setWords([])
-      }
+    const getWords = async () => {
+      const words = await getSearchWords(keyword)
+      setWords(words)
     }
 
     if (keyword) {
-      fetchWords()
+      getWords()
     }
   }, [keyword])
 
-  if (words.length === 0) {
-    return (
-      <div className="text-onSurface-300">No results found for {keyword}</div>
-    )
-  }
-
   return (
-    <div className="text-onSurface-300">
-      {words.map((word) => (
-        <div key={word.id} className="mb-4">
-          <h3 className="text-lg font-semibold">{word.name}</h3>
-          <p>{word.meaning}</p>
-          <p className="text-sm text-gray-500">
-            {word.pronunciationInfo.english}
-          </p>
-          <p className="text-sm text-gray-500">{word.category}</p>
+    <>
+      {words.length === 0 ? (
+        <div className="h-[calc(100%-90px)]">
+          <EmptyLayout target={'searchResults'} />
         </div>
-      ))}
-    </div>
+      ) : (
+        <div className="text-onSurface-300">
+          {words.map((word) => (
+            <WordListItem
+              word={{
+                id: word.id,
+                category: word.category,
+                name: word.name,
+                meaning: word.meaning,
+                viewCount: word.viewCount,
+                commentCount: word.commentCount,
+              }}
+              key={word.id}
+            />
+          ))}
+        </div>
+      )}
+    </>
   )
 }
 

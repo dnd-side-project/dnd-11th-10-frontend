@@ -2,7 +2,7 @@ import { wordsPopularData } from '@/constants/wordsPopularData'
 
 function WordsPopular() {
   return (
-    <div className="flex flex-col justify-between gap-8">
+    <div className="flex flex-col justify-between gap-8 px-4">
       <div className="flex justify-between">
         <p className="text-h2 text-onSurface-300">많이 찾아본 용어</p>
         <div className="flex flex-col text-right">

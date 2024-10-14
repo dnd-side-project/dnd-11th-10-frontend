@@ -23,7 +23,7 @@ export default function SearchPage() {
         setIsTyping={setIsTyping}
         onSearch={handleSearch}
       />
-      <div className="px-4">
+      <div>
         {isTyping ? (
           <WordsCandidates />
         ) : showWordsList ? (

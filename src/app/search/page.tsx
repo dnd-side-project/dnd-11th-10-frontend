@@ -23,15 +23,13 @@ export default function SearchPage() {
         setIsTyping={setIsTyping}
         onSearch={handleSearch}
       />
-      <div>
-        {isTyping ? (
-          <WordsCandidates />
-        ) : showWordsList ? (
-          <WordsSearchResult keyword={searchKeyword} />
-        ) : (
-          <WordsPopular />
-        )}
-      </div>
+      {isTyping ? (
+        <WordsCandidates />
+      ) : showWordsList ? (
+        <WordsSearchResult keyword={searchKeyword} />
+      ) : (
+        <WordsPopular />
+      )}
     </div>
   )
 }

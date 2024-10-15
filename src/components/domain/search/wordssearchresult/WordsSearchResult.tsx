@@ -23,7 +23,8 @@ function WordsSearchResult({ keyword }: { keyword: string }) {
   return (
     <>
       {words.length === 0 ? (
-        <div className="h-[calc(100%-90px)]">
+        <div className="w-full h-full flex flex-col justify-center items-center mt-64">
+          <div />
           <EmptyLayout target={'searchResults'} />
         </div>
       ) : (
@@ -36,6 +37,7 @@ function WordsSearchResult({ keyword }: { keyword: string }) {
                 name: word.name,
                 meaning: word.meaning,
                 viewCount: word.viewCount,
+                // commentCount를 API에서 넘겨주지 않아서 추후에 변경 예정
                 commentCount: word.commentCount,
               }}
               key={word.id}

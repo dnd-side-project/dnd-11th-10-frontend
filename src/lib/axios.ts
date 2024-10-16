@@ -14,12 +14,9 @@ axiosInstance.interceptors.request.use(
   (config) => {
     const { accessToken } = useAuthStore.getState()
 
-    if (!accessToken) {
-      window.location.href = '/'
-      return config
+    if (accessToken && config.headers) {
+      config.headers['Authorization'] = `${accessToken}`
     }
-
-    config.headers['Authorization'] = `${accessToken}`
 
     return config
   },

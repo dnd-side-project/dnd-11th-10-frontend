@@ -14,9 +14,12 @@ axiosInstance.interceptors.request.use(
   (config) => {
     const { accessToken } = useAuthStore.getState()
 
-    if (accessToken && config.headers) {
-      config.headers.set('Authorization', `${accessToken}`)
+    if (!accessToken) {
+      window.location.href = '/'
+      return config
     }
+
+    config.headers['Authorization'] = `${accessToken}`
 
     return config
   },
@@ -34,7 +37,7 @@ axiosInstance.interceptors.response.use(
     if (error.response?.status === 401) {
       try {
         const accessToken = await refreshToken()
-        error.config.headers.Authorization = `Bearer ${accessToken}`
+        error.config.headers.Authorization = `${accessToken}`
         return axiosInstance(error.config)
       } catch (refreshError) {
         return Promise.reject(refreshError)

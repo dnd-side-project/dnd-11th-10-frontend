@@ -9,7 +9,7 @@ import { ProfileData } from '@/types/profile'
 import { useMutation } from '@tanstack/react-query'
 import { postProfileData } from '@/api/profile'
 
-function useProfile() {
+export const useProfile = () => {
   const router = useRouter()
   const [step, setStep] = useState<'직군' | '기업 및 경력'>('직군')
   const [profileData, setProfileData] = useState<ProfileData>({

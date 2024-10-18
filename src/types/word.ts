@@ -26,6 +26,11 @@ export type DetailWordType = {
   updatedAt: Date
 } & SimpleWordType
 
+export type DictionaryListResponse = {
+  words: SimpleWordType[]
+  lastWordName: string
+}
+
 // 관리자 용어 조회
 export type AdminWordType = Pick<
   DetailWordType,

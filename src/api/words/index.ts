@@ -1,16 +1,22 @@
 import { get } from '@/lib/axios'
 import { SuccessResponse } from '@/types/response'
-import { DetailWordType, FilterType, SimpleWordType } from '@/types/word'
+import {
+  DetailWordType,
+  DictionaryListResponse,
+  FilterType,
+  SimpleWordType,
+} from '@/types/word'
 
 // 사전 내 용어 목록 조회
 export async function getAllWords(
   category: FilterType,
   sortBy: string | undefined,
+  lastWordName?: string,
 ) {
-  const res = await get<SuccessResponse<SimpleWordType[]>>(
-    `/words?category=${category}&sortBy=${sortBy}`,
+  const res = await get<DictionaryListResponse>(
+    `/words?category=${category}&sortBy=${sortBy}&lastWordName=${lastWordName}`,
   )
-  return res.words
+  return res
 }
 
 // 용어 상세 정보 조회

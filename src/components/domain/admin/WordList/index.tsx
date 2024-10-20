@@ -1,13 +1,18 @@
-import { AdminWordType } from '@/types/word'
+'use client'
 import WordListItem from './WordListItem'
+import useGetAllWords from '@/hooks/admin/useGetAllWords'
+import { AdminWordType } from '@/types/word'
 
-export default function AdminWordList({ words }: { words: AdminWordType[] }) {
+export default function AdminWordList() {
+  const { words } = useGetAllWords()
+
   return (
     <>
       <div>
-        {words.map((word, idx) => (
-          <WordListItem key={word.id} word={word} />
-        ))}
+        {words &&
+          words.map((word: AdminWordType, idx) => (
+            <WordListItem key={word.id} word={word} />
+          ))}
       </div>
     </>
   )

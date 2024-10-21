@@ -1,5 +1,10 @@
-import Link from 'next/link'
+import AdminWordList from '@/components/domain/admin/WordList'
 
-export default function AdminMagePage() {
-  return <></>
+export default async function WordsListPage() {
+  return (
+    <div className="px-40 mt-8 overflow-y-auto">
+      <p className="text-h2 mb-2">전체 용어</p>
+      <AdminWordList />
+    </div>
+  )
 }

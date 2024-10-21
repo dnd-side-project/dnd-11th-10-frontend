@@ -23,6 +23,7 @@ export default function SearchHeader({
           width={24}
           height={24}
           onClick={() => router.back()}
+          className="cursor-pointer"
         />
         <div
           className={cn('relative w-full', { 'cursor-pointer': disabled })}

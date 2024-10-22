@@ -6,17 +6,18 @@ export type BottomSheetProps = {
   isOpen: boolean
   target: 'mine' | 'others'
   targetId: number
+  wordId: number
 }
 
 export default function CommentBottomSheet({
   isOpen,
   target,
   targetId,
+  wordId,
 }: BottomSheetProps) {
-  const actions = useBottomSheetAction()
+  const actions = useBottomSheetAction(targetId, wordId)
   if (!isOpen) return null
   const menuItems = COMMENT_MENUS[target]
-  console.log('targetId', targetId)
   return (
     <BottomSheet>
       {menuItems.map((menu, idx) => (

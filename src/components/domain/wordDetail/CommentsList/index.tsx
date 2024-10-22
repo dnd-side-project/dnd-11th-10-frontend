@@ -1,22 +1,37 @@
 'use client'
 import Image from 'next/image'
 import SortButton from '@/components/common/SortButton'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useUIStore from '@/store/useUIStore'
 import FilterBottomSheet from '@/components/shared/FilterBottomSheet'
 import CommentItem from '@/components/shared/CommentItem'
 import CommentBottomSheet from '@/components/shared/CommentBottomSheet'
 import CommentInput from '../CommentTextarea'
 import CheckboxBottomSheet from '@/components/shared/CheckboxBottomSheet'
-import Snackbar from '@/components/shared/Snackbar'
 import { useGetComments } from '@/hooks/comment/useGetComments'
+import { useAuthStore } from '@/store/useAuthStore'
+import LoginBottomSheet from '@/components/shared/LoginBottomSheet'
+import useCommentForm from '@/store/useCommentForm'
 
 export default function CommentsList({ wordId }: { wordId: number }) {
-  const [sortType, setSortType] = useState('좋아요순')
+  const [sortType, setSortType] = useState('likeCount')
   const [targetId, setTargetId] = useState<number>()
+  const [writerId, setWriterId] = useState<number>()
   const { bottomSheetType, openBottomSheet } = useUIStore()
-  const { comments, isFetching, isLoading, refetch } = useGetComments(wordId)
+  const { setEditingId, setEditingText } = useCommentForm()
+  const { comments, isFetching, isLoading, refetch } = useGetComments(
+    wordId,
+    sortType,
+  )
   const commentsLength = comments?.length as number
+  const { userId } = useAuthStore()
+
+  useEffect(() => {
+    return () => {
+      setEditingText(null)
+      setEditingId(null)
+    }
+  }, [setEditingId, setEditingText])
 
   if (!comments && (!isFetching || !isLoading)) return
   return (
@@ -59,9 +74,10 @@ export default function CommentsList({ wordId }: { wordId: number }) {
           {commentsLength > 0 ? (
             comments?.map((comment, idx) => (
               <CommentItem
-                key={comment.id}
+                key={comment.commentId}
                 comment={comment}
                 setTargetId={setTargetId}
+                setWriterId={setWriterId}
               />
             ))
           ) : (
@@ -83,20 +99,21 @@ export default function CommentsList({ wordId }: { wordId: number }) {
       <FilterBottomSheet
         isOpen={bottomSheetType === 'filter'}
         selected={sortType}
+        setSortType={setSortType}
         target="comments"
       />
       <CommentBottomSheet
         isOpen={bottomSheetType === 'comment'}
         targetId={targetId as number}
-        // 로그인 사용자와 writerInfo 사용자와 일치하면 mine 아니면 others
-        target="others"
+        target={userId === writerId ? 'mine' : 'others'}
+        wordId={wordId}
       />
       <CheckboxBottomSheet
         isOpen={bottomSheetType === 'checkbox'}
         type="commentReport"
         targetId={targetId as number}
       />
-      <Snackbar />
+      <LoginBottomSheet isOpen={bottomSheetType === 'login'} type="loginBtn" />
     </>
   )
 }

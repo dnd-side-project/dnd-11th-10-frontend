@@ -8,6 +8,7 @@ import { useGetPopularComments } from '@/hooks/comment/useGetPopularComments'
 
 export default function PopularCommentsList() {
   const { bottomSheetType } = useUIStore()
+  const [wordId, setWordId] = useState<number>()
   const [targetId, setTargetId] = useState<number>()
   const { comments: popularComments } = useGetPopularComments()
   if (!popularComments || typeof popularComments === 'string') return
@@ -26,6 +27,7 @@ export default function PopularCommentsList() {
                   <PopularCommentItem
                     comment={comment}
                     setTargetId={setTargetId}
+                    setWordId={setWordId}
                   />
                 </li>
               ))}
@@ -36,6 +38,7 @@ export default function PopularCommentsList() {
         isOpen={bottomSheetType === 'comment'}
         targetId={targetId as number}
         target="others"
+        wordId={wordId as number}
       />
       <CheckboxBottomSheet
         isOpen={bottomSheetType === 'checkbox'}

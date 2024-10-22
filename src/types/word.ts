@@ -5,6 +5,7 @@ export type CategoryType = {
 export type FilterType = '전체' | CategoryType['category']
 
 export type WordSortType = 'name' | 'viewCount'
+export type CommentSortType = 'likeCount' | 'createdAt'
 
 export type SimpleWordType = {
   id: number

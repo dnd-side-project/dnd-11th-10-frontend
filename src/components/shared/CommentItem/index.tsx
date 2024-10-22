@@ -2,18 +2,22 @@ import { DetailCommentType } from '@/types/comment'
 import { getTimeAgo } from '@/utils/date'
 import Image from 'next/image'
 import useUIStore from '@/store/useUIStore'
+import CommentLikeButton from '../CommentLikeButton'
+import useCommentForm from '@/store/useCommentForm'
 
 export type CommentItemProps = {
   comment: DetailCommentType
   setTargetId: (id: number) => void
+  setWriterId: (id: number) => void
 }
 
 export default function CommentItem({
   comment,
   setTargetId,
+  setWriterId,
 }: CommentItemProps) {
   const {
-    id,
+    commentId,
     content,
     isLike,
     likeCount,
@@ -28,6 +32,7 @@ export default function CommentItem({
     },
   } = comment
   const { openBottomSheet } = useUIStore()
+  const { setEditingText } = useCommentForm()
   return (
     <>
       <div className="flex flex-col gap-3 justify-between py-8 px-4 border-b-[1.5px] border-outline">
@@ -53,7 +58,9 @@ export default function CommentItem({
             width={24}
             height={24}
             onClick={() => {
-              setTargetId(id)
+              setTargetId(commentId)
+              setWriterId(writerId)
+              setEditingText(content)
               openBottomSheet('comment')
             }}
             className="cursor-pointer"
@@ -63,15 +70,11 @@ export default function CommentItem({
           {content}
         </p>
         <div className="flex justify-between">
-          <div className="flex gap-1">
-            <Image
-              alt="좋아요"
-              src={'/icons/heart_outline.svg'}
-              width={16}
-              height={16}
-            />
-            <p className="text-caption text-onSurface-200">{likeCount}</p>
-          </div>
+          <CommentLikeButton
+            commentId={commentId}
+            isLike={isLike}
+            likeCount={likeCount}
+          />
           <p className="text-caption text-onSurface-200">
             {getTimeAgo(createdAt)}
           </p>

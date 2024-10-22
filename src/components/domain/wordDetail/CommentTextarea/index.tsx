@@ -1,21 +1,41 @@
 import TextArea from '@/components/common/Textarea'
-import { useState } from 'react'
+import useAddComment from '@/hooks/comment/useAddComment'
+import { useEditComment } from '@/hooks/comment/useEditComment'
+import { useAuthStore } from '@/store/useAuthStore'
+import useCommentForm from '@/store/useCommentForm'
+import useUIStore from '@/store/useUIStore'
+import { useEffect, useState } from 'react'
 
 const [smallHeight, largeHeight] = ['56px', '76px']
+const maxLength = 100
 
 export default function CommentTextarea({ wordId }: { wordId: number }) {
   const [value, setValue] = useState<string>('')
   const [focused, setFocused] = useState(false)
   const [height, setHeight] = useState<number | string>(smallHeight)
-  const maxLength = 100
+  const { userId } = useAuthStore()
+  const { openBottomSheet } = useUIStore()
+  const { editingId, setEditingId, editingText, setEditingText } =
+    useCommentForm()
+  const { mutate: addComment } = useAddComment(wordId)
+  const { mutate: editComment } = useEditComment(wordId)
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = e.target
     resizeTextarea(textarea)
+    if (editingId !== null) {
+      setValue(textarea.value.slice(0, maxLength))
+      setEditingText(textarea.value.slice(0, maxLength))
+      return
+    }
     setValue(textarea.value.slice(0, maxLength))
   }
 
   const handleFocus = () => {
+    if (userId === null) {
+      openBottomSheet('login')
+      return
+    }
     setFocused(true)
     setHeight('auto')
   }
@@ -26,15 +46,24 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
     }
   }
 
-  const handleSubmit = () => {
-    alert(`${wordId} comment 등록`)
+  const handleSubmit = async () => {
+    if (!value) return
+    if (editingId !== null) {
+      // 댓글 수정
+      editComment({ editingId, value })
+    } else {
+      addComment({ wordId, value })
+    }
     setValue('')
     resizeTextarea()
   }
 
   const resizeTextarea = (textarea?: EventTarget & HTMLTextAreaElement) => {
     if (textarea) {
-      textarea.style.height = `${textarea.scrollHeight}px`
+      textarea.style.height = 'auto'
+      if (textarea.clientHeight < textarea.scrollHeight) {
+        textarea.style.height = `${textarea.scrollHeight}px`
+      }
       if (textarea.value === '') {
         setHeight(largeHeight)
       }
@@ -42,6 +71,13 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
       setHeight(smallHeight)
     }
   }
+
+  useEffect(() => {
+    if (editingId && editingText) {
+      setHeight(largeHeight)
+      setValue(editingText)
+    }
+  }, [editingId, setEditingId, editingText])
 
   return (
     <div className="relative w-full">
@@ -58,6 +94,7 @@ export default function CommentTextarea({ wordId }: { wordId: number }) {
         onBlur={handleBlur}
         height={height}
         maxLength={100}
+        readOnly={userId === null}
       />
 
       {value || (focused && !value) ? (

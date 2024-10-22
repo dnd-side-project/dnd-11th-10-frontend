@@ -25,4 +25,4 @@ export type DetailCommentType = {
     jobGroup: string
     experience: string
   }
-} & Omit<SimpleCommentType, 'wordInfo'>
+} & Omit<SimpleCommentType, 'id' | 'wordInfo'>

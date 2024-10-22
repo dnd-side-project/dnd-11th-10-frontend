@@ -1,0 +1,6 @@
+export * from './email'
+export * from './nickname'
+export * from './jobgroup'
+export * from './company'
+export * from './experience'
+export * from './profileimg'

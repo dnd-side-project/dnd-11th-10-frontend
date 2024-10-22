@@ -36,7 +36,7 @@ export default function WordListItem({
             )}
           </div>
 
-          <p className="text-sub1">{name}</p>
+          <p className="text-sub1 text-onSurface-300">{name}</p>
           <p className="text-onSurface-200 break-keep line-clamp-3">
             {meaning}
           </p>

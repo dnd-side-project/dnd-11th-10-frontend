@@ -1,11 +1,11 @@
 import { get } from '@/lib/axios'
-import { SuccessResponse } from '@/types/response'
-import { FilterType, SimpleWordType } from '@/types/word'
+import { BookmarkListResponse } from '@/types/response'
+import { FilterType } from '@/types/word'
 
 // 사용자 북마크 목록 조회
-export async function getBookmarks(category: FilterType) {
-  const res = await get<SuccessResponse<SimpleWordType[]>>(
-    `/bookmarks?category=${category}`,
+export async function getBookmarks(category: FilterType, pageParam: string) {
+  const res = await get<BookmarkListResponse>(
+    `/bookmarks?category=${category}?lastBookmarkId=${pageParam}`,
   )
-  return res.words
+  return res
 }

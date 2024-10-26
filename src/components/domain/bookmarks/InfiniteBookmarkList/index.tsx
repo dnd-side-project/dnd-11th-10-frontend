@@ -66,7 +66,11 @@ export default function InfiniteBookmarkList({
         </Link>
       </div>
       {data?.pages.map((page) => (
-        <WordsList key={page.lastBookmarkId} words={page.words} />
+        <WordsList
+          key={page.lastBookmarkId}
+          words={page.words}
+          showBookmarkBtn
+        />
       ))}
       {isFetchingNextPage ? (
         <Image

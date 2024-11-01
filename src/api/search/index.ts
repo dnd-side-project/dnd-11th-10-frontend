@@ -1,4 +1,5 @@
 import { get } from '@/lib/axios'
+import { SuccessResponse } from '@/types/response'
 import { SearchWord } from '@/types/searchWords'
 
 export const getSearchWords = async (
@@ -13,4 +14,14 @@ export const getSearchWords = async (
     },
   })
   return response.words || []
+}
+
+export const getPopularWords = async () => {
+  const res = await get<SuccessResponse<Popular[]>>('/words/popular', {
+    params: {
+      size: 10,
+      sortBy: 'viewCount',
+    },
+  })
+  return res.words || []
 }

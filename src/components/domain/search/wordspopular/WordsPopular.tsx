@@ -1,4 +1,4 @@
-import { wordsPopularData } from '@/constants/wordsPopularData'
+import { wordsPopularData } from "@/constants/wordsPopularData"
 
 function WordsPopular() {
   return (

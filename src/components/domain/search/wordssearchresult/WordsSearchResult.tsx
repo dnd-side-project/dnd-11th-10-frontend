@@ -48,15 +48,7 @@ function WordsSearchResult({ keyword }: { keyword: string }) {
           </div>
           {words.map((word) => (
             <WordListItem
-              word={{
-                id: word.id,
-                category: word.category,
-                name: word.name,
-                meaning: word.meaning,
-                viewCount: word.viewCount,
-                // commentCount를 API에서 넘겨주지 않아서 추후에 변경 예정
-                commentCount: word.commentCount,
-              }}
+              word={word}
               key={word.id}
             />
           ))}

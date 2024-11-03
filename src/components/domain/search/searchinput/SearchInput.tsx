@@ -1,53 +1,26 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useSearchStore } from '@/store/useSearchStore'
+import useHandleOutsideClick from '@/hooks/search/useHandleOutsideClick'
 
-function SearchInput({
-  setShowWordsList,
-  setIsTyping,
-  onSearch,
-}: {
-  setShowWordsList: (value: boolean) => void
-  setIsTyping: (value: boolean) => void
-  onSearch: (keyword: string) => void
-}) {
+function SearchInput() {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
   const inputRef = useRef<HTMLDivElement | null>(null)
-  const { keyword, setKeyword } = useSearchStore()
+  const [keywords, setKeywords] = useState('')
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        inputRef.current &&
-        !inputRef.current.contains(event.target as Node)
-      ) {
-        setIsActive(false)
-        setIsTyping(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [setIsTyping])
+  useHandleOutsideClick(inputRef, () => setIsActive(false))
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       setIsActive(false)
-      setShowWordsList(true)
-      setIsTyping(false)
-      onSearch(keyword)
     }
   }
 
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value)
-    setIsTyping(true)
+    setKeywords(e.target.value)
   }
 
   return (
@@ -75,10 +48,12 @@ function SearchInput({
           onFocus={() => setIsActive(true)}
           onKeyDown={handleKeyDown}
           onChange={handleUserInput}
-          value={keyword}
+          value={keywords}
           placeholder="단어, 뜻, 예문, 발음으로 검색해보세요."
         />
       </div>
+      {/* 검색어 추천 및 검색 결과 컴포넌트 추가 */}
+      <div></div>
     </div>
   )
 }

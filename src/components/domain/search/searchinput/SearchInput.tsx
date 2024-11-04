@@ -4,12 +4,14 @@ import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import useHandleOutsideClick from '@/hooks/search/useHandleOutsideClick'
+import { WordsPopular } from '../wordspopular'
 
 function SearchInput() {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
   const inputRef = useRef<HTMLDivElement | null>(null)
   const [keywords, setKeywords] = useState('')
+  const isKeyword = true
 
   useHandleOutsideClick(inputRef, () => setIsActive(false))
 
@@ -24,37 +26,38 @@ function SearchInput() {
   }
 
   return (
-    <div className="p-4 flex justify-between gap-4 h-20">
-      <Image
-        src={'/icons/back.svg'}
-        alt="back.svg"
-        onClick={() => router.push('/home/dictionary')}
-        className="cursor-pointer"
-        width={24}
-        height={24}
-      />
-      <div
-        ref={inputRef}
-        className={`flex justify-between gap-[0.625rem] w-full px-3 py-[0.625rem] bg-gray-800 rounded-lg ${isActive && 'border-solid border-[1px] border-primary-400'}`}
-      >
+    <>
+      <div className="p-4 flex justify-between gap-4 h-20">
         <Image
-          src={'/icons/search.svg'}
-          alt="search.svg"
+          src={'/icons/back.svg'}
+          alt="back.svg"
+          onClick={() => router.push('/home/dictionary')}
+          className="cursor-pointer"
           width={24}
           height={24}
         />
-        <input
-          className="w-full bg-gray-800 focus:outline-none caret-primary-400 text-onSurface-300"
-          onFocus={() => setIsActive(true)}
-          onKeyDown={handleKeyDown}
-          onChange={handleUserInput}
-          value={keywords}
-          placeholder="단어, 뜻, 예문, 발음으로 검색해보세요."
-        />
+        <div
+          ref={inputRef}
+          className={`flex justify-between gap-[0.625rem] w-full px-3 py-[0.625rem] bg-gray-800 rounded-lg ${isActive && 'border-solid border-[1px] border-primary-400'}`}
+        >
+          <Image
+            src={'/icons/search.svg'}
+            alt="search.svg"
+            width={24}
+            height={24}
+          />
+          <input
+            className="w-full bg-gray-800 focus:outline-none caret-primary-400 text-onSurface-300"
+            onFocus={() => setIsActive(true)}
+            onKeyDown={handleKeyDown}
+            onChange={handleUserInput}
+            value={keywords}
+            placeholder="단어, 뜻, 예문, 발음으로 검색해보세요."
+          />
+        </div>
       </div>
-      {/* 검색어 추천 및 검색 결과 컴포넌트 추가 */}
-      <div></div>
-    </div>
+      <WordsPopular />
+    </>
   )
 }
 

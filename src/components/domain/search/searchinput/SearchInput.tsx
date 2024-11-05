@@ -11,7 +11,6 @@ function SearchInput() {
   const [isActive, setIsActive] = useState(false)
   const inputRef = useRef<HTMLDivElement | null>(null)
   const [keywords, setKeywords] = useState('')
-  const isKeyword = true
 
   useHandleOutsideClick(inputRef, () => setIsActive(false))
 
@@ -56,7 +55,7 @@ function SearchInput() {
           />
         </div>
       </div>
-      <WordsPopular />
+      {!isActive && <WordsPopular />}
     </>
   )
 }

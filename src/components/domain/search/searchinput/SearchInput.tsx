@@ -4,24 +4,26 @@ import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import useHandleOutsideClick from '@/hooks/search/useHandleOutsideClick'
-import { WordsPopular } from '../wordspopular'
+import { WordsSearchResult } from '../wordssearchresult'
 
 function SearchInput() {
   const router = useRouter()
   const [isActive, setIsActive] = useState(false)
   const inputRef = useRef<HTMLDivElement | null>(null)
   const [keywords, setKeywords] = useState('')
+  const [showResult, setShowResult] = useState(false)
 
   useHandleOutsideClick(inputRef, () => setIsActive(false))
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      setIsActive(false)
+      setShowResult(true)
     }
   }
 
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeywords(e.target.value)
+    setShowResult(false)
   }
 
   return (
@@ -55,7 +57,7 @@ function SearchInput() {
           />
         </div>
       </div>
-      {!isActive && <WordsPopular />}
+      {showResult && <WordsSearchResult keyword={keywords} />}
     </>
   )
 }
